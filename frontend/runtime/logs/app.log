@@ -1,0 +1,389 @@
+2014-04-20 17:19:04 [127.0.0.1][-][-][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'The directory does not exist: F:/wamp/www/letyii/assets' in F:\wamp\www\letyii\vendor\yiisoft\yii2\web\AssetManager.php:107
+Stack trace:
+#0 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Object.php(106): yii\web\AssetManager->init()
+#1 [internal function]: yii\base\Object->__construct(Array)
+#2 F:\wamp\www\letyii\vendor\yiisoft\yii2\di\Container.php(367): ReflectionClass->newInstanceArgs(Array)
+#3 F:\wamp\www\letyii\vendor\yiisoft\yii2\di\Container.php(147): yii\di\Container->build('yii\web\AssetMa...', Array, Array)
+#4 F:\wamp\www\letyii\vendor\yiisoft\yii2\BaseYii.php(341): yii\di\Container->get('yii\web\AssetMa...', Array, Array)
+#5 F:\wamp\www\letyii\vendor\yiisoft\yii2\di\ServiceLocator.php(132): yii\BaseYii::createObject(Array)
+#6 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Application.php(576): yii\di\ServiceLocator->get('assetManager')
+#7 F:\wamp\www\letyii\vendor\yiisoft\yii2\web\View.php(220): yii\base\Application->getAssetManager()
+#8 F:\wamp\www\letyii\vendor\yiisoft\yii2\web\View.php(280): yii\web\View->getAssetManager()
+#9 F:\wamp\www\letyii\vendor\yiisoft\yii2\web\AssetBundle.php(119): yii\web\View->registerAssetBundle('frontend\assets...')
+#10 F:\wamp\www\letyii\frontend\views\layouts\main.php(13): yii\web\AssetBundle::register(Object(yii\web\View))
+#11 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\View.php(313): require('F:\wamp\www\let...')
+#12 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\View.php(245): yii\base\View->renderPhpFile('F:\wamp\www\let...', Array)
+#13 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Controller.php(365): yii\base\View->renderFile('F:\wamp\www\let...', Array, Object(frontend\controllers\SiteController))
+#14 F:\wamp\www\letyii\frontend\controllers\SiteController.php(76): yii\base\Controller->render('index')
+#15 [internal function]: frontend\controllers\SiteController->actionIndex()
+#16 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\InlineAction.php(54): call_user_func_array(Array, Array)
+#17 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Controller.php(147): yii\base\InlineAction->runWithParams(Array)
+#18 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Module.php(423): yii\base\Controller->runAction('', Array)
+#19 F:\wamp\www\letyii\vendor\yiisoft\yii2\web\Application.php(82): yii\base\Module->runAction('', Array)
+#20 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Application.php(353): yii\web\Application->handleRequest(Object(yii\web\Request))
+#21 F:\wamp\www\letyii\index.php(12): yii\base\Application->run()
+#22 {main}
+2014-04-20 17:19:04 [127.0.0.1][-][-][info][application] $_COOKIE = array (
+  '__utmmobile' => '0x69ae267c29462126',
+  'language' => '413afb09ad55b9f262392177f09dc39583a2a76bs:2:"vi";',
+  'nv3c_Lpimd_ctr' => 'MjEzMDcwNjQzMy5aWg==',
+  'HstCfa1953144' => '1396495859864',
+  'HstCmu1953144' => '1396495859864',
+  'CKFinder_Path' => 'Files:/:1',
+  'HstCla1953144' => '1397458481127',
+  'HstPn1953144' => '4',
+  'HstPt1953144' => '51',
+  'HstCnv1953144' => '3',
+  'HstCns1953144' => '5',
+)
+
+$_SERVER = array (
+  'HTTP_HOST' => 'localhost',
+  'HTTP_CONNECTION' => 'keep-alive',
+  'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36',
+  'HTTP_REFERER' => 'http://localhost/',
+  'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch',
+  'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8,vi;q=0.6',
+  'HTTP_COOKIE' => '__utmmobile=0x69ae267c29462126; language=413afb09ad55b9f262392177f09dc39583a2a76bs%3A2%3A%22vi%22%3B; nv3c_Lpimd_ctr=MjEzMDcwNjQzMy5aWg%3D%3D; HstCfa1953144=1396495859864; HstCmu1953144=1396495859864; CKFinder_Path=Files%3A%2F%3A1; HstCla1953144=1397458481127; HstPn1953144=4; HstPt1953144=51; HstCnv1953144=3; HstCns1953144=5',
+  'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\Program Files (x86)\\Bitvise SSH Client;',
+  'SystemRoot' => 'C:\\Windows',
+  'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe',
+  'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC',
+  'WINDIR' => 'C:\\Windows',
+  'SERVER_SIGNATURE' => '',
+  'SERVER_SOFTWARE' => 'Apache/2.4.2 (Win64) PHP/5.4.3',
+  'SERVER_NAME' => 'localhost',
+  'SERVER_ADDR' => '127.0.0.1',
+  'SERVER_PORT' => '80',
+  'REMOTE_ADDR' => '127.0.0.1',
+  'DOCUMENT_ROOT' => 'F:/wamp/www/',
+  'REQUEST_SCHEME' => 'http',
+  'CONTEXT_PREFIX' => '',
+  'CONTEXT_DOCUMENT_ROOT' => 'F:/wamp/www/',
+  'SERVER_ADMIN' => 'admin@localhost',
+  'SCRIPT_FILENAME' => 'F:/wamp/www/letyii/index.php',
+  'REMOTE_PORT' => '51835',
+  'GATEWAY_INTERFACE' => 'CGI/1.1',
+  'SERVER_PROTOCOL' => 'HTTP/1.1',
+  'REQUEST_METHOD' => 'GET',
+  'QUERY_STRING' => '',
+  'REQUEST_URI' => '/letyii/',
+  'SCRIPT_NAME' => '/letyii/index.php',
+  'PHP_SELF' => '/letyii/index.php',
+  'REQUEST_TIME_FLOAT' => 1398014344.532,
+  'REQUEST_TIME' => 1398014344,
+)
+2014-04-20 17:19:29 [127.0.0.1][-][-][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'The directory does not exist: F:/wamp/www/letyii/assets' in F:\wamp\www\letyii\vendor\yiisoft\yii2\web\AssetManager.php:107
+Stack trace:
+#0 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Object.php(106): yii\web\AssetManager->init()
+#1 [internal function]: yii\base\Object->__construct(Array)
+#2 F:\wamp\www\letyii\vendor\yiisoft\yii2\di\Container.php(367): ReflectionClass->newInstanceArgs(Array)
+#3 F:\wamp\www\letyii\vendor\yiisoft\yii2\di\Container.php(147): yii\di\Container->build('yii\web\AssetMa...', Array, Array)
+#4 F:\wamp\www\letyii\vendor\yiisoft\yii2\BaseYii.php(341): yii\di\Container->get('yii\web\AssetMa...', Array, Array)
+#5 F:\wamp\www\letyii\vendor\yiisoft\yii2\di\ServiceLocator.php(132): yii\BaseYii::createObject(Array)
+#6 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Application.php(576): yii\di\ServiceLocator->get('assetManager')
+#7 F:\wamp\www\letyii\vendor\yiisoft\yii2\web\View.php(220): yii\base\Application->getAssetManager()
+#8 F:\wamp\www\letyii\vendor\yiisoft\yii2\web\View.php(280): yii\web\View->getAssetManager()
+#9 F:\wamp\www\letyii\vendor\yiisoft\yii2\web\AssetBundle.php(119): yii\web\View->registerAssetBundle('frontend\assets...')
+#10 F:\wamp\www\letyii\frontend\views\layouts\main.php(13): yii\web\AssetBundle::register(Object(yii\web\View))
+#11 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\View.php(313): require('F:\wamp\www\let...')
+#12 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\View.php(245): yii\base\View->renderPhpFile('F:\wamp\www\let...', Array)
+#13 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Controller.php(365): yii\base\View->renderFile('F:\wamp\www\let...', Array, Object(frontend\controllers\SiteController))
+#14 F:\wamp\www\letyii\frontend\controllers\SiteController.php(76): yii\base\Controller->render('index')
+#15 [internal function]: frontend\controllers\SiteController->actionIndex()
+#16 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\InlineAction.php(54): call_user_func_array(Array, Array)
+#17 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Controller.php(147): yii\base\InlineAction->runWithParams(Array)
+#18 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Module.php(423): yii\base\Controller->runAction('', Array)
+#19 F:\wamp\www\letyii\vendor\yiisoft\yii2\web\Application.php(82): yii\base\Module->runAction('', Array)
+#20 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Application.php(353): yii\web\Application->handleRequest(Object(yii\web\Request))
+#21 F:\wamp\www\letyii\index.php(12): yii\base\Application->run()
+#22 {main}
+2014-04-20 17:19:29 [127.0.0.1][-][-][info][application] $_COOKIE = array (
+  '__utmmobile' => '0x69ae267c29462126',
+  'language' => '413afb09ad55b9f262392177f09dc39583a2a76bs:2:"vi";',
+  'nv3c_Lpimd_ctr' => 'MjEzMDcwNjQzMy5aWg==',
+  'HstCfa1953144' => '1396495859864',
+  'HstCmu1953144' => '1396495859864',
+  'CKFinder_Path' => 'Files:/:1',
+  'HstCla1953144' => '1397458481127',
+  'HstPn1953144' => '4',
+  'HstPt1953144' => '51',
+  'HstCnv1953144' => '3',
+  'HstCns1953144' => '5',
+  'PHPSESSID' => 'q89kd90ce6d9i6pt4d5cqc2sp0',
+  '_csrf' => '374736fe3353cb3bdb04df90091e0ee6dc260456ac269bd136c327af6bc06561s:32:"cOs4lh5HZ74Vj61qE1BDGT02X0M73bzr";',
+)
+
+$_SERVER = array (
+  'HTTP_HOST' => 'localhost',
+  'HTTP_CONNECTION' => 'keep-alive',
+  'HTTP_CACHE_CONTROL' => 'max-age=0',
+  'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36',
+  'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch',
+  'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8,vi;q=0.6',
+  'HTTP_COOKIE' => '__utmmobile=0x69ae267c29462126; language=413afb09ad55b9f262392177f09dc39583a2a76bs%3A2%3A%22vi%22%3B; nv3c_Lpimd_ctr=MjEzMDcwNjQzMy5aWg%3D%3D; HstCfa1953144=1396495859864; HstCmu1953144=1396495859864; CKFinder_Path=Files%3A%2F%3A1; HstCla1953144=1397458481127; HstPn1953144=4; HstPt1953144=51; HstCnv1953144=3; HstCns1953144=5; PHPSESSID=q89kd90ce6d9i6pt4d5cqc2sp0; _csrf=374736fe3353cb3bdb04df90091e0ee6dc260456ac269bd136c327af6bc06561s%3A32%3A%22cOs4lh5HZ74Vj61qE1BDGT02X0M73bzr%22%3B',
+  'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\Program Files (x86)\\Bitvise SSH Client;',
+  'SystemRoot' => 'C:\\Windows',
+  'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe',
+  'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC',
+  'WINDIR' => 'C:\\Windows',
+  'SERVER_SIGNATURE' => '',
+  'SERVER_SOFTWARE' => 'Apache/2.4.2 (Win64) PHP/5.4.3',
+  'SERVER_NAME' => 'localhost',
+  'SERVER_ADDR' => '127.0.0.1',
+  'SERVER_PORT' => '80',
+  'REMOTE_ADDR' => '127.0.0.1',
+  'DOCUMENT_ROOT' => 'F:/wamp/www/',
+  'REQUEST_SCHEME' => 'http',
+  'CONTEXT_PREFIX' => '',
+  'CONTEXT_DOCUMENT_ROOT' => 'F:/wamp/www/',
+  'SERVER_ADMIN' => 'admin@localhost',
+  'SCRIPT_FILENAME' => 'F:/wamp/www/letyii/index.php',
+  'REMOTE_PORT' => '51845',
+  'GATEWAY_INTERFACE' => 'CGI/1.1',
+  'SERVER_PROTOCOL' => 'HTTP/1.1',
+  'REQUEST_METHOD' => 'GET',
+  'QUERY_STRING' => '',
+  'REQUEST_URI' => '/letyii/',
+  'SCRIPT_NAME' => '/letyii/index.php',
+  'PHP_SELF' => '/letyii/index.php',
+  'REQUEST_TIME_FLOAT' => 1398014369.758,
+  'REQUEST_TIME' => 1398014369,
+)
+2014-04-21 05:06:25 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'The file or directory to be published does not exist: F:\wamp\www\letyii\vendor\yiisoft\yii2/debug/assets' in F:\wamp\www\letyii\vendor\yiisoft\yii2\web\AssetManager.php:238
+Stack trace:
+#0 F:\wamp\www\letyii\vendor\yiisoft\yii2\web\AssetBundle.php(170): yii\web\AssetManager->publish('F:\wamp\www\let...', Array)
+#1 F:\wamp\www\letyii\vendor\yiisoft\yii2\web\AssetManager.php(143): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#2 F:\wamp\www\letyii\vendor\yiisoft\yii2\web\View.php(281): yii\web\AssetManager->getBundle('yii\debug\Debug...')
+#3 F:\wamp\www\letyii\vendor\yiisoft\yii2\web\AssetBundle.php(119): yii\web\View->registerAssetBundle('yii\debug\Debug...')
+#4 F:\wamp\www\letyii\vendor\yiisoft\yii2-debug\views\layouts\main.php(8): yii\web\AssetBundle::register(Object(yii\web\View))
+#5 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\View.php(313): require('F:\wamp\www\let...')
+#6 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\View.php(245): yii\base\View->renderPhpFile('F:\wamp\www\let...', Array)
+#7 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Controller.php(365): yii\base\View->renderFile('F:\wamp\www\let...', Array, Object(yii\debug\controllers\DefaultController))
+#8 F:\wamp\www\letyii\vendor\yiisoft\yii2-debug\controllers\DefaultController.php(85): yii\base\Controller->render('view', Array)
+#9 [internal function]: yii\debug\controllers\DefaultController->actionView('5354a74bac2a8', 'request')
+#10 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\InlineAction.php(54): call_user_func_array(Array, Array)
+#11 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Controller.php(147): yii\base\InlineAction->runWithParams(Array)
+#12 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Module.php(423): yii\base\Controller->runAction('view', Array)
+#13 F:\wamp\www\letyii\vendor\yiisoft\yii2\web\Application.php(82): yii\base\Module->runAction('debug/default/v...', Array)
+#14 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Application.php(353): yii\web\Application->handleRequest(Object(yii\web\Request))
+#15 F:\wamp\www\letyii\index.php(12): yii\base\Application->run()
+#16 {main}
+2014-04-21 05:06:25 [127.0.0.1][-][-][info][application] $_GET = array (
+  'r' => 'debug/default/view',
+  'panel' => 'request',
+  'tag' => '5354a74bac2a8',
+)
+
+$_COOKIE = array (
+  '__utmmobile' => '0x69ae267c29462126',
+  'language' => '413afb09ad55b9f262392177f09dc39583a2a76bs:2:"vi";',
+  'nv3c_Lpimd_ctr' => 'MjEzMDcwNjQzMy5aWg==',
+  'HstCfa1953144' => '1396495859864',
+  'HstCmu1953144' => '1396495859864',
+  'CKFinder_Path' => 'Files:/:1',
+  'HstCla1953144' => '1397458481127',
+  'HstPn1953144' => '4',
+  'HstPt1953144' => '51',
+  'HstCnv1953144' => '3',
+  'HstCns1953144' => '5',
+  'PHPSESSID' => '3mvpsnp0343frlp5qqppffs1j7',
+  '_identity' => 'd4b349264c9e4991f46a358fe1b15ec04f0b7ad12ee41c903e9beeb740422a8cs:47:"[1,"B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL ",2592000]";',
+  '_csrf' => '3ccf7236c240cf93ba2c4f0603a7aec7b7e6429c12d2787041e08563335e0340s:32:"Du97s8JiDQ2-OPOmok3-fdULUSHPtVFk";',
+)
+
+$_SERVER = array (
+  'HTTP_HOST' => 'localhost',
+  'HTTP_CONNECTION' => 'keep-alive',
+  'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36',
+  'HTTP_REFERER' => 'http://localhost/letyii/',
+  'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch',
+  'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8,vi;q=0.6',
+  'HTTP_COOKIE' => '__utmmobile=0x69ae267c29462126; language=413afb09ad55b9f262392177f09dc39583a2a76bs%3A2%3A%22vi%22%3B; nv3c_Lpimd_ctr=MjEzMDcwNjQzMy5aWg%3D%3D; HstCfa1953144=1396495859864; HstCmu1953144=1396495859864; CKFinder_Path=Files%3A%2F%3A1; HstCla1953144=1397458481127; HstPn1953144=4; HstPt1953144=51; HstCnv1953144=3; HstCns1953144=5; PHPSESSID=3mvpsnp0343frlp5qqppffs1j7; _identity=d4b349264c9e4991f46a358fe1b15ec04f0b7ad12ee41c903e9beeb740422a8cs%3A47%3A%22%5B1%2C%22B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL+%22%2C2592000%5D%22%3B; _csrf=3ccf7236c240cf93ba2c4f0603a7aec7b7e6429c12d2787041e08563335e0340s%3A32%3A%22Du97s8JiDQ2-OPOmok3-fdULUSHPtVFk%22%3B',
+  'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\Program Files (x86)\\Bitvise SSH Client;',
+  'SystemRoot' => 'C:\\Windows',
+  'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe',
+  'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC',
+  'WINDIR' => 'C:\\Windows',
+  'SERVER_SIGNATURE' => '',
+  'SERVER_SOFTWARE' => 'Apache/2.4.2 (Win64) PHP/5.4.3',
+  'SERVER_NAME' => 'localhost',
+  'SERVER_ADDR' => '127.0.0.1',
+  'SERVER_PORT' => '80',
+  'REMOTE_ADDR' => '127.0.0.1',
+  'DOCUMENT_ROOT' => 'F:/wamp/www/',
+  'REQUEST_SCHEME' => 'http',
+  'CONTEXT_PREFIX' => '',
+  'CONTEXT_DOCUMENT_ROOT' => 'F:/wamp/www/',
+  'SERVER_ADMIN' => 'admin@localhost',
+  'SCRIPT_FILENAME' => 'F:/wamp/www/letyii/index.php',
+  'REMOTE_PORT' => '57144',
+  'GATEWAY_INTERFACE' => 'CGI/1.1',
+  'SERVER_PROTOCOL' => 'HTTP/1.1',
+  'REQUEST_METHOD' => 'GET',
+  'QUERY_STRING' => 'r=debug/default/view&panel=request&tag=5354a74bac2a8',
+  'REQUEST_URI' => '/letyii/index.php?r=debug/default/view&panel=request&tag=5354a74bac2a8',
+  'SCRIPT_NAME' => '/letyii/index.php',
+  'PHP_SELF' => '/letyii/index.php',
+  'REQUEST_TIME_FLOAT' => 1398056785.085,
+  'REQUEST_TIME' => 1398056785,
+)
+2014-04-21 08:49:54 [127.0.0.1][][qi25o8bf99reolouk53gbpj1g2][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "gii".' in F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Module.php:429
+Stack trace:
+#0 F:\wamp\www\letyii\vendor\yiisoft\yii2\web\Application.php(82): yii\base\Module->runAction('gii', Array)
+#1 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Application.php(353): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 F:\wamp\www\letyii\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Unable to resolve the request "gii".' in F:\wamp\www\letyii\vendor\yiisoft\yii2\web\Application.php:94
+Stack trace:
+#0 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Application.php(353): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 F:\wamp\www\letyii\index.php(12): yii\base\Application->run()
+#2 {main}
+2014-04-21 08:49:54 [127.0.0.1][][qi25o8bf99reolouk53gbpj1g2][info][application] $_GET = array (
+  'r' => 'gii',
+)
+
+$_COOKIE = array (
+  '__utmmobile' => '0x69ae267c29462126',
+  'language' => '413afb09ad55b9f262392177f09dc39583a2a76bs:2:"vi";',
+  'nv3c_Lpimd_ctr' => 'MjEzMDcwNjQzMy5aWg==',
+  'HstCfa1953144' => '1396495859864',
+  'HstCmu1953144' => '1396495859864',
+  'CKFinder_Path' => 'Files:/:1',
+  'HstCla1953144' => '1397458481127',
+  'HstPn1953144' => '4',
+  'HstPt1953144' => '51',
+  'HstCnv1953144' => '3',
+  'HstCns1953144' => '5',
+  '_identity' => 'd4b349264c9e4991f46a358fe1b15ec04f0b7ad12ee41c903e9beeb740422a8cs:47:"[1,"B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL ",2592000]";',
+  'PHPSESSID' => 'qi25o8bf99reolouk53gbpj1g2',
+  '_csrf' => 'f37e24feb7a7a4fa876e11b42466f89339425dbeb7ad8b6d47bdd2f3d35720b9s:32:"44q-LMro6LbjRZ9wlVGT0NSVKYvu5RVq";',
+)
+
+$_SESSION = array (
+  '__flash' => 
+  array (
+  ),
+  '__captcha/site/captcha' => 'mvqaba',
+  '__captcha/site/captchacount' => 1,
+)
+
+$_SERVER = array (
+  'HTTP_HOST' => 'localhost',
+  'HTTP_CONNECTION' => 'keep-alive',
+  'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36',
+  'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch',
+  'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8,vi;q=0.6',
+  'HTTP_COOKIE' => '__utmmobile=0x69ae267c29462126; language=413afb09ad55b9f262392177f09dc39583a2a76bs%3A2%3A%22vi%22%3B; nv3c_Lpimd_ctr=MjEzMDcwNjQzMy5aWg%3D%3D; HstCfa1953144=1396495859864; HstCmu1953144=1396495859864; CKFinder_Path=Files%3A%2F%3A1; HstCla1953144=1397458481127; HstPn1953144=4; HstPt1953144=51; HstCnv1953144=3; HstCns1953144=5; _identity=d4b349264c9e4991f46a358fe1b15ec04f0b7ad12ee41c903e9beeb740422a8cs%3A47%3A%22%5B1%2C%22B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL+%22%2C2592000%5D%22%3B; PHPSESSID=qi25o8bf99reolouk53gbpj1g2; _csrf=f37e24feb7a7a4fa876e11b42466f89339425dbeb7ad8b6d47bdd2f3d35720b9s%3A32%3A%2244q-LMro6LbjRZ9wlVGT0NSVKYvu5RVq%22%3B',
+  'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\Program Files (x86)\\Bitvise SSH Client;',
+  'SystemRoot' => 'C:\\Windows',
+  'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe',
+  'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC',
+  'WINDIR' => 'C:\\Windows',
+  'SERVER_SIGNATURE' => '',
+  'SERVER_SOFTWARE' => 'Apache/2.4.2 (Win64) PHP/5.4.3',
+  'SERVER_NAME' => 'localhost',
+  'SERVER_ADDR' => '127.0.0.1',
+  'SERVER_PORT' => '80',
+  'REMOTE_ADDR' => '127.0.0.1',
+  'DOCUMENT_ROOT' => 'F:/wamp/www/',
+  'REQUEST_SCHEME' => 'http',
+  'CONTEXT_PREFIX' => '',
+  'CONTEXT_DOCUMENT_ROOT' => 'F:/wamp/www/',
+  'SERVER_ADMIN' => 'admin@localhost',
+  'SCRIPT_FILENAME' => 'F:/wamp/www/letyii/index.php',
+  'REMOTE_PORT' => '60770',
+  'GATEWAY_INTERFACE' => 'CGI/1.1',
+  'SERVER_PROTOCOL' => 'HTTP/1.1',
+  'REQUEST_METHOD' => 'GET',
+  'QUERY_STRING' => 'r=gii',
+  'REQUEST_URI' => '/letyii/index.php?r=gii',
+  'SCRIPT_NAME' => '/letyii/index.php',
+  'PHP_SELF' => '/letyii/index.php',
+  'REQUEST_TIME_FLOAT' => 1398070194.682,
+  'REQUEST_TIME' => 1398070194,
+)
+2014-04-21 08:59:53 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'The file or directory to be published does not exist: F:\wamp\www\letyii\vendor\yiisoft\yii2/debug/assets' in F:\wamp\www\letyii\vendor\yiisoft\yii2\web\AssetManager.php:238
+Stack trace:
+#0 F:\wamp\www\letyii\vendor\yiisoft\yii2\web\AssetBundle.php(170): yii\web\AssetManager->publish('F:\wamp\www\let...', Array)
+#1 F:\wamp\www\letyii\vendor\yiisoft\yii2\web\AssetManager.php(143): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#2 F:\wamp\www\letyii\vendor\yiisoft\yii2\web\View.php(281): yii\web\AssetManager->getBundle('yii\debug\Debug...')
+#3 F:\wamp\www\letyii\vendor\yiisoft\yii2\web\AssetBundle.php(119): yii\web\View->registerAssetBundle('yii\debug\Debug...')
+#4 F:\wamp\www\letyii\vendor\yiisoft\yii2-debug\views\layouts\main.php(8): yii\web\AssetBundle::register(Object(yii\web\View))
+#5 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\View.php(313): require('F:\wamp\www\let...')
+#6 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\View.php(245): yii\base\View->renderPhpFile('F:\wamp\www\let...', Array)
+#7 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Controller.php(365): yii\base\View->renderFile('F:\wamp\www\let...', Array, Object(yii\debug\controllers\DefaultController))
+#8 F:\wamp\www\letyii\vendor\yiisoft\yii2-debug\controllers\DefaultController.php(85): yii\base\Controller->render('view', Array)
+#9 [internal function]: yii\debug\controllers\DefaultController->actionView('5354dce1f0ca0', 'request')
+#10 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\InlineAction.php(54): call_user_func_array(Array, Array)
+#11 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Controller.php(147): yii\base\InlineAction->runWithParams(Array)
+#12 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Module.php(423): yii\base\Controller->runAction('view', Array)
+#13 F:\wamp\www\letyii\vendor\yiisoft\yii2\web\Application.php(82): yii\base\Module->runAction('debug/default/v...', Array)
+#14 F:\wamp\www\letyii\vendor\yiisoft\yii2\base\Application.php(353): yii\web\Application->handleRequest(Object(yii\web\Request))
+#15 F:\wamp\www\letyii\index.php(12): yii\base\Application->run()
+#16 {main}
+2014-04-21 08:59:53 [127.0.0.1][-][-][info][application] $_GET = array (
+  'r' => 'debug/default/view',
+  'panel' => 'request',
+  'tag' => '5354dce1f0ca0',
+)
+
+$_COOKIE = array (
+  '__utmmobile' => '0x69ae267c29462126',
+  'language' => '413afb09ad55b9f262392177f09dc39583a2a76bs:2:"vi";',
+  'nv3c_Lpimd_ctr' => 'MjEzMDcwNjQzMy5aWg==',
+  'HstCfa1953144' => '1396495859864',
+  'HstCmu1953144' => '1396495859864',
+  'CKFinder_Path' => 'Files:/:1',
+  'HstCla1953144' => '1397458481127',
+  'HstPn1953144' => '4',
+  'HstPt1953144' => '51',
+  'HstCnv1953144' => '3',
+  'HstCns1953144' => '5',
+  '_identity' => 'd4b349264c9e4991f46a358fe1b15ec04f0b7ad12ee41c903e9beeb740422a8cs:47:"[1,"B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL ",2592000]";',
+  'PHPSESSID' => 'qi25o8bf99reolouk53gbpj1g2',
+  '_csrf' => 'f37e24feb7a7a4fa876e11b42466f89339425dbeb7ad8b6d47bdd2f3d35720b9s:32:"44q-LMro6LbjRZ9wlVGT0NSVKYvu5RVq";',
+)
+
+$_SERVER = array (
+  'HTTP_HOST' => 'localhost',
+  'HTTP_CONNECTION' => 'keep-alive',
+  'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36',
+  'HTTP_REFERER' => 'http://localhost/letyii/index.php?r=site/index',
+  'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch',
+  'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8,vi;q=0.6',
+  'HTTP_COOKIE' => '__utmmobile=0x69ae267c29462126; language=413afb09ad55b9f262392177f09dc39583a2a76bs%3A2%3A%22vi%22%3B; nv3c_Lpimd_ctr=MjEzMDcwNjQzMy5aWg%3D%3D; HstCfa1953144=1396495859864; HstCmu1953144=1396495859864; CKFinder_Path=Files%3A%2F%3A1; HstCla1953144=1397458481127; HstPn1953144=4; HstPt1953144=51; HstCnv1953144=3; HstCns1953144=5; _identity=d4b349264c9e4991f46a358fe1b15ec04f0b7ad12ee41c903e9beeb740422a8cs%3A47%3A%22%5B1%2C%22B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL+%22%2C2592000%5D%22%3B; PHPSESSID=qi25o8bf99reolouk53gbpj1g2; _csrf=f37e24feb7a7a4fa876e11b42466f89339425dbeb7ad8b6d47bdd2f3d35720b9s%3A32%3A%2244q-LMro6LbjRZ9wlVGT0NSVKYvu5RVq%22%3B',
+  'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\Program Files (x86)\\Bitvise SSH Client;',
+  'SystemRoot' => 'C:\\Windows',
+  'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe',
+  'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC',
+  'WINDIR' => 'C:\\Windows',
+  'SERVER_SIGNATURE' => '',
+  'SERVER_SOFTWARE' => 'Apache/2.4.2 (Win64) PHP/5.4.3',
+  'SERVER_NAME' => 'localhost',
+  'SERVER_ADDR' => '127.0.0.1',
+  'SERVER_PORT' => '80',
+  'REMOTE_ADDR' => '127.0.0.1',
+  'DOCUMENT_ROOT' => 'F:/wamp/www/',
+  'REQUEST_SCHEME' => 'http',
+  'CONTEXT_PREFIX' => '',
+  'CONTEXT_DOCUMENT_ROOT' => 'F:/wamp/www/',
+  'SERVER_ADMIN' => 'admin@localhost',
+  'SCRIPT_FILENAME' => 'F:/wamp/www/letyii/index.php',
+  'REMOTE_PORT' => '60894',
+  'GATEWAY_INTERFACE' => 'CGI/1.1',
+  'SERVER_PROTOCOL' => 'HTTP/1.1',
+  'REQUEST_METHOD' => 'GET',
+  'QUERY_STRING' => 'r=debug/default/view&panel=request&tag=5354dce1f0ca0',
+  'REQUEST_URI' => '/letyii/index.php?r=debug/default/view&panel=request&tag=5354dce1f0ca0',
+  'SCRIPT_NAME' => '/letyii/index.php',
+  'PHP_SELF' => '/letyii/index.php',
+  'REQUEST_TIME_FLOAT' => 1398070793.071,
+  'REQUEST_TIME' => 1398070793,
+)
