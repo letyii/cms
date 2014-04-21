@@ -29,12 +29,16 @@ $config = [
                 ],
             ],
         ],
-//        'view' => [
-//            'theme' => [
-//                'pathMap' => ['@app/views' => '@app/themes/frontend/letyii/views'],
-//                'baseUrl' => '@web/themes/frontend/letyii',
-//            ],
-//        ],
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@app/views' => '@app/themes/letyii/views',
+                    '@app/modules' => '@app/themes/letyii/modules',
+                ],
+                'basePath' => '@app/themes/letyii',
+                'baseUrl' => '@app/themes/letyii',                
+            ],
+        ],
     ],
 ];
 
