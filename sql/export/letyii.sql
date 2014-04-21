@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2014 at 04:33 AM
+-- Generation Time: Apr 21, 2014 at 04:48 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -99,8 +99,8 @@ CREATE TABLE IF NOT EXISTS `letyii_user` (
   `auth_key` varchar(128) NOT NULL DEFAULT '',
   `role` varchar(128) NOT NULL DEFAULT '',
   `status` int(11) NOT NULL DEFAULT '10',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `letyii_user` (
 --
 
 INSERT INTO `letyii_user` (`id`, `username`, `password_hash`, `password_reset_token`, `email`, `auth_key`, `role`, `status`, `create_time`, `update_time`) VALUES
-(1, 'admin', '$2y$13$pZl/IKpc/MkJ097fF6BdrOt7.MzVZG72y18chRK76vp0Tp58QLqrm', '', '', 'B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL ', '', 10, '2014-02-06 20:53:39', '2014-02-06 20:53:39');
+(1, 'admin', '$2y$13$pZl/IKpc/MkJ097fF6BdrOt7.MzVZG72y18chRK76vp0Tp58QLqrm', '', '', 'B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL ', '', 10, '2014-02-07 03:53:39', '2014-02-07 03:53:39');
 
 --
 -- Constraints for dumped tables
