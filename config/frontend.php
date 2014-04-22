@@ -34,6 +34,7 @@ $config = [
                 'pathMap' => [
                     '@app/views' => '@app/themes/letyii/views',
                     '@app/modules' => '@app/themes/letyii/modules',
+                    '@app/widgets' => '@app/themes/letyii/widgets',
                 ],
                 'basePath' => '@app/themes/letyii',
                 'baseUrl' => '@app/themes/letyii',                

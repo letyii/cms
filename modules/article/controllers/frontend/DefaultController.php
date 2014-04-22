@@ -8,7 +8,7 @@ class DefaultController extends Controller
 {
     public function actionIndex()
     {
-    	$this->layout = '/article';
+//    	$this->layout = '/article';
         return $this->render('index');
     }
 }
