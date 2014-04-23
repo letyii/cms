@@ -1,0 +1,24 @@
+# Turn on URL rewriting
+RewriteEngine On
+
+# Installation directory
+#RewriteBase /
+
+# Protect hidden files from being viewed
+
+#	Order Deny,Allow
+#	Deny From All
+
+
+# Protect application and system files from being viewed
+#RewriteRule ^(modules|system) - [F,L]
+
+#RewriteCond $1 !^(application|assets|uploads)
+# Allow any files or directories that exist to be displayed directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#
+# Rewrite all other URLs to index.php/URL
+#RewriteRule ^xem-phim/(.*)/f([0-9]*).(.*) index.php/frontend/film/items/1 [F]
+RewriteRule .* index.php [L]
