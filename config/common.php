@@ -28,8 +28,17 @@ return [
 //                ],
 //            ],
 //        ],
-//        'db' => $db,
+//        'view' => [
+//            'theme' => [
+//                'pathMap' => [
+//                    '@app/views' => '@app/themes/letyii/views',
+//                    '@app/modules' => '@app/themes/letyii/modules',
+//                    '@app/widgets' => '@app/themes/letyii/widgets',
+//                ],
+//                'basePath' => '@app/themes/letyii',
+//                'baseUrl' => '@web/themes/letyii',                
+//            ],
+//        ],
 //    ],
-//    'params' => $params,
 ];
 

@@ -1,0 +1,1 @@
+INSERT INTO `letyii_user` VALUES (1, 'admin', '$2y$13$pZl/IKpc/MkJ097fF6BdrOt7.MzVZG72y18chRK76vp0Tp58QLqrm', '', '', 'B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL ', '', 10, '2014-2-7 03:53:39', '2014-2-7 03:53:39');

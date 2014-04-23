@@ -37,19 +37,20 @@ $config = [
                     '@app/widgets' => '@app/themes/letyii/widgets',
                 ],
                 'basePath' => '@app/themes/letyii',
-                'baseUrl' => '@app/themes/letyii',                
+                'baseUrl' => '@web/themes/letyii',                
             ],
         ],
     ],
 ];
 
+
 // Merge data config
-$configs = array_merge(
+$configs = array_replace_recursive(
     require(__DIR__ . '/common.php'),
     require(__DIR__ . '/modules.php'),
     require(__DIR__ . '/db.php'),
-    $config,
     require(__DIR__ . '/params.php'),
+    $config,
     require(__DIR__ . '/local.php')
 );
 
