@@ -7,7 +7,6 @@ $config = [
     'bootstrap' => ['log'],
     'extensions' => require(__DIR__ . '/../vendor/yiisoft/extensions.php'),
     'components' => [
-        
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -48,7 +47,12 @@ $config = [
 
 // Merge data config
 $configs = array_replace_recursive(
-        require(__DIR__ . '/common.php'), require(__DIR__ . '/modules.php'), require(__DIR__ . '/db.php'), require(__DIR__ . '/params.php'), $config, require(__DIR__ . '/local.php')
+    require(__DIR__ . '/common.php'),
+    require(__DIR__ . '/modules.php'),
+    require(__DIR__ . '/db.php'),
+    require(__DIR__ . '/params.php'),
+    $config,
+    require(__DIR__ . '/local.php')
 );
 
 if (YII_ENV_DEV) {
@@ -58,4 +62,8 @@ if (YII_ENV_DEV) {
     $configs['modules']['gii'] = 'yii\gii\Module';
 }
 
+//echo '<pre>';
+//print_r($configs);
+//echo '</pre>';
+//die;
 return $configs;

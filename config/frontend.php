@@ -7,11 +7,6 @@ $config = [
     'bootstrap' => ['log'],
     'extensions' => require(__DIR__ . '/../vendor/yiisoft/extensions.php'),
     'components' => [
-        'i18n' => [
-            'translations' => [
-                'category' => ['class' => 'yii\i18n\PhpMessageSource', 'basePath' => '@app/messages'],
-            ],
-        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],

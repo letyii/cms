@@ -39,14 +39,15 @@
                     <div class="sidebar-dropdown"><a href="#">Navigation</a></div>
                     <div class="sidey">
                         <ul class="nav">
-                            <!-- Main navigation. Refer Notes.txt files for reference. -->
-
-                            <!-- Use the class "current" in main menu to hightlight current main menu -->
-                            <li><a href="<?php echo Yii::$app->urlManager->baseUrl; ?>"><i class="fa fa-desktop"></i> Tổng quan</a></li>
-                            <?php // var_dump(Yii::$app->modules); ?>
-                            <li class="current"><a href="list.php"><i class="fa fa-folder-open"></i> Bài viết</a></li>
-                            <li><a href="list.php"><i class="fa fa-folder"></i> Phim</a></li>
-                            <li><a href="list.php"><i class="fa fa-folder"></i> Truyện</a></li>
+                            <li><a href="<?php echo \yii\helpers\Url::home(); ?>"><i class="fa fa-desktop"></i> Tổng quan</a></li>
+                            <?php foreach (array_keys(Yii::$app->modules) as $module): ?>
+                            <?php
+                            if ($module == 'debug')
+                                continue;
+                            $moduleUrl = ($module == 'gii') ? \yii\helpers\Url::to($module) : \yii\helpers\Url::to($module . '/backend/default/index');
+                            ?>
+                            <li<?php if ($module == Yii::$app->controller->module->id): ?> class="current"<?php endif; ?>><a href="<?php echo $moduleUrl; ?>"><i class="fa fa-folder<?php if ($module == Yii::$app->controller->module->id): ?>-open<?php endif; ?>"></i> <?php echo $module; ?></a></li>
+                            <?php endforeach; ?>
                         </ul>               
                     </div>
                     <!-- Sidebar navigation ends -->

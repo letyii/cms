@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\category\controllers;
+namespace app\modules\category\controllers\backend;
 
 use Yii;
 use app\modules\category\models\letCategory;
