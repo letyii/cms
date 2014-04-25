@@ -1,3 +1,10 @@
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+
+?>
+
 <!-- Content starts -->
 <div class="container">
     <div class="page-content page-posts">
@@ -16,7 +23,18 @@
 
                     <!-- Widget body -->
                     <div class="widget-body">
-                        <label>Tiêu đề</label>
+                        <?php $form = ActiveForm::begin(); ?>
+
+                        <?= $form->field($model, 'title')->textInput(['maxlength' => 255]) ?>
+
+                        <div class="form-group">
+                            <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                        </div>
+
+                        <?php ActiveForm::end(); ?>
+                        
+                        
+<!--                        <label>Tiêu đề</label>
                         <input type="text" class="form-control col-lg-8" placeholder="Enter Title">
                         <div class="clearfix"></div>
 
@@ -26,7 +44,7 @@
 
                         <label>Danh mục cha</label>
                         <input type="text" class="form-control col-lg-8" placeholder="Enter Title">
-                        <div class="clearfix"></div>
+                        <div class="clearfix"></div>-->
                     </div>
 
                     <!-- Widget foot -->

@@ -60,10 +60,28 @@ class DefaultController extends Controller
      */
     public function actionCreate()
     {
+        $module = 'article';
+        
         $model = new letCategory;
+        
+        if ($model->load(Yii::$app->request->post())) {
+            $root = letCategory::find()
+                ->where(['module' => $module])
+                ->one();
+            if ($root === null) {
+                $root = new letCategory;
+                $root->title = $module;
+                $root->module = $module;
+                $root->saveNode();
+            }
+            
+            if ($model->appendTo($root)) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+//            var_dump($model); die;
+//            $model->save()
+//            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,

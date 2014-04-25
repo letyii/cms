@@ -12,6 +12,8 @@ use Yii;
  * @property string $lft
  * @property string $rgt
  * @property integer $level
+ * @property string $title
+ * @property string $module
  */
 class letCategoryBase extends \yii\db\ActiveRecord
 {
@@ -30,7 +32,9 @@ class letCategoryBase extends \yii\db\ActiveRecord
     {
         return [
             [['root', 'lft', 'rgt', 'level'], 'integer'],
-            [['lft', 'rgt', 'level'], 'required']
+            [['title'], 'required'],
+            [['title'], 'string', 'max' => 255],
+            [['module'], 'string', 'max' => 50]
         ];
     }
 
@@ -45,6 +49,8 @@ class letCategoryBase extends \yii\db\ActiveRecord
             'lft' => Yii::t('category', 'Lft'),
             'rgt' => Yii::t('category', 'Rgt'),
             'level' => Yii::t('category', 'Level'),
+            'title' => Yii::t('category', 'Title'),
+            'module' => Yii::t('category', 'Module'),
         ];
     }
 }

@@ -16,6 +16,7 @@ class letCategorySearch extends letCategory
     {
         return [
             [['id', 'root', 'lft', 'rgt', 'level'], 'integer'],
+            [['title', 'module'], 'safe'],
         ];
     }
 
@@ -44,6 +45,9 @@ class letCategorySearch extends letCategory
             'rgt' => $this->rgt,
             'level' => $this->level,
         ]);
+
+        $query->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['like', 'module', $this->module]);
 
         return $dataProvider;
     }

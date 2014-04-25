@@ -3,6 +3,7 @@
 namespace app\modules\category\models;
 
 use Yii;
+use app\modules\category\models\letCategoryQuery;
 
 /**
  * This is the model class for table "letyii_category".
@@ -22,29 +23,19 @@ class letCategory extends base\letCategoryBase
     {
         return 'letyii_category';
     }
-
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
+    
+    public function behaviors() {
         return [
-            [['root', 'lft', 'rgt', 'level'], 'integer'],
-            [['lft', 'rgt', 'level'], 'required']
+            'NestedSetBehavior' => [
+                'class' => 'app\modules\category\behaviors\nestedset\NestedSet',
+                'hasManyRoots' => true
+            ]
         ];
     }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
+    
+    public static function find()
     {
-        return [
-            'id' => Yii::t('category', 'ID'),
-            'root' => Yii::t('category', 'Root'),
-            'lft' => Yii::t('category', 'Lft'),
-            'rgt' => Yii::t('category', 'Rgt'),
-            'level' => Yii::t('category', 'Level'),
-        ];
+        return new letCategoryQuery(get_called_class());
     }
+      
 }
