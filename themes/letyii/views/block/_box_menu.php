@@ -44,7 +44,7 @@
                             <?php
                             if ($module == 'debug')
                                 continue;
-                            $moduleUrl = ($module == 'gii') ? \yii\helpers\Url::to($module) : \yii\helpers\Url::to($module . '/backend/default/index');
+                            $moduleUrl = ($module == 'gii') ? \Yii::$app->urlManager->createUrl([$module]) : \Yii::$app->urlManager->createUrl([$module . '/backend/default/index']);
                             ?>
                             <li<?php if ($module == Yii::$app->controller->module->id): ?> class="current"<?php endif; ?>><a href="<?php echo $moduleUrl; ?>"><i class="fa fa-folder<?php if ($module == Yii::$app->controller->module->id): ?>-open<?php endif; ?>"></i> <?php echo $module; ?></a></li>
                             <?php endforeach; ?>

@@ -30,6 +30,10 @@ $config = [
                 ],
             ],
         ],
+        'urlManager' => [
+            'showScriptName' => true,
+        ],
+
         'view' => [
             'theme' => [
                 'pathMap' => [

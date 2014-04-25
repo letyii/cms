@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\category\models\search;
+namespace app\modules\category\models\base;
 
 use Yii;
 use yii\base\Model;

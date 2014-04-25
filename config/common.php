@@ -3,9 +3,8 @@
 return [
     'components' => [
         'urlManager' => [
-            'enableStrictParsing' => false, // fuck
             'enablePrettyUrl' => true,
-            'showScriptName' => true,
+            'showScriptName' => false,
             'suffix' => '.html',
         ],
     ],

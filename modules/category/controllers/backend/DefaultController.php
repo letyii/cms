@@ -4,7 +4,7 @@ namespace app\modules\category\controllers\backend;
 
 use Yii;
 use app\modules\category\models\letCategory;
-use app\modules\category\models\search\letCategorySearch;
+use app\modules\category\models\base\letCategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -32,7 +32,6 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        echo 111; die;
         $searchModel = new letCategorySearch;
         $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
 
