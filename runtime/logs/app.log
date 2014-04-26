@@ -1,0 +1,729 @@
+2014-04-26 09:21:31 [::1][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\modules\category\models\letCategory::postion' in D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Component.php:142
+Stack trace:
+#0 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\db\BaseActiveRecord.php(240): yii\base\Component->__get('postion')
+#1 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\helpers\BaseHtml.php(1762): yii\db\BaseActiveRecord->__get('postion')
+#2 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\helpers\BaseHtml.php(1309): yii\helpers\BaseHtml::getAttributeValue(Object(app\modules\category\models\letCategory), 'postion')
+#3 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\widgets\ActiveField.php(521): yii\helpers\BaseHtml::activeDropDownList(Object(app\modules\category\models\letCategory), 'postion', Array, Array)
+#4 D:\xampp\htdocs\letyii\cms\themes\letyii\modules\category\views\backend\default\create.php(34): yii\widgets\ActiveField->dropDownList(Array, Array)
+#5 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\View.php(313): require('D:\xampp\htdocs...')
+#6 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\View.php(245): yii\base\View->renderPhpFile('D:\xampp\htdocs...', Array)
+#7 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\View.php(147): yii\base\View->renderFile('D:\xampp\htdocs...', Array, Object(app\modules\category\controllers\backend\DefaultController))
+#8 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Controller.php(362): yii\base\View->render('create', Array, Object(app\modules\category\controllers\backend\DefaultController))
+#9 D:\xampp\htdocs\letyii\cms\modules\category\controllers\backend\DefaultController.php(88): yii\base\Controller->render('create', Array)
+#10 [internal function]: app\modules\category\controllers\backend\DefaultController->actionCreate()
+#11 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\InlineAction.php(54): call_user_func_array(Array, Array)
+#12 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Controller.php(147): yii\base\InlineAction->runWithParams(Array)
+#13 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Module.php(423): yii\base\Controller->runAction('create', Array)
+#14 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\web\Application.php(82): yii\base\Module->runAction('category/backen...', Array)
+#15 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Application.php(353): yii\web\Application->handleRequest(Object(yii\web\Request))
+#16 D:\xampp\htdocs\letyii\cms\admin.php(12): yii\base\Application->run()
+#17 {main}
+2014-04-26 09:21:31 [::1][-][-][info][application] $_GET = array (
+  'module' => 'article',
+)
+
+$_COOKIE = array (
+  '_identity' => '625b94476d1f4d1eda83af76b54f63e2be9aeb1e6abbb8792c6b0e50f2c7a9eas:47:"[1,"B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL ",2592000]";',
+  '_csrf' => '1355e429d9f12629bb58c5ee865162f3b8bd4faf47c37e3c9081402d0b3c15aes:32:"Zx_V1-fkOAGLz1GA3-WLK6TnoGdL7Vng";',
+)
+
+$_SERVER = array (
+  'MIBDIRS' => 'D:/xampp/php/extras/mibs',
+  'MYSQL_HOME' => '\\xampp\\mysql\\bin',
+  'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf',
+  'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php',
+  'PHPRC' => '\\xampp\\php',
+  'TMP' => '\\xampp\\tmp',
+  'HTTP_HOST' => 'localhost',
+  'HTTP_CONNECTION' => 'keep-alive',
+  'HTTP_CACHE_CONTROL' => 'max-age=0',
+  'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36',
+  'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch',
+  'HTTP_ACCEPT_LANGUAGE' => 'vi-VN,vi;q=0.8,fr-FR;q=0.6,fr;q=0.4,en-US;q=0.2,en;q=0.2',
+  'HTTP_COOKIE' => '_identity=625b94476d1f4d1eda83af76b54f63e2be9aeb1e6abbb8792c6b0e50f2c7a9eas%3A47%3A%22%5B1%2C%22B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL+%22%2C2592000%5D%22%3B; _csrf=1355e429d9f12629bb58c5ee865162f3b8bd4faf47c37e3c9081402d0b3c15aes%3A32%3A%22Zx_V1-fkOAGLz1GA3-WLK6TnoGdL7Vng%22%3B',
+  'PATH' => 'C:\\Program Files\\Common Files\\NetSarang;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\TortoiseSVN\\bin;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin',
+  'SystemRoot' => 'C:\\Windows',
+  'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe',
+  'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC',
+  'WINDIR' => 'C:\\Windows',
+  'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.9 Server at localhost Port 80</address>
+',
+  'SERVER_SOFTWARE' => 'Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.9',
+  'SERVER_NAME' => 'localhost',
+  'SERVER_ADDR' => '::1',
+  'SERVER_PORT' => '80',
+  'REMOTE_ADDR' => '::1',
+  'DOCUMENT_ROOT' => 'D:/xampp/htdocs',
+  'REQUEST_SCHEME' => 'http',
+  'CONTEXT_PREFIX' => '',
+  'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs',
+  'SERVER_ADMIN' => 'postmaster@localhost',
+  'SCRIPT_FILENAME' => 'D:/xampp/htdocs/letyii/cms/admin.php',
+  'REMOTE_PORT' => '55320',
+  'GATEWAY_INTERFACE' => 'CGI/1.1',
+  'SERVER_PROTOCOL' => 'HTTP/1.1',
+  'REQUEST_METHOD' => 'GET',
+  'QUERY_STRING' => 'module=article',
+  'REQUEST_URI' => '/letyii/cms/admin.php/category/backend/default/create.html?module=article',
+  'SCRIPT_NAME' => '/letyii/cms/admin.php',
+  'PATH_INFO' => '/category/backend/default/create.html',
+  'PATH_TRANSLATED' => 'D:\\xampp\\htdocs\\category\\backend\\default\\create.html',
+  'PHP_SELF' => '/letyii/cms/admin.php/category/backend/default/create.html',
+  'REQUEST_TIME_FLOAT' => 1398496891.0439999103546142578125,
+  'REQUEST_TIME' => 1398496891,
+)
+2014-04-26 09:23:21 [::1][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\modules\category\models\letCategory::postion' in D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Component.php:142
+Stack trace:
+#0 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\db\BaseActiveRecord.php(240): yii\base\Component->__get('postion')
+#1 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\helpers\BaseHtml.php(1762): yii\db\BaseActiveRecord->__get('postion')
+#2 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\helpers\BaseHtml.php(1309): yii\helpers\BaseHtml::getAttributeValue(Object(app\modules\category\models\letCategory), 'postion')
+#3 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\widgets\ActiveField.php(521): yii\helpers\BaseHtml::activeDropDownList(Object(app\modules\category\models\letCategory), 'postion', Array, Array)
+#4 D:\xampp\htdocs\letyii\cms\themes\letyii\modules\category\views\backend\default\create.php(34): yii\widgets\ActiveField->dropDownList(Array, Array)
+#5 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\View.php(313): require('D:\xampp\htdocs...')
+#6 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\View.php(245): yii\base\View->renderPhpFile('D:\xampp\htdocs...', Array)
+#7 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\View.php(147): yii\base\View->renderFile('D:\xampp\htdocs...', Array, Object(app\modules\category\controllers\backend\DefaultController))
+#8 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Controller.php(362): yii\base\View->render('create', Array, Object(app\modules\category\controllers\backend\DefaultController))
+#9 D:\xampp\htdocs\letyii\cms\modules\category\controllers\backend\DefaultController.php(93): yii\base\Controller->render('create', Array)
+#10 [internal function]: app\modules\category\controllers\backend\DefaultController->actionCreate()
+#11 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\InlineAction.php(54): call_user_func_array(Array, Array)
+#12 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Controller.php(147): yii\base\InlineAction->runWithParams(Array)
+#13 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Module.php(423): yii\base\Controller->runAction('create', Array)
+#14 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\web\Application.php(82): yii\base\Module->runAction('category/backen...', Array)
+#15 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Application.php(353): yii\web\Application->handleRequest(Object(yii\web\Request))
+#16 D:\xampp\htdocs\letyii\cms\admin.php(12): yii\base\Application->run()
+#17 {main}
+2014-04-26 09:23:21 [::1][-][-][info][application] $_GET = array (
+  'module' => 'article',
+)
+
+$_COOKIE = array (
+  '_identity' => '625b94476d1f4d1eda83af76b54f63e2be9aeb1e6abbb8792c6b0e50f2c7a9eas:47:"[1,"B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL ",2592000]";',
+  '_csrf' => '1355e429d9f12629bb58c5ee865162f3b8bd4faf47c37e3c9081402d0b3c15aes:32:"Zx_V1-fkOAGLz1GA3-WLK6TnoGdL7Vng";',
+)
+
+$_SERVER = array (
+  'MIBDIRS' => 'D:/xampp/php/extras/mibs',
+  'MYSQL_HOME' => '\\xampp\\mysql\\bin',
+  'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf',
+  'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php',
+  'PHPRC' => '\\xampp\\php',
+  'TMP' => '\\xampp\\tmp',
+  'HTTP_HOST' => 'localhost',
+  'HTTP_CONNECTION' => 'keep-alive',
+  'HTTP_CACHE_CONTROL' => 'max-age=0',
+  'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36',
+  'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch',
+  'HTTP_ACCEPT_LANGUAGE' => 'vi-VN,vi;q=0.8,fr-FR;q=0.6,fr;q=0.4,en-US;q=0.2,en;q=0.2',
+  'HTTP_COOKIE' => '_identity=625b94476d1f4d1eda83af76b54f63e2be9aeb1e6abbb8792c6b0e50f2c7a9eas%3A47%3A%22%5B1%2C%22B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL+%22%2C2592000%5D%22%3B; _csrf=1355e429d9f12629bb58c5ee865162f3b8bd4faf47c37e3c9081402d0b3c15aes%3A32%3A%22Zx_V1-fkOAGLz1GA3-WLK6TnoGdL7Vng%22%3B',
+  'PATH' => 'C:\\Program Files\\Common Files\\NetSarang;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\TortoiseSVN\\bin;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin',
+  'SystemRoot' => 'C:\\Windows',
+  'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe',
+  'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC',
+  'WINDIR' => 'C:\\Windows',
+  'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.9 Server at localhost Port 80</address>
+',
+  'SERVER_SOFTWARE' => 'Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.9',
+  'SERVER_NAME' => 'localhost',
+  'SERVER_ADDR' => '::1',
+  'SERVER_PORT' => '80',
+  'REMOTE_ADDR' => '::1',
+  'DOCUMENT_ROOT' => 'D:/xampp/htdocs',
+  'REQUEST_SCHEME' => 'http',
+  'CONTEXT_PREFIX' => '',
+  'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs',
+  'SERVER_ADMIN' => 'postmaster@localhost',
+  'SCRIPT_FILENAME' => 'D:/xampp/htdocs/letyii/cms/admin.php',
+  'REMOTE_PORT' => '55358',
+  'GATEWAY_INTERFACE' => 'CGI/1.1',
+  'SERVER_PROTOCOL' => 'HTTP/1.1',
+  'REQUEST_METHOD' => 'GET',
+  'QUERY_STRING' => 'module=article',
+  'REQUEST_URI' => '/letyii/cms/admin.php/category/backend/default/create.html?module=article',
+  'SCRIPT_NAME' => '/letyii/cms/admin.php',
+  'PATH_INFO' => '/category/backend/default/create.html',
+  'PATH_TRANSLATED' => 'D:\\xampp\\htdocs\\category\\backend\\default\\create.html',
+  'PHP_SELF' => '/letyii/cms/admin.php/category/backend/default/create.html',
+  'REQUEST_TIME_FLOAT' => 1398497001.8599998950958251953125,
+  'REQUEST_TIME' => 1398497001,
+)
+2014-04-26 09:59:08 [::1][-][-][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Undefined variable: model' in D:\xampp\htdocs\letyii\cms\modules\category\controllers\backend\DefaultController.php:74
+Stack trace:
+#0 D:\xampp\htdocs\letyii\cms\modules\category\controllers\backend\DefaultController.php(74): yii\base\ErrorHandler->handleError(8, 'Undefined varia...', 'D:\xampp\htdocs...', 74, Array)
+#1 [internal function]: app\modules\category\controllers\backend\DefaultController->actionCreate()
+#2 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\InlineAction.php(54): call_user_func_array(Array, Array)
+#3 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Controller.php(147): yii\base\InlineAction->runWithParams(Array)
+#4 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Module.php(423): yii\base\Controller->runAction('create', Array)
+#5 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\web\Application.php(82): yii\base\Module->runAction('category/backen...', Array)
+#6 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Application.php(353): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\letyii\cms\admin.php(12): yii\base\Application->run()
+#8 {main}
+2014-04-26 09:59:08 [::1][-][-][info][application] $_GET = array (
+  'module' => 'article',
+)
+
+$_COOKIE = array (
+  '_identity' => '625b94476d1f4d1eda83af76b54f63e2be9aeb1e6abbb8792c6b0e50f2c7a9eas:47:"[1,"B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL ",2592000]";',
+  '_csrf' => '1355e429d9f12629bb58c5ee865162f3b8bd4faf47c37e3c9081402d0b3c15aes:32:"Zx_V1-fkOAGLz1GA3-WLK6TnoGdL7Vng";',
+)
+
+$_SERVER = array (
+  'MIBDIRS' => 'D:/xampp/php/extras/mibs',
+  'MYSQL_HOME' => '\\xampp\\mysql\\bin',
+  'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf',
+  'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php',
+  'PHPRC' => '\\xampp\\php',
+  'TMP' => '\\xampp\\tmp',
+  'HTTP_HOST' => 'localhost',
+  'HTTP_CONNECTION' => 'keep-alive',
+  'HTTP_CACHE_CONTROL' => 'max-age=0',
+  'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36',
+  'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch',
+  'HTTP_ACCEPT_LANGUAGE' => 'vi-VN,vi;q=0.8,fr-FR;q=0.6,fr;q=0.4,en-US;q=0.2,en;q=0.2',
+  'HTTP_COOKIE' => '_identity=625b94476d1f4d1eda83af76b54f63e2be9aeb1e6abbb8792c6b0e50f2c7a9eas%3A47%3A%22%5B1%2C%22B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL+%22%2C2592000%5D%22%3B; _csrf=1355e429d9f12629bb58c5ee865162f3b8bd4faf47c37e3c9081402d0b3c15aes%3A32%3A%22Zx_V1-fkOAGLz1GA3-WLK6TnoGdL7Vng%22%3B',
+  'PATH' => 'C:\\Program Files\\Common Files\\NetSarang;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\TortoiseSVN\\bin;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin',
+  'SystemRoot' => 'C:\\Windows',
+  'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe',
+  'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC',
+  'WINDIR' => 'C:\\Windows',
+  'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.9 Server at localhost Port 80</address>
+',
+  'SERVER_SOFTWARE' => 'Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.9',
+  'SERVER_NAME' => 'localhost',
+  'SERVER_ADDR' => '::1',
+  'SERVER_PORT' => '80',
+  'REMOTE_ADDR' => '::1',
+  'DOCUMENT_ROOT' => 'D:/xampp/htdocs',
+  'REQUEST_SCHEME' => 'http',
+  'CONTEXT_PREFIX' => '',
+  'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs',
+  'SERVER_ADMIN' => 'postmaster@localhost',
+  'SCRIPT_FILENAME' => 'D:/xampp/htdocs/letyii/cms/admin.php',
+  'REMOTE_PORT' => '56350',
+  'GATEWAY_INTERFACE' => 'CGI/1.1',
+  'SERVER_PROTOCOL' => 'HTTP/1.1',
+  'REQUEST_METHOD' => 'GET',
+  'QUERY_STRING' => 'module=article',
+  'REQUEST_URI' => '/letyii/cms/admin.php/category/backend/default/create.html?module=article',
+  'SCRIPT_NAME' => '/letyii/cms/admin.php',
+  'PATH_INFO' => '/category/backend/default/create.html',
+  'PATH_TRANSLATED' => 'D:\\xampp\\htdocs\\category\\backend\\default\\create.html',
+  'PHP_SELF' => '/letyii/cms/admin.php/category/backend/default/create.html',
+  'REQUEST_TIME_FLOAT' => 1398499148.834000110626220703125,
+  'REQUEST_TIME' => 1398499148,
+)
+2014-04-26 10:30:07 [::1][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\modules\category\models\letCategoryQuery::module' in D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Component.php:142
+Stack trace:
+#0 D:\xampp\htdocs\letyii\cms\modules\category\models\letCategory.php(84): yii\base\Component->__get('module')
+#1 D:\xampp\htdocs\letyii\cms\modules\category\controllers\backend\DefaultController.php(77): app\modules\category\models\letCategory::saveItem(Array)
+#2 [internal function]: app\modules\category\controllers\backend\DefaultController->actionCreate()
+#3 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\InlineAction.php(54): call_user_func_array(Array, Array)
+#4 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Controller.php(147): yii\base\InlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Module.php(423): yii\base\Controller->runAction('create', Array)
+#6 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\web\Application.php(82): yii\base\Module->runAction('category/backen...', Array)
+#7 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Application.php(353): yii\web\Application->handleRequest(Object(yii\web\Request))
+#8 D:\xampp\htdocs\letyii\cms\admin.php(12): yii\base\Application->run()
+#9 {main}
+2014-04-26 10:30:07 [::1][-][-][info][application] $_GET = array (
+  'module' => 'article',
+)
+
+$_POST = array (
+  '_csrf' => 'T0xqLUZ0TFgVNDV7d1kqMwANLWE8RQsZfGE9YQ1CGDYgCw5hcSIiPw==',
+  'letCategory' => 
+  array (
+    'title' => 'Bố',
+    'position' => 'children',
+    'relationId' => '2',
+  ),
+)
+
+$_COOKIE = array (
+  '_identity' => '625b94476d1f4d1eda83af76b54f63e2be9aeb1e6abbb8792c6b0e50f2c7a9eas:47:"[1,"B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL ",2592000]";',
+  '_csrf' => '1355e429d9f12629bb58c5ee865162f3b8bd4faf47c37e3c9081402d0b3c15aes:32:"Zx_V1-fkOAGLz1GA3-WLK6TnoGdL7Vng";',
+)
+
+$_SERVER = array (
+  'MIBDIRS' => 'D:/xampp/php/extras/mibs',
+  'MYSQL_HOME' => '\\xampp\\mysql\\bin',
+  'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf',
+  'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php',
+  'PHPRC' => '\\xampp\\php',
+  'TMP' => '\\xampp\\tmp',
+  'HTTP_HOST' => 'localhost',
+  'HTTP_CONNECTION' => 'keep-alive',
+  'CONTENT_LENGTH' => '165',
+  'HTTP_CACHE_CONTROL' => 'max-age=0',
+  'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'HTTP_ORIGIN' => 'http://localhost',
+  'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36',
+  'CONTENT_TYPE' => 'application/x-www-form-urlencoded',
+  'HTTP_REFERER' => 'http://localhost/letyii/cms/admin.php/category/backend/default/create.html?module=article',
+  'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch',
+  'HTTP_ACCEPT_LANGUAGE' => 'vi-VN,vi;q=0.8,fr-FR;q=0.6,fr;q=0.4,en-US;q=0.2,en;q=0.2',
+  'HTTP_COOKIE' => '_identity=625b94476d1f4d1eda83af76b54f63e2be9aeb1e6abbb8792c6b0e50f2c7a9eas%3A47%3A%22%5B1%2C%22B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL+%22%2C2592000%5D%22%3B; _csrf=1355e429d9f12629bb58c5ee865162f3b8bd4faf47c37e3c9081402d0b3c15aes%3A32%3A%22Zx_V1-fkOAGLz1GA3-WLK6TnoGdL7Vng%22%3B',
+  'PATH' => 'C:\\Program Files\\Common Files\\NetSarang;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\TortoiseSVN\\bin;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin',
+  'SystemRoot' => 'C:\\Windows',
+  'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe',
+  'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC',
+  'WINDIR' => 'C:\\Windows',
+  'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.9 Server at localhost Port 80</address>
+',
+  'SERVER_SOFTWARE' => 'Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.9',
+  'SERVER_NAME' => 'localhost',
+  'SERVER_ADDR' => '::1',
+  'SERVER_PORT' => '80',
+  'REMOTE_ADDR' => '::1',
+  'DOCUMENT_ROOT' => 'D:/xampp/htdocs',
+  'REQUEST_SCHEME' => 'http',
+  'CONTEXT_PREFIX' => '',
+  'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs',
+  'SERVER_ADMIN' => 'postmaster@localhost',
+  'SCRIPT_FILENAME' => 'D:/xampp/htdocs/letyii/cms/admin.php',
+  'REMOTE_PORT' => '56992',
+  'GATEWAY_INTERFACE' => 'CGI/1.1',
+  'SERVER_PROTOCOL' => 'HTTP/1.1',
+  'REQUEST_METHOD' => 'POST',
+  'QUERY_STRING' => 'module=article',
+  'REQUEST_URI' => '/letyii/cms/admin.php/category/backend/default/create.html?module=article',
+  'SCRIPT_NAME' => '/letyii/cms/admin.php',
+  'PATH_INFO' => '/category/backend/default/create.html',
+  'PATH_TRANSLATED' => 'D:\\xampp\\htdocs\\category\\backend\\default\\create.html',
+  'PHP_SELF' => '/letyii/cms/admin.php/category/backend/default/create.html',
+  'REQUEST_TIME_FLOAT' => 1398501007.263000011444091796875,
+  'REQUEST_TIME' => 1398501007,
+)
+2014-04-26 10:31:48 [::1][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\modules\category\models\letCategoryQuery::title' in D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Component.php:142
+Stack trace:
+#0 D:\xampp\htdocs\letyii\cms\modules\category\models\letCategory.php(75): yii\base\Component->__get('title')
+#1 D:\xampp\htdocs\letyii\cms\modules\category\controllers\backend\DefaultController.php(76): app\modules\category\models\letCategory::saveItem(Array)
+#2 [internal function]: app\modules\category\controllers\backend\DefaultController->actionCreate()
+#3 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\InlineAction.php(54): call_user_func_array(Array, Array)
+#4 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Controller.php(147): yii\base\InlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Module.php(423): yii\base\Controller->runAction('create', Array)
+#6 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\web\Application.php(82): yii\base\Module->runAction('category/backen...', Array)
+#7 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Application.php(353): yii\web\Application->handleRequest(Object(yii\web\Request))
+#8 D:\xampp\htdocs\letyii\cms\admin.php(12): yii\base\Application->run()
+#9 {main}
+2014-04-26 10:31:48 [::1][-][-][info][application] $_GET = array (
+  'module' => 'article',
+)
+
+$_POST = array (
+  '_csrf' => 'T0xqLUZ0TFgVNDV7d1kqMwANLWE8RQsZfGE9YQ1CGDYgCw5hcSIiPw==',
+  'letCategory' => 
+  array (
+    'title' => 'Bố',
+    'position' => 'children',
+    'relationId' => '2',
+  ),
+)
+
+$_COOKIE = array (
+  '_identity' => '625b94476d1f4d1eda83af76b54f63e2be9aeb1e6abbb8792c6b0e50f2c7a9eas:47:"[1,"B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL ",2592000]";',
+  '_csrf' => '1355e429d9f12629bb58c5ee865162f3b8bd4faf47c37e3c9081402d0b3c15aes:32:"Zx_V1-fkOAGLz1GA3-WLK6TnoGdL7Vng";',
+)
+
+$_SERVER = array (
+  'MIBDIRS' => 'D:/xampp/php/extras/mibs',
+  'MYSQL_HOME' => '\\xampp\\mysql\\bin',
+  'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf',
+  'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php',
+  'PHPRC' => '\\xampp\\php',
+  'TMP' => '\\xampp\\tmp',
+  'HTTP_HOST' => 'localhost',
+  'HTTP_CONNECTION' => 'keep-alive',
+  'CONTENT_LENGTH' => '165',
+  'HTTP_CACHE_CONTROL' => 'max-age=0',
+  'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'HTTP_ORIGIN' => 'http://localhost',
+  'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36',
+  'CONTENT_TYPE' => 'application/x-www-form-urlencoded',
+  'HTTP_REFERER' => 'http://localhost/letyii/cms/admin.php/category/backend/default/create.html?module=article',
+  'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch',
+  'HTTP_ACCEPT_LANGUAGE' => 'vi-VN,vi;q=0.8,fr-FR;q=0.6,fr;q=0.4,en-US;q=0.2,en;q=0.2',
+  'HTTP_COOKIE' => '_identity=625b94476d1f4d1eda83af76b54f63e2be9aeb1e6abbb8792c6b0e50f2c7a9eas%3A47%3A%22%5B1%2C%22B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL+%22%2C2592000%5D%22%3B; _csrf=1355e429d9f12629bb58c5ee865162f3b8bd4faf47c37e3c9081402d0b3c15aes%3A32%3A%22Zx_V1-fkOAGLz1GA3-WLK6TnoGdL7Vng%22%3B',
+  'PATH' => 'C:\\Program Files\\Common Files\\NetSarang;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\TortoiseSVN\\bin;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin',
+  'SystemRoot' => 'C:\\Windows',
+  'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe',
+  'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC',
+  'WINDIR' => 'C:\\Windows',
+  'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.9 Server at localhost Port 80</address>
+',
+  'SERVER_SOFTWARE' => 'Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.9',
+  'SERVER_NAME' => 'localhost',
+  'SERVER_ADDR' => '::1',
+  'SERVER_PORT' => '80',
+  'REMOTE_ADDR' => '::1',
+  'DOCUMENT_ROOT' => 'D:/xampp/htdocs',
+  'REQUEST_SCHEME' => 'http',
+  'CONTEXT_PREFIX' => '',
+  'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs',
+  'SERVER_ADMIN' => 'postmaster@localhost',
+  'SCRIPT_FILENAME' => 'D:/xampp/htdocs/letyii/cms/admin.php',
+  'REMOTE_PORT' => '57037',
+  'GATEWAY_INTERFACE' => 'CGI/1.1',
+  'SERVER_PROTOCOL' => 'HTTP/1.1',
+  'REQUEST_METHOD' => 'POST',
+  'QUERY_STRING' => 'module=article',
+  'REQUEST_URI' => '/letyii/cms/admin.php/category/backend/default/create.html?module=article',
+  'SCRIPT_NAME' => '/letyii/cms/admin.php',
+  'PATH_INFO' => '/category/backend/default/create.html',
+  'PATH_TRANSLATED' => 'D:\\xampp\\htdocs\\category\\backend\\default\\create.html',
+  'PHP_SELF' => '/letyii/cms/admin.php/category/backend/default/create.html',
+  'REQUEST_TIME_FLOAT' => 1398501108.5880000591278076171875,
+  'REQUEST_TIME' => 1398501108,
+)
+2014-04-26 10:31:52 [::1][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\modules\category\models\letCategoryQuery::title' in D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Component.php:142
+Stack trace:
+#0 D:\xampp\htdocs\letyii\cms\modules\category\models\letCategory.php(75): yii\base\Component->__get('title')
+#1 D:\xampp\htdocs\letyii\cms\modules\category\controllers\backend\DefaultController.php(76): app\modules\category\models\letCategory::saveItem(Array)
+#2 [internal function]: app\modules\category\controllers\backend\DefaultController->actionCreate()
+#3 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\InlineAction.php(54): call_user_func_array(Array, Array)
+#4 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Controller.php(147): yii\base\InlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Module.php(423): yii\base\Controller->runAction('create', Array)
+#6 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\web\Application.php(82): yii\base\Module->runAction('category/backen...', Array)
+#7 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Application.php(353): yii\web\Application->handleRequest(Object(yii\web\Request))
+#8 D:\xampp\htdocs\letyii\cms\admin.php(12): yii\base\Application->run()
+#9 {main}
+2014-04-26 10:31:52 [::1][-][-][info][application] $_GET = array (
+  'module' => 'article',
+)
+
+$_POST = array (
+  '_csrf' => 'T0xqLUZ0TFgVNDV7d1kqMwANLWE8RQsZfGE9YQ1CGDYgCw5hcSIiPw==',
+  'letCategory' => 
+  array (
+    'title' => 'Bố',
+    'position' => 'children',
+    'relationId' => '2',
+  ),
+)
+
+$_COOKIE = array (
+  '_identity' => '625b94476d1f4d1eda83af76b54f63e2be9aeb1e6abbb8792c6b0e50f2c7a9eas:47:"[1,"B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL ",2592000]";',
+  '_csrf' => '1355e429d9f12629bb58c5ee865162f3b8bd4faf47c37e3c9081402d0b3c15aes:32:"Zx_V1-fkOAGLz1GA3-WLK6TnoGdL7Vng";',
+)
+
+$_SERVER = array (
+  'MIBDIRS' => 'D:/xampp/php/extras/mibs',
+  'MYSQL_HOME' => '\\xampp\\mysql\\bin',
+  'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf',
+  'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php',
+  'PHPRC' => '\\xampp\\php',
+  'TMP' => '\\xampp\\tmp',
+  'HTTP_HOST' => 'localhost',
+  'HTTP_CONNECTION' => 'keep-alive',
+  'CONTENT_LENGTH' => '165',
+  'HTTP_CACHE_CONTROL' => 'max-age=0',
+  'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'HTTP_ORIGIN' => 'http://localhost',
+  'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36',
+  'CONTENT_TYPE' => 'application/x-www-form-urlencoded',
+  'HTTP_REFERER' => 'http://localhost/letyii/cms/admin.php/category/backend/default/create.html?module=article',
+  'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch',
+  'HTTP_ACCEPT_LANGUAGE' => 'vi-VN,vi;q=0.8,fr-FR;q=0.6,fr;q=0.4,en-US;q=0.2,en;q=0.2',
+  'HTTP_COOKIE' => '_identity=625b94476d1f4d1eda83af76b54f63e2be9aeb1e6abbb8792c6b0e50f2c7a9eas%3A47%3A%22%5B1%2C%22B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL+%22%2C2592000%5D%22%3B; _csrf=1355e429d9f12629bb58c5ee865162f3b8bd4faf47c37e3c9081402d0b3c15aes%3A32%3A%22Zx_V1-fkOAGLz1GA3-WLK6TnoGdL7Vng%22%3B',
+  'PATH' => 'C:\\Program Files\\Common Files\\NetSarang;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\TortoiseSVN\\bin;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin',
+  'SystemRoot' => 'C:\\Windows',
+  'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe',
+  'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC',
+  'WINDIR' => 'C:\\Windows',
+  'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.9 Server at localhost Port 80</address>
+',
+  'SERVER_SOFTWARE' => 'Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.9',
+  'SERVER_NAME' => 'localhost',
+  'SERVER_ADDR' => '::1',
+  'SERVER_PORT' => '80',
+  'REMOTE_ADDR' => '::1',
+  'DOCUMENT_ROOT' => 'D:/xampp/htdocs',
+  'REQUEST_SCHEME' => 'http',
+  'CONTEXT_PREFIX' => '',
+  'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs',
+  'SERVER_ADMIN' => 'postmaster@localhost',
+  'SCRIPT_FILENAME' => 'D:/xampp/htdocs/letyii/cms/admin.php',
+  'REMOTE_PORT' => '57039',
+  'GATEWAY_INTERFACE' => 'CGI/1.1',
+  'SERVER_PROTOCOL' => 'HTTP/1.1',
+  'REQUEST_METHOD' => 'POST',
+  'QUERY_STRING' => 'module=article',
+  'REQUEST_URI' => '/letyii/cms/admin.php/category/backend/default/create.html?module=article',
+  'SCRIPT_NAME' => '/letyii/cms/admin.php',
+  'PATH_INFO' => '/category/backend/default/create.html',
+  'PATH_TRANSLATED' => 'D:\\xampp\\htdocs\\category\\backend\\default\\create.html',
+  'PHP_SELF' => '/letyii/cms/admin.php/category/backend/default/create.html',
+  'REQUEST_TIME_FLOAT' => 1398501112.276999950408935546875,
+  'REQUEST_TIME' => 1398501112,
+)
+2014-04-26 10:33:11 [::1][-][-][error][yii\db\Exception] exception 'yii\db\Exception' with message 'The node can't be inserted because it is not new.' in D:\xampp\htdocs\letyii\cms\modules\category\behaviors\nestedset\NestedSet.php:713
+Stack trace:
+#0 D:\xampp\htdocs\letyii\cms\modules\category\behaviors\nestedset\NestedSet.php(387): app\modules\category\behaviors\nestedset\NestedSet->addNode(Object(app\modules\category\models\letCategory), '8', 1, true, NULL)
+#1 [internal function]: app\modules\category\behaviors\nestedset\NestedSet->appendTo(Object(app\modules\category\models\letCategory))
+#2 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Component.php(281): call_user_func_array(Array, Array)
+#3 D:\xampp\htdocs\letyii\cms\modules\category\models\letCategory.php(105): yii\base\Component->__call('appendTo', Array)
+#4 D:\xampp\htdocs\letyii\cms\modules\category\models\letCategory.php(105): app\modules\category\models\letCategory->appendTo(Object(app\modules\category\models\letCategory))
+#5 D:\xampp\htdocs\letyii\cms\modules\category\controllers\backend\DefaultController.php(76): app\modules\category\models\letCategory::saveItem(Array)
+#6 [internal function]: app\modules\category\controllers\backend\DefaultController->actionCreate()
+#7 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\InlineAction.php(54): call_user_func_array(Array, Array)
+#8 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Controller.php(147): yii\base\InlineAction->runWithParams(Array)
+#9 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Module.php(423): yii\base\Controller->runAction('create', Array)
+#10 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\web\Application.php(82): yii\base\Module->runAction('category/backen...', Array)
+#11 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Application.php(353): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\xampp\htdocs\letyii\cms\admin.php(12): yii\base\Application->run()
+#13 {main}
+Additional Information:
+Array
+(
+)
+
+2014-04-26 10:33:11 [::1][-][-][info][application] $_GET = array (
+  'module' => 'article',
+)
+
+$_POST = array (
+  '_csrf' => 'T0xqLUZ0TFgVNDV7d1kqMwANLWE8RQsZfGE9YQ1CGDYgCw5hcSIiPw==',
+  'letCategory' => 
+  array (
+    'title' => 'Bố',
+    'position' => 'children',
+    'relationId' => '2',
+  ),
+)
+
+$_COOKIE = array (
+  '_identity' => '625b94476d1f4d1eda83af76b54f63e2be9aeb1e6abbb8792c6b0e50f2c7a9eas:47:"[1,"B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL ",2592000]";',
+  '_csrf' => '1355e429d9f12629bb58c5ee865162f3b8bd4faf47c37e3c9081402d0b3c15aes:32:"Zx_V1-fkOAGLz1GA3-WLK6TnoGdL7Vng";',
+)
+
+$_SERVER = array (
+  'MIBDIRS' => 'D:/xampp/php/extras/mibs',
+  'MYSQL_HOME' => '\\xampp\\mysql\\bin',
+  'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf',
+  'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php',
+  'PHPRC' => '\\xampp\\php',
+  'TMP' => '\\xampp\\tmp',
+  'HTTP_HOST' => 'localhost',
+  'HTTP_CONNECTION' => 'keep-alive',
+  'CONTENT_LENGTH' => '165',
+  'HTTP_CACHE_CONTROL' => 'max-age=0',
+  'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'HTTP_ORIGIN' => 'http://localhost',
+  'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36',
+  'CONTENT_TYPE' => 'application/x-www-form-urlencoded',
+  'HTTP_REFERER' => 'http://localhost/letyii/cms/admin.php/category/backend/default/create.html?module=article',
+  'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch',
+  'HTTP_ACCEPT_LANGUAGE' => 'vi-VN,vi;q=0.8,fr-FR;q=0.6,fr;q=0.4,en-US;q=0.2,en;q=0.2',
+  'HTTP_COOKIE' => '_identity=625b94476d1f4d1eda83af76b54f63e2be9aeb1e6abbb8792c6b0e50f2c7a9eas%3A47%3A%22%5B1%2C%22B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL+%22%2C2592000%5D%22%3B; _csrf=1355e429d9f12629bb58c5ee865162f3b8bd4faf47c37e3c9081402d0b3c15aes%3A32%3A%22Zx_V1-fkOAGLz1GA3-WLK6TnoGdL7Vng%22%3B',
+  'PATH' => 'C:\\Program Files\\Common Files\\NetSarang;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\TortoiseSVN\\bin;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin',
+  'SystemRoot' => 'C:\\Windows',
+  'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe',
+  'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC',
+  'WINDIR' => 'C:\\Windows',
+  'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.9 Server at localhost Port 80</address>
+',
+  'SERVER_SOFTWARE' => 'Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.9',
+  'SERVER_NAME' => 'localhost',
+  'SERVER_ADDR' => '::1',
+  'SERVER_PORT' => '80',
+  'REMOTE_ADDR' => '::1',
+  'DOCUMENT_ROOT' => 'D:/xampp/htdocs',
+  'REQUEST_SCHEME' => 'http',
+  'CONTEXT_PREFIX' => '',
+  'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs',
+  'SERVER_ADMIN' => 'postmaster@localhost',
+  'SCRIPT_FILENAME' => 'D:/xampp/htdocs/letyii/cms/admin.php',
+  'REMOTE_PORT' => '57076',
+  'GATEWAY_INTERFACE' => 'CGI/1.1',
+  'SERVER_PROTOCOL' => 'HTTP/1.1',
+  'REQUEST_METHOD' => 'POST',
+  'QUERY_STRING' => 'module=article',
+  'REQUEST_URI' => '/letyii/cms/admin.php/category/backend/default/create.html?module=article',
+  'SCRIPT_NAME' => '/letyii/cms/admin.php',
+  'PATH_INFO' => '/category/backend/default/create.html',
+  'PATH_TRANSLATED' => 'D:\\xampp\\htdocs\\category\\backend\\default\\create.html',
+  'PHP_SELF' => '/letyii/cms/admin.php/category/backend/default/create.html',
+  'REQUEST_TIME_FLOAT' => 1398501191.290999889373779296875,
+  'REQUEST_TIME' => 1398501191,
+)
+2014-04-26 10:33:13 [::1][-][-][error][yii\db\Exception] exception 'yii\db\Exception' with message 'The node can't be inserted because it is not new.' in D:\xampp\htdocs\letyii\cms\modules\category\behaviors\nestedset\NestedSet.php:713
+Stack trace:
+#0 D:\xampp\htdocs\letyii\cms\modules\category\behaviors\nestedset\NestedSet.php(387): app\modules\category\behaviors\nestedset\NestedSet->addNode(Object(app\modules\category\models\letCategory), '8', 1, true, NULL)
+#1 [internal function]: app\modules\category\behaviors\nestedset\NestedSet->appendTo(Object(app\modules\category\models\letCategory))
+#2 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Component.php(281): call_user_func_array(Array, Array)
+#3 D:\xampp\htdocs\letyii\cms\modules\category\models\letCategory.php(105): yii\base\Component->__call('appendTo', Array)
+#4 D:\xampp\htdocs\letyii\cms\modules\category\models\letCategory.php(105): app\modules\category\models\letCategory->appendTo(Object(app\modules\category\models\letCategory))
+#5 D:\xampp\htdocs\letyii\cms\modules\category\controllers\backend\DefaultController.php(76): app\modules\category\models\letCategory::saveItem(Array)
+#6 [internal function]: app\modules\category\controllers\backend\DefaultController->actionCreate()
+#7 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\InlineAction.php(54): call_user_func_array(Array, Array)
+#8 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Controller.php(147): yii\base\InlineAction->runWithParams(Array)
+#9 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Module.php(423): yii\base\Controller->runAction('create', Array)
+#10 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\web\Application.php(82): yii\base\Module->runAction('category/backen...', Array)
+#11 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Application.php(353): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\xampp\htdocs\letyii\cms\admin.php(12): yii\base\Application->run()
+#13 {main}
+Additional Information:
+Array
+(
+)
+
+2014-04-26 10:33:13 [::1][-][-][info][application] $_GET = array (
+  'module' => 'article',
+)
+
+$_POST = array (
+  '_csrf' => 'T0xqLUZ0TFgVNDV7d1kqMwANLWE8RQsZfGE9YQ1CGDYgCw5hcSIiPw==',
+  'letCategory' => 
+  array (
+    'title' => 'Bố',
+    'position' => 'children',
+    'relationId' => '2',
+  ),
+)
+
+$_COOKIE = array (
+  '_identity' => '625b94476d1f4d1eda83af76b54f63e2be9aeb1e6abbb8792c6b0e50f2c7a9eas:47:"[1,"B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL ",2592000]";',
+  '_csrf' => '1355e429d9f12629bb58c5ee865162f3b8bd4faf47c37e3c9081402d0b3c15aes:32:"Zx_V1-fkOAGLz1GA3-WLK6TnoGdL7Vng";',
+)
+
+$_SERVER = array (
+  'MIBDIRS' => 'D:/xampp/php/extras/mibs',
+  'MYSQL_HOME' => '\\xampp\\mysql\\bin',
+  'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf',
+  'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php',
+  'PHPRC' => '\\xampp\\php',
+  'TMP' => '\\xampp\\tmp',
+  'HTTP_HOST' => 'localhost',
+  'HTTP_CONNECTION' => 'keep-alive',
+  'CONTENT_LENGTH' => '165',
+  'HTTP_CACHE_CONTROL' => 'max-age=0',
+  'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'HTTP_ORIGIN' => 'http://localhost',
+  'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36',
+  'CONTENT_TYPE' => 'application/x-www-form-urlencoded',
+  'HTTP_REFERER' => 'http://localhost/letyii/cms/admin.php/category/backend/default/create.html?module=article',
+  'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch',
+  'HTTP_ACCEPT_LANGUAGE' => 'vi-VN,vi;q=0.8,fr-FR;q=0.6,fr;q=0.4,en-US;q=0.2,en;q=0.2',
+  'HTTP_COOKIE' => '_identity=625b94476d1f4d1eda83af76b54f63e2be9aeb1e6abbb8792c6b0e50f2c7a9eas%3A47%3A%22%5B1%2C%22B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL+%22%2C2592000%5D%22%3B; _csrf=1355e429d9f12629bb58c5ee865162f3b8bd4faf47c37e3c9081402d0b3c15aes%3A32%3A%22Zx_V1-fkOAGLz1GA3-WLK6TnoGdL7Vng%22%3B',
+  'PATH' => 'C:\\Program Files\\Common Files\\NetSarang;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\TortoiseSVN\\bin;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin',
+  'SystemRoot' => 'C:\\Windows',
+  'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe',
+  'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC',
+  'WINDIR' => 'C:\\Windows',
+  'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.9 Server at localhost Port 80</address>
+',
+  'SERVER_SOFTWARE' => 'Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.9',
+  'SERVER_NAME' => 'localhost',
+  'SERVER_ADDR' => '::1',
+  'SERVER_PORT' => '80',
+  'REMOTE_ADDR' => '::1',
+  'DOCUMENT_ROOT' => 'D:/xampp/htdocs',
+  'REQUEST_SCHEME' => 'http',
+  'CONTEXT_PREFIX' => '',
+  'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs',
+  'SERVER_ADMIN' => 'postmaster@localhost',
+  'SCRIPT_FILENAME' => 'D:/xampp/htdocs/letyii/cms/admin.php',
+  'REMOTE_PORT' => '57078',
+  'GATEWAY_INTERFACE' => 'CGI/1.1',
+  'SERVER_PROTOCOL' => 'HTTP/1.1',
+  'REQUEST_METHOD' => 'POST',
+  'QUERY_STRING' => 'module=article',
+  'REQUEST_URI' => '/letyii/cms/admin.php/category/backend/default/create.html?module=article',
+  'SCRIPT_NAME' => '/letyii/cms/admin.php',
+  'PATH_INFO' => '/category/backend/default/create.html',
+  'PATH_TRANSLATED' => 'D:\\xampp\\htdocs\\category\\backend\\default\\create.html',
+  'PHP_SELF' => '/letyii/cms/admin.php/category/backend/default/create.html',
+  'REQUEST_TIME_FLOAT' => 1398501193.03299999237060546875,
+  'REQUEST_TIME' => 1398501193,
+)
+2014-04-26 10:35:22 [::1][-][-][error][yii\db\Exception] exception 'yii\db\Exception' with message 'The node can't be inserted because it is not new.' in D:\xampp\htdocs\letyii\cms\modules\category\behaviors\nestedset\NestedSet.php:713
+Stack trace:
+#0 D:\xampp\htdocs\letyii\cms\modules\category\behaviors\nestedset\NestedSet.php(387): app\modules\category\behaviors\nestedset\NestedSet->addNode(Object(app\modules\category\models\letCategory), '8', 1, true, NULL)
+#1 [internal function]: app\modules\category\behaviors\nestedset\NestedSet->appendTo(Object(app\modules\category\models\letCategory))
+#2 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Component.php(281): call_user_func_array(Array, Array)
+#3 D:\xampp\htdocs\letyii\cms\modules\category\models\letCategory.php(106): yii\base\Component->__call('appendTo', Array)
+#4 D:\xampp\htdocs\letyii\cms\modules\category\models\letCategory.php(106): app\modules\category\models\letCategory->appendTo(Object(app\modules\category\models\letCategory))
+#5 D:\xampp\htdocs\letyii\cms\modules\category\controllers\backend\DefaultController.php(76): app\modules\category\models\letCategory::saveItem(Array)
+#6 [internal function]: app\modules\category\controllers\backend\DefaultController->actionCreate()
+#7 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\InlineAction.php(54): call_user_func_array(Array, Array)
+#8 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Controller.php(147): yii\base\InlineAction->runWithParams(Array)
+#9 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Module.php(423): yii\base\Controller->runAction('create', Array)
+#10 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\web\Application.php(82): yii\base\Module->runAction('category/backen...', Array)
+#11 D:\xampp\htdocs\letyii\cms\vendor\yiisoft\yii2\base\Application.php(353): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\xampp\htdocs\letyii\cms\admin.php(12): yii\base\Application->run()
+#13 {main}
+Additional Information:
+Array
+(
+)
+
+2014-04-26 10:35:22 [::1][-][-][info][application] $_GET = array (
+  'module' => 'article',
+)
+
+$_POST = array (
+  '_csrf' => 'Nk1EZExrRWNsNRsyfUYjCHkMAyg2WgIiBWATKAddEQ1ZCiAoez0rBA==',
+  'letCategory' => 
+  array (
+    'title' => 'Bố',
+    'position' => 'children',
+    'relationId' => '2',
+  ),
+)
+
+$_COOKIE = array (
+  '_identity' => '625b94476d1f4d1eda83af76b54f63e2be9aeb1e6abbb8792c6b0e50f2c7a9eas:47:"[1,"B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL ",2592000]";',
+  '_csrf' => '1355e429d9f12629bb58c5ee865162f3b8bd4faf47c37e3c9081402d0b3c15aes:32:"Zx_V1-fkOAGLz1GA3-WLK6TnoGdL7Vng";',
+)
+
+$_SERVER = array (
+  'MIBDIRS' => 'D:/xampp/php/extras/mibs',
+  'MYSQL_HOME' => '\\xampp\\mysql\\bin',
+  'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf',
+  'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php',
+  'PHPRC' => '\\xampp\\php',
+  'TMP' => '\\xampp\\tmp',
+  'HTTP_HOST' => 'localhost',
+  'HTTP_CONNECTION' => 'keep-alive',
+  'CONTENT_LENGTH' => '165',
+  'HTTP_CACHE_CONTROL' => 'max-age=0',
+  'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'HTTP_ORIGIN' => 'http://localhost',
+  'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36',
+  'CONTENT_TYPE' => 'application/x-www-form-urlencoded',
+  'HTTP_REFERER' => 'http://localhost/letyii/cms/admin.php/category/backend/default/create.html?module=article',
+  'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch',
+  'HTTP_ACCEPT_LANGUAGE' => 'vi-VN,vi;q=0.8,fr-FR;q=0.6,fr;q=0.4,en-US;q=0.2,en;q=0.2',
+  'HTTP_COOKIE' => '_identity=625b94476d1f4d1eda83af76b54f63e2be9aeb1e6abbb8792c6b0e50f2c7a9eas%3A47%3A%22%5B1%2C%22B0T1UQEfCNt9YhANJ7b56eu3wtH06ScL+%22%2C2592000%5D%22%3B; _csrf=1355e429d9f12629bb58c5ee865162f3b8bd4faf47c37e3c9081402d0b3c15aes%3A32%3A%22Zx_V1-fkOAGLz1GA3-WLK6TnoGdL7Vng%22%3B',
+  'PATH' => 'C:\\Program Files\\Common Files\\NetSarang;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\TortoiseSVN\\bin;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin',
+  'SystemRoot' => 'C:\\Windows',
+  'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe',
+  'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC',
+  'WINDIR' => 'C:\\Windows',
+  'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.9 Server at localhost Port 80</address>
+',
+  'SERVER_SOFTWARE' => 'Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.9',
+  'SERVER_NAME' => 'localhost',
+  'SERVER_ADDR' => '::1',
+  'SERVER_PORT' => '80',
+  'REMOTE_ADDR' => '::1',
+  'DOCUMENT_ROOT' => 'D:/xampp/htdocs',
+  'REQUEST_SCHEME' => 'http',
+  'CONTEXT_PREFIX' => '',
+  'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs',
+  'SERVER_ADMIN' => 'postmaster@localhost',
+  'SCRIPT_FILENAME' => 'D:/xampp/htdocs/letyii/cms/admin.php',
+  'REMOTE_PORT' => '57125',
+  'GATEWAY_INTERFACE' => 'CGI/1.1',
+  'SERVER_PROTOCOL' => 'HTTP/1.1',
+  'REQUEST_METHOD' => 'POST',
+  'QUERY_STRING' => 'module=article',
+  'REQUEST_URI' => '/letyii/cms/admin.php/category/backend/default/create.html?module=article',
+  'SCRIPT_NAME' => '/letyii/cms/admin.php',
+  'PATH_INFO' => '/category/backend/default/create.html',
+  'PATH_TRANSLATED' => 'D:\\xampp\\htdocs\\category\\backend\\default\\create.html',
+  'PHP_SELF' => '/letyii/cms/admin.php/category/backend/default/create.html',
+  'REQUEST_TIME_FLOAT' => 1398501322.124000072479248046875,
+  'REQUEST_TIME' => 1398501322,
+)

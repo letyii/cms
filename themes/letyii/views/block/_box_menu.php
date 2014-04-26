@@ -2,7 +2,7 @@
                 <div class="sidebar">
                     <!-- Logo starts -->
                     <div class="logo">
-                        <h1><a href="<?php // echo Url::home(); ?>">LetYii 1.0</a></h1>
+                        <h1><a href="<?php echo \yii\helpers\Url::home(); ?>">LetYii 1.0</a></h1>
                     </div>
                     <!-- Logo ends -->
 

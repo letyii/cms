@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 
 ?>
@@ -9,7 +10,7 @@ use yii\widgets\ActiveForm;
 <div class="container">
     <div class="page-content page-posts">
 
-        <h4>Tạo danh mục</h4>
+        <h4>Tạo danh mục cho module <?php echo ArrayHelper::getValue($_GET, 'module'); ?></h4>
         <div class="row">
 
             <div class="col-md-12">
@@ -21,43 +22,36 @@ use yii\widgets\ActiveForm;
                         <h5><i class="fa fa-desktop"></i> Thông tin </h5>	
                     </div>
 
+                    <?php $form = ActiveForm::begin(); ?>
                     <!-- Widget body -->
                     <div class="widget-body">
-                        <?php $form = ActiveForm::begin(); ?>
-
-                        <?= $form->field($model, 'title')->textInput(['maxlength' => 255]) ?>
-
-                        <div class="form-group">
-                            <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                        
+                        <?php echo $form->field($model, 'title')->textInput(['maxlength' => 255, 'class' => 'form-control col-lg-8']); ?>
+                        <div class="clearfix"></div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <?php echo $form->field($model, 'position')->dropDownList($position, ['maxlength' => 255, 'class' => 'form-control col-lg-8']); ?>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <?php echo $form->field($model, 'relationId')->dropDownList($categorys, ['maxlength' => 255, 'class' => 'form-control col-lg-8']); ?>
+                                <div class="clearfix"></div>
+                            </div>
                         </div>
-
-                        <?php ActiveForm::end(); ?>
-                        
-                        
-<!--                        <label>Tiêu đề</label>
-                        <input type="text" class="form-control col-lg-8" placeholder="Enter Title">
                         <div class="clearfix"></div>
 
-                        <label>Nhóm danh mục</label>
-                        <input type="text" class="form-control col-lg-8" placeholder="Enter Title">
-                        <div class="clearfix"></div>
-
-                        <label>Danh mục cha</label>
-                        <input type="text" class="form-control col-lg-8" placeholder="Enter Title">
-                        <div class="clearfix"></div>-->
                     </div>
 
                     <!-- Widget foot -->
                     <div class="widget-foot">
-                        <div class="pull-left">Word Count : 253</div>
                         <div class="pull-right">
                             <!-- Buttons -->
-                            <button class="btn btn-default btn-xs">Save Draft</button> 
-                            <button class="btn btn-info btn-xs" type="submit">Publish</button>
-                            <button class="btn btn-danger btn-xs">Trash</button>
+                            <?php echo Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
                         </div>
                         <div class="clearfix"></div>
                     </div>
+                    <?php ActiveForm::end(); ?>
 
                 </div>
             </div>

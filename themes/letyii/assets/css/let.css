@@ -6,7 +6,8 @@ b, strong {font-weight: bold;}
 .mainbar, .sidebar {min-height: 1000px;}
 .sidebar {height: auto;}
 .page-posts input,
-.page-posts textarea{
+.page-posts textarea
+.page-posts select {
 	margin-top:5px;
 	margin-bottom:5px;
 	font-size:13px !important;

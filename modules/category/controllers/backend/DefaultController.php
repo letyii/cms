@@ -8,6 +8,7 @@ use app\modules\category\models\base\letCategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 
 /**
  * DefaultController implements the CRUD actions for letCategory model.
@@ -32,12 +33,13 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new letCategorySearch;
-        $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
+        $data = letCategory::find()->addOrderBy('lft')->all();
+
+//        $searchModel = new letCategorySearch;
+//        $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
-            'searchModel' => $searchModel,
+            'data' => $data,
         ]);
     }
 
@@ -60,33 +62,45 @@ class DefaultController extends Controller
      */
     public function actionCreate()
     {
-        $module = 'article';
+        $request = Yii::$app->request->post();
+        $module = ArrayHelper::getValue($_GET, 'module');
+        $assign['categorys'] = letCategory::getCategory($module, '-- ');
+        $assign['position'] = array(
+            'children' => 'Là thư mục con',
+            'before' => 'Đứng trước',
+            'after' => 'Đứng sau',
+        );
         
         $model = new letCategory;
-        
-        if ($model->load(Yii::$app->request->post())) {
-            $root = letCategory::find()
-                ->where(['module' => $module])
-                ->one();
-            if ($root === null) {
-                $root = new letCategory;
-                $root->title = $module;
-                $root->module = $module;
-                $root->saveNode();
-            }
-            
-            if ($model->appendTo($root)) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-
-//            var_dump($model); die;
-//            $model->save()
-//            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        if ($model->load($request)) {
+            letCategory::saveItem($request);
         }
+        
+        $assign['model'] = $model;
+        return $this->render('create', $assign);
+        
+        
+//        $model = new letCategory;
+//        if ($model->load($request)) {
+//            $root = letCategory::find()
+//                ->where(['module' => $module])
+//                ->one();
+//            if ($root === null) {
+//                $root = new letCategory;
+//                $root->title = $module;
+//                $root->module = $module;
+//                $root->saveNode();
+//            }
+//            
+//            if ($model->appendTo($root)) {
+////                return $this->redirect(['view', 'id' => $model->id]);
+//                return $this->redirect(['index']);
+//            }
+//
+//        } else {
+//            $assign['model'] = $model;
+//            return $this->render('create', $assign);
+//        }
     }
 
     /**
