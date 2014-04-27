@@ -29,10 +29,10 @@ class AjaxController extends Controller
         // Nhận mảng biến đầu vào
         $data = json_decode(ArrayHelper::getValue($_POST, 'data'), true); // *
 
-        echo '<pre>';
-        var_dump($data);
-        echo '</pre>';
-
+//        echo '<pre>';
+//        var_dump($data);
+//        echo '</pre>';
+//        exit();
         // Xử lý từng hành động của mảng biến
         if (!empty($data)) { // Kiem tra su ton tai cua data
             foreach ($data as $action) {
@@ -49,6 +49,12 @@ class AjaxController extends Controller
                 }
             }
         }
+    }
+    
+    public function actionDelete() {
+        $id = (int) ArrayHelper::getValue($_POST, 'id', 0); // *
+        $model = letCategory::findOne($id);
+        $model->deleteNode();
     }
 
 }
