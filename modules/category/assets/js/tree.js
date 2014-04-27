@@ -27,10 +27,10 @@ $(document).ready(function() {
         toleranceElement: '> div',
         update: function(event, ui) {
             var item = {
-                itemId: checkExist(ui.item.context),
-                parentId: checkExist(ui.item.context.offsetParent),
-                afterId: checkExist(ui.item.context.nextSibling),
-                beforeId: checkExist(ui.item.context.previousSibling)
+                itemId: getValueUi(ui.item.context),
+                parentId: getValueUi(ui.item.context.offsetParent),
+                afterId: getValueUi(ui.item.context.nextSibling),
+                beforeId: getValueUi(ui.item.context.previousSibling)
             };
 
             categoryChangedList.push(item);
@@ -41,7 +41,7 @@ $(document).ready(function() {
 
 });
 
-function checkExist(obj) {
+function getValueUi(obj) {
     if (obj === null)
         return '';
     if (obj.id === undefined)
@@ -57,4 +57,16 @@ function updateList(url) {
     }).done(function(msg) {
         $('#result_ajax').html(msg);
     });
+}
+
+function deleteNode(url, id) {
+    if (confirm('Bạn có chắc muốn xóa thư mục này không?')) {
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: 'id=' + id
+        }).done(function(msg) {
+            $('#result_ajax').html(msg);
+        });
+    }
 }
