@@ -1,8 +1,9 @@
 <?php
 
 use yii\helpers\Html;
-
+\yii\jui\SortableAsset::register($this);
 $this->registerCssFile(\yii\helpers\Url::base() . '/modules/category/assets/css/tree.css');
+$this->registerJsFile(\yii\helpers\Url::base() . '/modules/category/assets/js/jquery.mjs.nestedSortable.js', [\yii\web\JqueryAsset::className()]);
 $this->registerJsFile(\yii\helpers\Url::base() . '/modules/category/assets/js/tree.js', [\yii\web\JqueryAsset::className()]);
 ?>
 
@@ -54,6 +55,10 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/category/assets/js/tr
             <div class="widget-body no-padd">
                 <div class="table-responsive">
 
+                    <div>result_item: <span id="result_item"></span></div>
+                    <div>result_parent: <span id="result_parent"></span></div>
+                    <div>result_before: <span id="result_before"></span></div>
+                    <div>result_after: <span id="result_after"></span></div>
                     <div class="tree">
                         <?php
                         $categories = \app\modules\category\models\letCategory::find()->addOrderBy('lft')->all();
@@ -73,10 +78,11 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/category/assets/js/tr
                                 }
                             }
 
-                            echo Html::beginTag('li');
+                            echo Html::beginTag('li', array('id' => 'item_' . $category->id));
+                            echo Html::beginTag('div');
                             echo Html::beginTag('span');
                             echo Html::beginTag('i', array('class' => 'fa fa-plus')).Html::endTag('i') . ' ';
-                            echo Html::encode($category->title);
+                            echo Html::encode($category->id . ': ' . $category->title);
                             echo Html::endTag('span') . ' ';
                             
                             // action button
@@ -92,7 +98,7 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/category/assets/js/tr
                             echo Html::beginTag('button', array('class' => 'btn btn-xs btn-danger'));
                             echo Html::beginTag('i', array('class' => 'fa fa-times')).Html::endTag('i') . ' ';
                             echo Html::endTag('button') . ' ';
-                            
+                            echo Html::endTag('div');
                             $level = $category->level;
                         }
 
