@@ -53,14 +53,13 @@ class letCategory extends base\letCategoryBase {
     
     public static function saveItem($data, $id = 0) {
         // Get relation model
-        $relation = self::find()
-            ->where('id = :id', [':id' => $data['letCategory']['relationId']])->one();
+        $relation = self::findOne($data['letCategory']['relationId']);
         if ($relation === null)
             return false;
 
         // Get Model
         if ($id > 0) { // truong hop update
-            $model = self::find()->where('id = :id', [':id' => $id])->one();
+            $model = self::findOne($id);
             if ($model === null)
                 return false;
         } else { // truong hop create

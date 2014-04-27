@@ -36,16 +36,16 @@ class AjaxController extends Controller
         // Xử lý từng hành động của mảng biến
         if (!empty($data)) { // Kiem tra su ton tai cua data
             foreach ($data as $action) {
-                $model = letCategory::find()->where('id = :id', [':id' => $action['itemId']])->one();
+                $model = letCategory::findOne($action['itemId']);
                 if ($model === null)
                     continue;
                 
                 if (!empty($action['beforeId'])) { // Truong hop doi tuong dung sau 1 doi tuong 'beforeId'
-                    $model->moveAfter(letCategory::find()->where('id = :id', [':id' => $action['beforeId']])->one());
+                    $model->moveAfter(letCategory::findOne($action['beforeId']));
                 } elseif (!empty($action['afterId'])) { // Truong hop doi tuong dung truoc 1 doi tuong 'afterId'
-                    $model->moveBefore(letCategory::find()->where('id = :id', [':id' => $action['afterId']])->one());
+                    $model->moveBefore(letCategory::findOne($action['afterId']));
                 } elseif (!empty($action['parentId'])) { // Truong hop doi tuong nam trong 1 doi tuong 'parentId'
-                    $model->moveAsFirst(letCategory::find()->where('id = :id', [':id' => $action['parentId']])->one());
+                    $model->moveAsFirst(letCategory::findOne($action['parentId']));
                 }
             }
         }
