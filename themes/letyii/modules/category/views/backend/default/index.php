@@ -73,12 +73,26 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/category/assets/js/tr
                                 }
                             }
 
-                            //<span><i class="fa fa-plus"></i> Grand Child</span>
                             echo Html::beginTag('li');
                             echo Html::beginTag('span');
                             echo Html::beginTag('i', array('class' => 'fa fa-plus')).Html::endTag('i') . ' ';
                             echo Html::encode($category->title);
-                            echo Html::endTag('span');
+                            echo Html::endTag('span') . ' ';
+                            
+                            // action button
+                            echo Html::beginTag('button', array('class' => 'btn btn-xs btn-success'));
+                            echo Html::beginTag('i', array('class' => 'fa fa-arrow-up')).Html::endTag('i') . ' ';
+                            echo Html::endTag('button') . ' ';
+                            echo Html::beginTag('button', array('class' => 'btn btn-xs btn-success'));
+                            echo Html::beginTag('i', array('class' => 'fa fa-arrow-down')).Html::endTag('i') . ' ';
+                            echo Html::endTag('button') . ' ';
+                            echo Html::beginTag('button', array('class' => 'btn btn-xs btn-primary'));
+                            echo Html::beginTag('i', array('class' => 'fa fa-pencil')).Html::endTag('i') . ' ';
+                            echo Html::endTag('button') . ' ';
+                            echo Html::beginTag('button', array('class' => 'btn btn-xs btn-danger'));
+                            echo Html::beginTag('i', array('class' => 'fa fa-times')).Html::endTag('i') . ' ';
+                            echo Html::endTag('button') . ' ';
+                            
                             $level = $category->level;
                         }
 
@@ -88,7 +102,7 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/category/assets/js/tr
                         }
                         ?>
                         
-                        <ul>
+<!--                        <ul>
                             <li>
                                 <span><i class="fa fa-plus"></i> Parent</span> <a href="">Goes somewhere</a>
                                 <ul>
@@ -143,55 +157,13 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/category/assets/js/tr
                                     </li>
                                 </ul>
                             </li>
-                        </ul>
+                        </ul>-->
                     </div>
                 </div>
             </div>
 
         </div>
 
-
-        <div class="widget">
-            <div class="widget-head">
-                <h5 class="pull-left"><i class="fa fa-camera"></i> Media</h5>	
-                <div class="clearfix"></div>
-            </div>
-
-            <div class="widget-body no-padd">
-                <div class="table-responsive">
-                    <table class="table table-bordered fix_table_width">
-                        <thead>
-                            <tr>
-                                <th>
-                                    <input type="checkbox" value="check1" class="checkall" />
-                                </th>
-                                <th class="td_free">Tiêu đề</th>
-                                <th>Tiêu điểm</th>
-                                <th>Điều khiển</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-<?php foreach ($data as $n => $category): ?>
-                                <tr>
-                                    <td>                  
-                                        <input type="checkbox" value="check1" class="checkone" />
-                                    </td>
-                                    <td class="td_free">
-                                        <strong><a href="edit.php"><?php echo str_repeat("-- ", ($category->level - 1)); ?> <?php echo Html::encode($category->title); ?></a></strong>
-                                    </td>
-                                    <td><button class="btn btn-xs"><i class="fa fa-times"></i> </button></td>
-                                    <td>
-                                        <button class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> </button>
-                                        <button class="btn btn-xs btn-danger"><i class="fa fa-times"></i> </button>
-                                    </td>
-                                </tr>
-<?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        </div>
 
     </div>
 </div>

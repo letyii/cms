@@ -51,21 +51,6 @@ class letCategory extends base\letCategoryBase {
         return new letCategoryQuery(get_called_class());
     }
     
-    /*
-array(2) {
-  ["_csrf"]=>
-  string(56) "R0JsUHFHN3UdOjMGQGpRHggDKxwLdnA0dG87HDpxYxsoBQgcRhFZEg=="
-  ["letCategory"]=>
-  array(3) {
-    ["title"]=>
-    string(12) "Thằng bố"
-    ["position"]=>
-    string(8) "children"
-    ["relationId"]=>
-    string(1) "2"
-  }
-}
-     */
     public static function saveItem($data, $id = 0) {
         // Get relation model
         $relation = self::find()
@@ -103,7 +88,6 @@ array(2) {
         } else { // truong hop create
             switch ($data['letCategory']['position']) {
                 case 'children':
-                    echo 111;
                     $model->appendTo($relation);
                     break;
                 case 'before':
@@ -138,6 +122,7 @@ array(2) {
      */
     public static function getCategory($module = '', $prefix = '') {
         $level = NULL;
+        $categorys = array();
         
         if (empty($module) OR !in_array($module, self::getModules()))
             $data = self::find()->addOrderBy('lft')->all();

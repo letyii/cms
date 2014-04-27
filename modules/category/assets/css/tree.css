@@ -24,14 +24,14 @@
     right:auto
 }
 .tree li::before {
-    border-left:1px solid #999;
+    border-left:1px dashed #999;
     bottom:50px;
     height:100%;
     top:0;
     width:1px
 }
 .tree li::after {
-    border-top:1px solid #999;
+    border-top:1px dashed #999;
     height:20px;
     top:25px;
     width:25px
@@ -54,8 +54,16 @@
 .tree li:last-child::before {
     height:30px
 }
-.tree li.parent_li>span:hover, .tree li.parent_li>span:hover+ul li span {
+/*.tree li.parent_li>span:hover, .tree li.parent_li>span:hover+ul li span {
     background:#eee;
     border:1px solid #94a0b4;
     color:#000
+}*/
+.tree li.parent_li>span:hover {
+    background:#eee;
+    border:1px solid #94a0b4;
+    color:#000
+}
+.tree li.parent_li>span:hover+ul li span:last-child {
+    background:none;
 }
