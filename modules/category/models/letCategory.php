@@ -76,7 +76,7 @@ class letCategory extends base\letCategoryBase {
         if ($id > 0) { // truong hop update
             switch ($data['letCategory']['position']) {
                 case 'children':
-                    $model->appendTo($relation);
+                    $model->moveAsFirst($relation);
                     break;
                 case 'before':
                     $model->moveBefore($relation);

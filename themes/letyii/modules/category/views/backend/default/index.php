@@ -13,24 +13,9 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/category/assets/js/tr
 
         <div>
             <div class="btn-group pull-left" data-toggle="buttons">
-                <button class="btn btn-primary">
-                    Kích hoạt
+                <button class="btn btn-success" onclick="updateList('<?php echo yii\helpers\Url::toRoute(['backend/ajax/updatelist']); ?>');">
+                    Lưu thay đổi
                 </button >
-                <button class="btn btn-black">
-                    Vô hiệu hóa
-                </button>
-                <button class="btn btn-primary">
-                    Tiêu điểm
-                </button>
-                <button class="btn btn-black">
-                    Bỏ tiêu điểm
-                </button>
-                <button class="btn btn-warning">
-                    Di chuyển
-                </button>
-                <button class="btn btn-danger">
-                    Xóa
-                </button>
             </div>
             <!-- Single button -->
             <div class="btn-group pull-right">
@@ -54,11 +39,8 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/category/assets/js/tr
             </div>
             <div class="widget-body no-padd">
                 <div class="table-responsive">
-
-                    <div>result_item: <span id="result_item"></span></div>
-                    <div>result_parent: <span id="result_parent"></span></div>
-                    <div>result_before: <span id="result_before"></span></div>
-                    <div>result_after: <span id="result_after"></span></div>
+                    <div id="result_ajax"></div>
+                    <input type="hidden" id="categoryChangedListJson" value="" />
                     <div class="tree">
                         <?php
                         $categories = \app\modules\category\models\letCategory::find()->addOrderBy('lft')->all();

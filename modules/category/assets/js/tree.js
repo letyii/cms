@@ -13,18 +13,48 @@
 //    });
 //});
 
+var categoryChangedList = new Array();
+var categoryChangedListJson = {};
+
 $(document).ready(function() {
-    
+    var result;
+
+    // Create tree sortable
     $('.tree').children().nestedSortable({
         handle: 'div',
         listType: 'ul',
         items: 'li',
         toleranceElement: '> div',
-        update: function( event, ui ) {
-            $('#result_item').html('none').html(ui.item.context.id);
-            $('#result_parent').html('none').html(ui.item.context.offsetParent.id);
-            $('#result_after').html('none').html(ui.item.context.nextSibling.id);
-            $('#result_before').html('none').html(ui.item.context.previousSibling.id);
-        },
+        update: function(event, ui) {
+            var item = {
+                itemId: checkExist(ui.item.context),
+                parentId: checkExist(ui.item.context.offsetParent),
+                afterId: checkExist(ui.item.context.nextSibling),
+                beforeId: checkExist(ui.item.context.previousSibling)
+            };
+
+            categoryChangedList.push(item);
+            categoryChangedListJson = JSON.stringify(categoryChangedList);
+            $('#categoryChangedListJson').val(categoryChangedListJson);
+        }
     });
+
 });
+
+function checkExist(obj) {
+    if (obj === null)
+        return '';
+    if (obj.id === undefined)
+        return '';
+    return obj.id.replace('item_', '');
+}
+
+function updateList(url) {
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: 'data=' + categoryChangedListJson
+    }).done(function(msg) {
+        $('#result_ajax').html(msg);
+    });
+}
