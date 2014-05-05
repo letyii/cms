@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+
 \yii\jui\SortableAsset::register($this);
 $this->registerCssFile(\yii\helpers\Url::base() . '/modules/category/assets/css/tree.css');
 $this->registerJsFile(\yii\helpers\Url::base() . '/modules/category/assets/js/jquery.mjs.nestedSortable.js', [\yii\web\JqueryAsset::className()]);
@@ -9,7 +10,9 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/category/assets/js/tr
 
 <!-- Content starts -->
 <div class="container">
+
     <div class="page-content page-media">
+        <div class="alert-result"></div>
 
         <div>
             <div class="btn-group pull-left" data-toggle="buttons">
@@ -30,7 +33,6 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/category/assets/js/tr
             </div>
         </div>
         <div class="clearfix"></div>
-
 
         <div class="widget">
             <div class="widget-head">
@@ -63,22 +65,20 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/category/assets/js/tr
                             echo Html::beginTag('li', array('id' => 'item_' . $category->id));
                             echo Html::beginTag('div');
                             echo Html::beginTag('span');
-                            echo Html::beginTag('i', array('class' => 'fa fa-plus')).Html::endTag('i') . ' ';
-                            echo Html::encode($category->id . ': ' . $category->title);
+                            echo Html::beginTag('i', array('class' => 'fa fa-arrows')) . Html::endTag('i') . ' ';
+                            echo Html::textInput('item_' . $category->id, $category->title, array('style' => 'border:0;'));
+//                            echo Html::encode($category->id . ': ' . $category->title);
                             echo Html::endTag('span') . ' ';
 
                             // action button
-                            echo Html::beginTag('button', array('class' => 'btn btn-xs btn-success'));
-                            echo Html::beginTag('i', array('class' => 'fa fa-arrow-up')).Html::endTag('i') . ' ';
+                            echo Html::beginTag('button', array('class' => 'btn btn-xs btn-success', 'onclick' => "createNode('" . yii\helpers\Url::toRoute(['backend/ajax/create']) . "', " . $category->id . ", '" . $category->module . "')"));
+                            echo Html::beginTag('i', array('class' => 'fa fa-plus')) . Html::endTag('i') . ' ';
                             echo Html::endTag('button') . ' ';
-                            echo Html::beginTag('button', array('class' => 'btn btn-xs btn-success'));
-                            echo Html::beginTag('i', array('class' => 'fa fa-arrow-down')).Html::endTag('i') . ' ';
-                            echo Html::endTag('button') . ' ';
-                            echo Html::beginTag('button', array('class' => 'btn btn-xs btn-primary'));
-                            echo Html::beginTag('i', array('class' => 'fa fa-pencil')).Html::endTag('i') . ' ';
-                            echo Html::endTag('button') . ' ';
-                            echo Html::beginTag('button', array('class' => 'btn btn-xs btn-danger', 'onclick' => "deleteNode('".yii\helpers\Url::toRoute(['backend/ajax/delete'])."', ".$category->id.")"));
-                            echo Html::beginTag('i', array('class' => 'fa fa-times')).Html::endTag('i') . ' ';
+//                            echo Html::beginTag('button', array('class' => 'btn btn-xs btn-primary'));
+//                            echo Html::beginTag('i', array('class' => 'fa fa-pencil')) . Html::endTag('i') . ' ';
+//                            echo Html::endTag('button') . ' ';
+                            echo Html::beginTag('button', array('class' => 'btn btn-xs btn-danger', 'onclick' => "deleteNode('" . yii\helpers\Url::toRoute(['backend/ajax/delete']) . "', " . $category->id . ")"));
+                            echo Html::beginTag('i', array('class' => 'fa fa-times')) . Html::endTag('i') . ' ';
                             echo Html::endTag('button') . ' ';
                             echo Html::endTag('div');
                             $level = $category->level;
@@ -89,69 +89,12 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/category/assets/js/tr
                             echo Html::endTag('ul') . "\n";
                         }
                         ?>
-                        
-<!--                        <ul>
-                            <li>
-                                <span><i class="fa fa-plus"></i> Parent</span> <a href="">Goes somewhere</a>
-                                <ul>
-                                    <li>
-                                        <span><i class="fa fa-minus"></i> Child</span> <a href="">Goes somewhere</a>
-                                        <ul>
-                                            <li>
-                                                <span><i class="fa fa-plus"></i> Grand Child</span> <a href="">Goes somewhere</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <span><i class="fa fa-minus"></i> Child</span> <a href="">Goes somewhere</a>
-                                        <ul>
-                                            <li>
-                                                <span><i class="fa fa-plus"></i> Grand Child</span> <a href="">Goes somewhere</a>
-                                            </li>
-                                            <li>
-                                                <span><i class="fa fa-minus"></i> Grand Child</span> <a href="">Goes somewhere</a>
-                                                <ul>
-                                                    <li>
-                                                        <span><i class="fa fa-minus"></i> Great Grand Child</span> <a href="">Goes somewhere</a>
-                                                        <ul>
-                                                            <li>
-                                                                <span><i class="fa fa-plus"></i> Great great Grand Child</span> <a href="">Goes somewhere</a>
-                                                            </li>
-                                                            <li>
-                                                                <span><i class="fa fa-plus"></i> Great great Grand Child</span> <a href="">Goes somewhere</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        <span><i class="fa fa-plus"></i> Great Grand Child</span> <a href="">Goes somewhere</a>
-                                                    </li>
-                                                    <li>
-                                                        <span><i class="fa fa-plus"></i> Great Grand Child</span> <a href="">Goes somewhere</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <span><i class="fa fa-plus"></i> Grand Child</span> <a href="">Goes somewhere</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <span><i class="icon-folder-open"></i> Parent2</span> <a href="">Goes somewhere</a>
-                                <ul>
-                                    <li>
-                                        <span><i class="fa fa-plus"></i> Child</span> <a href="">Goes somewhere</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>-->
+
                     </div>
                 </div>
             </div>
 
         </div>
-
 
     </div>
 </div>
