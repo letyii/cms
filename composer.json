@@ -1,8 +1,8 @@
 {
-	"name": "yiisoft/yii2-app-basic",
-	"description": "Yii 2 Basic Application Template",
+	"name": "letyii/cms",
+	"description": "LetYii CMS",
 	"keywords": ["yii2", "framework", "basic", "application template"],
-	"homepage": "http://www.yiiframework.com/",
+	"homepage": "http://letyii.com",
 	"type": "project",
 	"license": "BSD-3-Clause",
 	"support": {
@@ -12,7 +12,7 @@
 		"irc": "irc://irc.freenode.net/yii",
 		"source": "https://github.com/yiisoft/yii2"
 	},
-	"minimum-stability": "beta",
+	"minimum-stability": "alpha",
 	"require": {
 		"php": ">=5.4.0",
 		"yiisoft/yii2": "*",
@@ -42,7 +42,7 @@
 	"extra": {
 		"writable": [
 			"runtime",
-			"web/assets"
+			"assets"
 		],
 		"executable": [
 			"yii"
