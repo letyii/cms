@@ -8,6 +8,9 @@ return [
         'article' => [
             'class' => 'app\modules\article\Module',
         ],
+        'member' => [
+            'class' => 'app\modules\member\Module',
+        ],
     ],
     'components' => [
         'i18n' => [

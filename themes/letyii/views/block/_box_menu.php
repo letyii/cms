@@ -16,7 +16,7 @@
                         <!-- Logout button -->
                         <div class="btn-group">
                             <a href="login.html" class="btn btn-black btn-xs"><i class="fa fa-power-off"></i></a>
-                            <a href="<?php echo \Yii::$app->urlManager->createUrl(['site/logout']); ?>" class="btn btn-danger btn-xs">Thoát</a>
+                            <a href="<?php echo \Yii::$app->urlManager->createUrl(['member/backend/auth/logout']); ?>" class="btn btn-danger btn-xs">Thoát</a>
                         </div>
                     </div>
                     <!-- Sidebar buttons ends -->
