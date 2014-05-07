@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50616
 File Encoding         : 65001
 
-Date: 2014-04-25 14:40:25
+Date: 2014-05-07 13:37:56
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -93,19 +93,36 @@ DROP TABLE IF EXISTS `letyii_category`;
 CREATE TABLE `letyii_category` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `root` int(10) unsigned DEFAULT NULL,
-  `lft` int(10) unsigned NOT NULL,
-  `rgt` int(10) unsigned NOT NULL,
-  `level` smallint(5) unsigned NOT NULL,
+  `lft` int(10) unsigned NOT NULL DEFAULT '0',
+  `rgt` int(10) unsigned NOT NULL DEFAULT '0',
+  `level` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `title` varchar(255) NOT NULL,
+  `module` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `root` (`root`),
   KEY `lft` (`lft`),
   KEY `rgt` (`rgt`),
   KEY `level` (`level`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of letyii_category
 -- ----------------------------
+INSERT INTO `letyii_category` VALUES ('23', '23', '1', '30', '1', 'article', 'article');
+INSERT INTO `letyii_category` VALUES ('24', '23', '2', '11', '2', 'Thư mục 1', 'article');
+INSERT INTO `letyii_category` VALUES ('25', '23', '12', '19', '2', 'Thư mục 2', 'article');
+INSERT INTO `letyii_category` VALUES ('26', '23', '20', '27', '2', 'Thư mục 3', 'article');
+INSERT INTO `letyii_category` VALUES ('27', '23', '28', '29', '2', 'Thư mục 4', 'article');
+INSERT INTO `letyii_category` VALUES ('28', '23', '8', '9', '4', 'Thư mục 1.1', 'article');
+INSERT INTO `letyii_category` VALUES ('29', '23', '4', '5', '4', 'Thư mục 1.2', 'article');
+INSERT INTO `letyii_category` VALUES ('30', '23', '3', '6', '3', 'Thư mục 1.3', 'article');
+INSERT INTO `letyii_category` VALUES ('31', '23', '7', '10', '3', 'Thư mục 2.1', 'article');
+INSERT INTO `letyii_category` VALUES ('32', '23', '13', '14', '3', 'Thư mục 2.2', 'article');
+INSERT INTO `letyii_category` VALUES ('33', '23', '15', '16', '3', 'Thư mục 2.3', 'article');
+INSERT INTO `letyii_category` VALUES ('34', '23', '17', '18', '3', 'Thư mục 2.4', 'article');
+INSERT INTO `letyii_category` VALUES ('35', '23', '21', '22', '3', 'Thư mục 3.1', 'article');
+INSERT INTO `letyii_category` VALUES ('36', '23', '23', '24', '3', 'Thư mục 3.2', 'article');
+INSERT INTO `letyii_category` VALUES ('37', '23', '25', '26', '3', 'Thư mục 3.3', 'article');
 
 -- ----------------------------
 -- Table structure for letyii_user
