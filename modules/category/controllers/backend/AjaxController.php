@@ -1,4 +1,10 @@
 <?php
+/**
+ * @link http://www.letyii.com/
+ * @copyright Copyright (c) 2014 Let.,ltd
+ * @license https://github.com/letyii/cms/blob/master/LICENSE
+ * @author Ngua Go <nguago@let.vn>
+ */
 
 namespace app\modules\category\controllers\backend;
 
@@ -8,23 +14,15 @@ use app\modules\category\models\letCategory;
 use app\components\BackendController;
 use yii\helpers\ArrayHelper;
 
-//use yii\web\NotFoundHttpException;
-//use yii\filters\VerbFilter;
-
-/**
- * DefaultController implements the CRUD actions for letCategory model.
- */
 class AjaxController extends BackendController {
 
-    /**
-     * Lists all letCategory models.
-     * @return mixed
-     */
     public function actionIndex() {
         
     }
     
-    // Update list category when move category position
+    /**
+     * Update list category when move category position
+     */
     public function actionUpdatelist() {
         try {
             // Nhận mảng biến đầu vào
@@ -52,7 +50,9 @@ class AjaxController extends BackendController {
         }
     }
     
-    // Create a category
+    /**
+     * Create a category
+     */
     public function actionCreate() {
         try {
             $parent_id = (int) ArrayHelper::getValue($_POST, 'parent_id', 0);
@@ -73,7 +73,9 @@ class AjaxController extends BackendController {
 
     }
     
-   // Edit name a category
+   /**
+    * Edit name a category
+    */
     public function actionUpdatecategory() {
         try {
             $id = (int) ArrayHelper::getValue($_POST, 'id', 0);
@@ -88,7 +90,9 @@ class AjaxController extends BackendController {
         }
     }
     
-    //Delete a category
+    /**
+     * Delete a category
+     */
     public function actionDelete() {
         try {
             $id = (int) ArrayHelper::getValue($_POST, 'id', 0);
