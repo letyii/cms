@@ -11,6 +11,9 @@ return [
         'member' => [
             'class' => 'app\modules\member\Module',
         ],
+        'config' => [
+            'class' => 'app\modules\config\Module',
+        ],
     ],
     'components' => [
         'i18n' => [

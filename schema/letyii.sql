@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50616
 File Encoding         : 65001
 
-Date: 2014-05-07 13:37:56
+Date: 2014-05-11 18:39:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -123,6 +123,21 @@ INSERT INTO `letyii_category` VALUES ('34', '23', '17', '18', '3', 'Thư mục 2
 INSERT INTO `letyii_category` VALUES ('35', '23', '21', '22', '3', 'Thư mục 3.1', 'article');
 INSERT INTO `letyii_category` VALUES ('36', '23', '23', '24', '3', 'Thư mục 3.2', 'article');
 INSERT INTO `letyii_category` VALUES ('37', '23', '25', '26', '3', 'Thư mục 3.3', 'article');
+
+-- ----------------------------
+-- Table structure for letyii_config
+-- ----------------------------
+DROP TABLE IF EXISTS `letyii_config`;
+CREATE TABLE `letyii_config` (
+  `name` varchar(20) NOT NULL,
+  `value` text,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of letyii_config
+-- ----------------------------
+INSERT INTO `letyii_config` VALUES ('member.login_expire', '3600*24*30');
 
 -- ----------------------------
 -- Table structure for letyii_user
