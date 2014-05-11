@@ -16,28 +16,20 @@ class LetConfig extends base\LetConfigBase {
      * @return string
      */
     public static function get($key, $defaultValue = '') {
-        $model = self::findOne($key);
-        if ($model === null) {
-            $model = new self;
-            $model->name = $key;
-            $config = self::getDefault($key);
+        $configs = self::getListFromDb();
+        if (!isset($configs[$key])) { // Neu khong ton tai key trong db
+            $config = self::getDefault($key); // Tim trong file config cua module xem co khong
+            if (!empty($config)) { // Co trong file config cua module
+                $model = new self;
+                $model->name = $key;
 
-            if (!empty($config)) {
-                $model->value = $config['value'];
+                $model->value = (string) $config['value'];
                 $model->type = $config['type'];
-            } else {
-                $model->value = '';
-                $model->type = 'string';
-            }
-            if ($model->save())
-                return $config['value'];
-            else
-                return $defaultValue;
-        } else {
-            if ($model->type == 'string')
-                return $model->value;
-            elseif ($model->type == 'int')
-                return (eval('return (' . $model->value . ');'));
+                var_dump($model->save());
+                return self::getValueByType($config['value'], $config['type']);
+            } else return $defaultValue; // Khong co trong file config cua module
+        } else { // Neu ton tai key trong db
+            return self::getValueByType($configs[$key]['value'], $configs[$key]['type']);
         }
     }
 
@@ -55,6 +47,37 @@ class LetConfig extends base\LetConfigBase {
         }
         else
             return FALSE;
+    }
+
+    /**
+     * Get configs from db
+     * @param boolean $noCache
+     * @return array
+     */
+    public static function getListFromDb($noCache = FALSE) {
+        $result = [];
+        $configs = self::find()->asArray()->all();
+        foreach ($configs as $config) {
+            $result[$config['name']] = [
+                'value' => $config['value'],
+                'type' => $config['type'],
+            ];
+        }
+        return $result;
+    }
+
+    /**
+     * get value by type
+     * @param string $value
+     * @param string $type
+     * @return mixed
+     */
+    private static function getValueByType($value, $type = 'string') {
+        if ($type == 'string')
+            return $value;
+        elseif ($type == 'int')
+            return (eval('return (' . $value . ');'));
+        else return FALSE;
     }
 
 }
