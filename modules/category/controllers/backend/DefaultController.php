@@ -5,7 +5,7 @@ namespace app\modules\category\controllers\backend;
 use Yii;
 use app\modules\category\models\letCategory;
 use app\modules\category\models\base\letCategorySearch;
-use yii\web\Controller;
+use app\components\BackendController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
@@ -13,7 +13,7 @@ use yii\helpers\ArrayHelper;
 /**
  * DefaultController implements the CRUD actions for letCategory model.
  */
-class DefaultController extends Controller
+class DefaultController extends BackendController
 {
     public function behaviors()
     {

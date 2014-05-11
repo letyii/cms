@@ -2,9 +2,9 @@
 
 namespace app\modules\member\controllers\backend;
 
-use yii\web\Controller;
+use app\components\BackendController;
 
-class DefaultController extends Controller
+class DefaultController extends BackendController
 {
     public function actionIndex()
     {

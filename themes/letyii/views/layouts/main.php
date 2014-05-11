@@ -12,8 +12,9 @@ use yii\widgets\Breadcrumbs;
  */
 BackendAsset::register($this);
 ?>
-<?php $this->beginPage() ?>
+<?php $this->beginPage(); ?>
 <!DOCTYPE html>
+<?php var_dump(Yii::$app->user->isGuest); ?>
 <html lang="<?= Yii::$app->language ?>">
     <head>
         <meta charset="<?= Yii::$app->charset ?>"/>
