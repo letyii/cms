@@ -8,27 +8,8 @@ use yii\web\IdentityInterface;
 
 class User extends ActiveRecord implements IdentityInterface
 {
-    public $id;
-    public $username;
-    public $password;
-    public $authKey;
-    public $accessToken;
-
 	const STATUS_DELETED = 0;
 	const STATUS_ACTIVE = 10;
-
-//	public function behaviors()
-//	{
-//		return [
-//			'timestamp' => [
-//				'class' => 'yii\behaviors\TimestampBehavior',
-//				'attributes' => [
-//					ActiveRecord::EVENT_BEFORE_INSERT => ['create_time', 'update_time'],
-//					ActiveRecord::EVENT_BEFORE_UPDATE => 'update_time',
-//				],
-//			],
-//		];
-//	}
 
 	public function rules()
 	{
@@ -90,7 +71,7 @@ class User extends ActiveRecord implements IdentityInterface
 	 */
 	public static function findByUsername($username)
 	{
-		return static::find(['username' => $username, 'status' => static::STATUS_ACTIVE])->one();
+		return static::findOne(['username' => $username, 'status' => static::STATUS_ACTIVE]);
 	}
 
     /**
@@ -117,7 +98,7 @@ class User extends ActiveRecord implements IdentityInterface
 	 */
     public function getAuthKey()
     {
-        return $this->authKey;
+        return $this->auth_key;
     }
 
 	/**
@@ -126,7 +107,7 @@ class User extends ActiveRecord implements IdentityInterface
 	 */
     public function validateAuthKey($authKey)
     {
-        return $this->authKey === $authKey;
+        return $this->auth_key === $authKey;
     }
 
 	/**
