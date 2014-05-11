@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50616
 File Encoding         : 65001
 
-Date: 2014-05-11 18:39:03
+Date: 2014-05-11 20:50:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -131,13 +131,15 @@ DROP TABLE IF EXISTS `letyii_config`;
 CREATE TABLE `letyii_config` (
   `name` varchar(20) NOT NULL,
   `value` text,
+  `type` varchar(7) DEFAULT 'string' COMMENT 'string | int | array | boolean',
   PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of letyii_config
 -- ----------------------------
-INSERT INTO `letyii_config` VALUES ('member.login_expire', '3600*24*30');
+INSERT INTO `letyii_config` VALUES ('category.max_level', '4', 'string');
+INSERT INTO `letyii_config` VALUES ('member.login_expire', '3600*24*30', 'int');
 
 -- ----------------------------
 -- Table structure for letyii_user

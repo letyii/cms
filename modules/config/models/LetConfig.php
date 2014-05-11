@@ -8,6 +8,8 @@ use yii\helpers\ArrayHelper;
 class LetConfig extends base\LetConfigBase {
 
     private $defaultConfigs = [];
+    
+    private $cacheKey = 'config.ListFromDb';
 
     /**
      * Get value by key
@@ -22,10 +24,11 @@ class LetConfig extends base\LetConfigBase {
             if (!empty($config)) { // Co trong file config cua module
                 $model = new self;
                 $model->name = $key;
-
                 $model->value = (string) $config['value'];
                 $model->type = $config['type'];
-                var_dump($model->save());
+                $model->save();
+                
+                self::deleteCache();
                 return self::getValueByType($config['value'], $config['type']);
             } else return $defaultValue; // Khong co trong file config cua module
         } else { // Neu ton tai key trong db
@@ -56,7 +59,12 @@ class LetConfig extends base\LetConfigBase {
      */
     public static function getListFromDb($noCache = FALSE) {
         $result = [];
-        $configs = self::find()->asArray()->all();
+        $configs = Yii::$app->cache->get($this->cacheKey);
+        if ($configs === FALSE OR $noCache === TRUE) {
+            $configs = self::find()->asArray()->all();
+            Yii::$app->cache->set($this->cacheKey, $configs);
+        }
+        
         foreach ($configs as $config) {
             $result[$config['name']] = [
                 'value' => $config['value'],
@@ -66,6 +74,14 @@ class LetConfig extends base\LetConfigBase {
         return $result;
     }
 
+    /**
+     * Delete Cache ListFromDb
+     * @return boolean
+     */
+    public static function deleteCache() {
+        return Yii::$app->cache->delete($this->cacheKey);
+    }
+    
     /**
      * get value by type
      * @param string $value
