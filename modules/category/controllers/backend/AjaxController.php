@@ -23,7 +23,8 @@ class AjaxController extends Controller {
     public function actionIndex() {
         
     }
-
+    
+    // Update list category when move category position
     public function actionUpdatelist() {
         try {
             // Nhận mảng biến đầu vào
@@ -50,7 +51,8 @@ class AjaxController extends Controller {
             echo 0;
         }
     }
-
+    
+    // Create a category
     public function actionCreate() {
         try {
             $parent_id = (int) ArrayHelper::getValue($_POST, 'parent_id', 0);
@@ -70,7 +72,23 @@ class AjaxController extends Controller {
         }
 
     }
-
+    
+   // Edit name a category
+    public function actionUpdatecategory() {
+        try {
+            $id = (int) ArrayHelper::getValue($_POST, 'id', 0);
+            $title = ArrayHelper::getValue($_POST, 'title', '');
+            
+            $model = letCategory::findOne($id);
+            $model->title = $title;
+            $model->saveNode(true);
+            echo $model->id;
+        } catch (ErrorException $e) {
+            echo 0;
+        }
+    }
+    
+    //Delete a category
     public function actionDelete() {
         try {
             $id = (int) ArrayHelper::getValue($_POST, 'id', 0);

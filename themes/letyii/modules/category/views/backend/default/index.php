@@ -64,19 +64,20 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/category/assets/js/tr
 
                             echo Html::beginTag('li', array('id' => 'item_' . $category->id));
                             echo Html::beginTag('div');
-                            echo Html::beginTag('span');
                             echo Html::beginTag('i', array('class' => 'fa fa-arrows')) . Html::endTag('i') . ' ';
-                            echo Html::textInput('item_' . $category->id, $category->title, array('style' => 'border:0;'));
-//                            echo Html::encode($category->id . ': ' . $category->title);
+                            echo Html::encode($category->id . ': ');
+                            echo Html::beginTag('span');
+//                            echo Html::textInput('item_' . $category->id, $category->title, array('style' => 'border:0;'));
+                            echo Html::encode($category->title);
                             echo Html::endTag('span') . ' ';
 
                             // action button
                             echo Html::beginTag('button', array('class' => 'btn btn-xs btn-success', 'onclick' => "createNode('" . yii\helpers\Url::toRoute(['backend/ajax/create']) . "', " . $category->id . ", '" . $category->module . "')"));
                             echo Html::beginTag('i', array('class' => 'fa fa-plus')) . Html::endTag('i') . ' ';
                             echo Html::endTag('button') . ' ';
-//                            echo Html::beginTag('button', array('class' => 'btn btn-xs btn-primary'));
-//                            echo Html::beginTag('i', array('class' => 'fa fa-pencil')) . Html::endTag('i') . ' ';
-//                            echo Html::endTag('button') . ' ';
+                            echo Html::beginTag('button', array('class' => 'btn btn-xs btn-primary', 'onclick' => "updateNode('" . yii\helpers\Url::toRoute(['backend/ajax/updatecategory']) . "', " . $category->id . ")"));
+                            echo Html::beginTag('i', array('class' => 'fa fa-pencil')) . Html::endTag('i') . ' ';
+                            echo Html::endTag('button') . ' ';
                             echo Html::beginTag('button', array('class' => 'btn btn-xs btn-danger', 'onclick' => "deleteNode('" . yii\helpers\Url::toRoute(['backend/ajax/delete']) . "', " . $category->id . ")"));
                             echo Html::beginTag('i', array('class' => 'fa fa-times')) . Html::endTag('i') . ' ';
                             echo Html::endTag('button') . ' ';

@@ -151,5 +151,4 @@ class letCategory extends base\letCategoryBase {
         };
         return $categorys;
     }
-    
 }
