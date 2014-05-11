@@ -1,18 +1,3 @@
-//$(function() {
-//    $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
-//    $('.tree li.parent_li > span').on('click', function(e) {
-//        var children = $(this).parent('li.parent_li').find(' > ul > li');
-//        if (children.is(":visible")) {
-//            children.hide('fast');
-//            $(this).attr('title', 'Expand this branch').find(' > i').addClass('fa-plus').removeClass('fa-minus');
-//        } else {
-//            children.show('fast');
-//            $(this).attr('title', 'Collapse this branch').find(' > i').addClass('fa-minus').removeClass('fa-plus');
-//        }
-//        e.stopPropagation();
-//    });
-//});
-
 var categoryChangedList = new Array();
 var categoryChangedListJson = {};
 
@@ -48,7 +33,7 @@ function getValueUi(obj) {
         return '';
     return obj.id.replace('item_', '');
 }
-
+// Ajax handler update liset category when move category position
 function updateList(url) {
     $.ajax({
         type: "POST",
@@ -61,7 +46,7 @@ function updateList(url) {
             $('.alert-result').html('<div class="alert alert-danger">Lỗi trong quá trình lưu thay đổi</div>');
     });
 }
-
+// Ajax handler create a category
 function createNode(url, parent_id, module) {
 
     var categoryTitle = prompt("Tên danh mục:", "Nhập tên danh mục mới");
@@ -80,7 +65,23 @@ function createNode(url, parent_id, module) {
         });
     }
 }
-
+// Ajax handler update a category
+function updateNode(url, id, module) {
+    var name = $('#item_' + id + ' > div > span').html();
+    var categoryTitle = prompt("Nhập tên danh mục mới:", name);
+    if (categoryTitle !== null) {
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: 'id=' + id + '&title=' + categoryTitle
+        }).done(function(id) {
+            if (id > 0) {
+                $('#item_' + id + ' > div > span').html(categoryTitle);
+            } else alert ('Có lỗi xảy ra trong quá trình sửa danh mục!');
+        });
+    }
+}
+// Ajax handler delete a category
 function deleteNode(url, id) {
     if (confirm('Bạn có chắc muốn xóa thư mục này không?')) {
         $.ajax({
