@@ -47,7 +47,7 @@ class letCategory extends base\letCategoryBase {
     public function behaviors() {
         return [
             'NestedSetBehavior' => [
-                'class' => 'app\modules\category\behaviors\nestedset\NestedSet',
+                'class' => 'creocoder\behaviors\NestedSet',
                 'hasManyRoots' => true
             ]
         ];

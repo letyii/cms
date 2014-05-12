@@ -13,7 +13,7 @@ class letCategoryQuery extends \yii\db\ActiveQuery
     public function behaviors() {
         return [
             'NestedSetBehavior' => [
-                'class' => 'app\modules\category\behaviors\nestedset\NestedSetQuery',                
+                'class' => 'creocoder\behaviors\NestedSetQuery',
                 'hasManyRoots' => true
             ]
         ];

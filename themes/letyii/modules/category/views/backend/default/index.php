@@ -3,9 +3,9 @@
 use yii\helpers\Html;
 
 \yii\jui\SortableAsset::register($this);
-$this->registerCssFile(\yii\helpers\Url::base() . '/modules/category/assets/css/tree.css');
-$this->registerJsFile(\yii\helpers\Url::base() . '/modules/category/assets/js/jquery.mjs.nestedSortable.js', [\yii\web\JqueryAsset::className()]);
-$this->registerJsFile(\yii\helpers\Url::base() . '/modules/category/assets/js/tree.js', [\yii\web\JqueryAsset::className()]);
+$this->registerCssFile(\yii\helpers\Url::base() . '/assetbundle/nestedset/css/tree.css');
+$this->registerJsFile(\yii\helpers\Url::base() . '/assetbundle/nestedset/js/jquery.mjs.nestedSortable.js', [\yii\web\JqueryAsset::className()]);
+$this->registerJsFile(\yii\helpers\Url::base() . '/assetbundle/nestedset/js/tree.js', [\yii\web\JqueryAsset::className()]);
 ?>
 
 <!-- Content starts -->
