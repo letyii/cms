@@ -3,7 +3,7 @@
  * @link http://www.letyii.com/
  * @copyright Copyright (c) 2014 Let.,ltd
  * @license https://github.com/letyii/cms/blob/master/LICENSE
- * @author Ngua Go <nguago@let.vn>
+ * @author Ngua Go <nguago@let.vn>, Trinh Ke Thanh <trinh.kethanh@gmail.com>
  */
 
 namespace app\modules\config\models;
@@ -13,10 +13,20 @@ use yii\helpers\ArrayHelper;
 
 class LetConfig extends base\LetConfigBase {
 
-    private $defaultConfigs = [];
+    private static $cacheListFromDb = 'config.ListFromDb';
     
-    private static $cacheKey = 'config.ListFromDb';
+    private static $cacheModuleList = 'config.ModuleList';
 
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        Yii::$app->cache->delete(self::$cacheListFromDb);
+        Yii::$app->cache->delete(self::$cacheModuleList);
+        return parent::beforeSave($insert);
+    }
+    
     /**
      * Get value by key
      * @param string $key
@@ -24,6 +34,7 @@ class LetConfig extends base\LetConfigBase {
      * @return string
      */
     public static function get($key, $defaultValue = '') {
+        $this->beforeSave($insert);
         $configs = self::getListFromDb();
         if (!isset($configs[$key])) { // Neu khong ton tai key trong db
             $config = self::getDefault($key); // Tim trong file config cua module xem co khong
@@ -34,7 +45,6 @@ class LetConfig extends base\LetConfigBase {
                 $model->type = $config['type'];
                 $model->save();
                 
-                self::deleteCache();
                 return self::getValueByType($config['value'], $config['type']);
             } else return $defaultValue; // Khong co trong file config cua module
         } else { // Neu ton tai key trong db
@@ -65,10 +75,10 @@ class LetConfig extends base\LetConfigBase {
      */
     public static function getListFromDb($noCache = FALSE) {
         $result = [];
-        $configs = Yii::$app->cache->get(self::$cacheKey);
+        $configs = Yii::$app->cache->get(self::$cacheListFromDb);
         if ($configs === FALSE OR $noCache === TRUE) {
             $configs = self::find()->asArray()->all();
-            Yii::$app->cache->set(self::$cacheKey, $configs);
+            Yii::$app->cache->set(self::$cacheListFromDb, $configs);
         }
         
         foreach ($configs as $config) {
@@ -80,14 +90,6 @@ class LetConfig extends base\LetConfigBase {
         return $result;
     }
 
-    /**
-     * Delete Cache ListFromDb
-     * @return boolean
-     */
-    public static function deleteCache() {
-        return Yii::$app->cache->delete($this->cacheKey);
-    }
-    
     /**
      * get value by type
      * @param string $value
@@ -106,14 +108,16 @@ class LetConfig extends base\LetConfigBase {
      * get list module from table config
      * @return array
      */
-    public static function getModuleList() {
-        $sql = "SELECT DISTINCT SUBSTRING(name, 1, INSTR(name, '.') - 1) as module FROM `letyii_config`";
-        $result = Yii::$app->db->createCommand($sql)->queryAll();
-        if ($result) {
-            return $result;
-        } else {
-            return false;
+    public static function getModuleList($noCache = FALSE) {
+        $module = Yii::$app->cache->get(self::$cacheModuleList); 
+        if ($module === FALSE OR $noCache === TRUE) {
+            $sql = "SELECT DISTINCT SUBSTRING(name, 1, INSTR(name, '.') - 1) as module FROM `letyii_config`";
+            $module = Yii::$app->db->createCommand($sql)->queryAll();
+            if (empty($module))
+                return false;
+            Yii::$app->cache->set(self::$cacheModuleList, $module);
         }
+        return $module;
     }
     
     public static function filter($module = '', $keyword = '') {

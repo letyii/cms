@@ -1,4 +1,10 @@
 <?php
+/**
+ * @link http://www.letyii.com/
+ * @copyright Copyright (c) 2014 Let.,ltd
+ * @license https://github.com/letyii/cms/blob/master/LICENSE
+ * @author Ngua Go <nguago@let.vn>, Trinh Ke Thanh <trinh.kethanh@gmail.com>
+ */
 
 namespace app\modules\config\controllers\backend;
 
@@ -25,18 +31,29 @@ class DefaultController extends BackendController
     }
     
     public function actionCreate() {
-        $assign['type'] = ArrayHelper::getValue($_GET, 'type');
-        if (empty($assign['type']))
+        $type = ArrayHelper::getValue($_GET, 'type');
+        if (empty($type))
             return FALSE;
         
-        $assign['model'] = new ConfigForm;
-        if ($assign['model']->load(Yii::$app->request->post())) {
-            echo 'ok';
-        } else {            
-            echo 'not ok';
+        // Convert module array
+        $modules = LetConfig::getModuleList();
+        foreach ($modules as $module) {
+            $result[$module['module']] = $module['module'];
+        }
+        $modules = $result;
+        
+        $model = new ConfigForm;
+        if ($model->load(Yii::$app->request->post())) {
+            $model->name = $model->module . '.' . $model->key;
+            $model->type = $type;
+            $model->save();
         }
         
-        return $this->render('create', $assign);
+        return $this->render('create', [
+            'type' => $type,
+            'model' => $model,
+            'modules' => $modules,
+        ]);
     }
     
 }

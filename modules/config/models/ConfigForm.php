@@ -3,32 +3,34 @@
  * @link http://www.letyii.com/
  * @copyright Copyright (c) 2014 Let.,ltd
  * @license https://github.com/letyii/cms/blob/master/LICENSE
- * @author Ngua Go <nguago@let.vn>, Trinh Ke Thanh <trinh.kethanh@gmail.com>
+ * @author Ngua Go <nguago@let.vn>
  */
 
 namespace app\modules\config\models;
 
 use Yii;
-use yii\base\Model;
+use app\modules\config\models\LetConfig;
 
 /**
  * LoginForm is the model behind the login form.
  */
-class ConfigForm extends Model
+class ConfigForm extends LetConfig
 {
-    public $type;
     public $module;
+    
     public $key;
-    public $value;
 
 
     /**
-     * @return array the validation rules.
+     * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['module', 'key'], 'required'],
+            [['name', 'module', 'key'], 'required'],
+            [['value'], 'string'],
+            [['name'], 'string', 'max' => 20],
+            [['type'], 'string', 'max' => 7]
         ];
     }
 }

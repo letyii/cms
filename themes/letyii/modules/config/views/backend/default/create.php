@@ -29,7 +29,11 @@ $this->registerCssFile(\yii\helpers\Url::base() . '/modules/config/assets/js/con
                 <h4>Tạo config</h4>
             </div>
             <div class="widget-body">
-                <?php echo $this->render('_create_' . $type, ['model' => $model]); ?>
+                <?php echo $this->render('_create_' . $type, [
+                    'type' => $type,
+                    'model' => $model,
+                    'modules' => $modules,
+                ]); ?>
             </div>
         </div>
     </div>
