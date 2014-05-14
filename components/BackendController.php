@@ -52,13 +52,14 @@ class BackendController extends Controller
 //    }
     public function beforeAction($action)
     {
-        if (Yii::$app->user->isGuest AND !($action->controller->module->id == 'member' AND $action->controller->id == 'backend/auth' AND $action->id == 'login')) {
+        // Check access
+        if (!Yii::$app->user->can('member.backendLogin') AND !($action->controller->module->id == 'member' AND $action->controller->id == 'backend/auth' AND $action->id == 'login')) {
 //            echo 111; die;
 //            \yii\web\User::setReturnUrl(\Yii::$app->request->getAbsoluteUrl());
-            return $this->redirect(\Yii::$app->urlManager->createUrl(['member/backend/auth/login']));
+//            return $this->redirect(\Yii::$app->urlManager->createUrl(['member/backend/auth/login']));
         }
         
-        
+                
 //        $user = Yii::$app->getUser();
 //        echo '<pre>'; var_dump(\Yii::$app->request->getAbsoluteUrl()); echo '</pre>'; return false;
 

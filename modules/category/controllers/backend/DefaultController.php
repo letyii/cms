@@ -10,7 +10,6 @@ namespace app\modules\category\controllers\backend;
 
 use Yii;
 use app\modules\category\models\letCategory;
-use app\modules\category\models\base\letCategorySearch;
 use app\components\BackendController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

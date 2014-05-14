@@ -7,6 +7,10 @@ return [
             'showScriptName' => false,
             'suffix' => '.html',
         ],
+        'authManager' => [
+            'class' => 'app\components\LetRbac',
+//            'class' => 'yii\rbac\DbManager',
+        ],
     ],
 ];
 

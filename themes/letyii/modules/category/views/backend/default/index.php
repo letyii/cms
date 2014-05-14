@@ -1,5 +1,4 @@
 <?php
-
 use yii\helpers\Html;
 
 \yii\jui\SortableAsset::register($this);
@@ -7,7 +6,6 @@ $this->registerCssFile(\yii\helpers\Url::base() . '/assetbundle/nestedset/css/tr
 $this->registerJsFile(\yii\helpers\Url::base() . '/assetbundle/nestedset/js/jquery.mjs.nestedSortable.js', [\yii\web\JqueryAsset::className()]);
 $this->registerJsFile(\yii\helpers\Url::base() . '/assetbundle/nestedset/js/tree.js', [\yii\web\JqueryAsset::className()]);
 ?>
-
 <!-- Content starts -->
 <div class="container">
 
@@ -18,9 +16,8 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/assetbundle/nestedset/js/tree
             <div class="btn-group pull-left" data-toggle="buttons">
                 <button class="btn btn-success" onclick="updateList('<?php echo yii\helpers\Url::toRoute(['backend/ajax/updatelist']); ?>');">
                     Lưu thay đổi
-                </button >
+                </button>
             </div>
-            <!-- Single button -->
             <div class="btn-group pull-right">
                 <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
                     Tạo danh mục <span class="caret"></span>

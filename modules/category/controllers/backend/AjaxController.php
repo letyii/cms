@@ -104,7 +104,6 @@ class AjaxController extends BackendController {
         } catch (ErrorException $e) {
             echo 0;
         }
-
     }
 
 }

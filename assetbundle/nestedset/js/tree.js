@@ -2,8 +2,6 @@ var categoryChangedList = new Array();
 var categoryChangedListJson = {};
 
 $(document).ready(function() {
-    var result;
-
     // Create tree sortable
     $('.tree').children().nestedSortable({
         handle: 'div',
