@@ -15,7 +15,7 @@ class LetConfig extends base\LetConfigBase {
 
     private $defaultConfigs = [];
     
-    private $cacheKey = 'config.ListFromDb';
+    private static $cacheKey = 'config.ListFromDb';
 
     /**
      * Get value by key
@@ -65,10 +65,10 @@ class LetConfig extends base\LetConfigBase {
      */
     public static function getListFromDb($noCache = FALSE) {
         $result = [];
-        $configs = Yii::$app->cache->get($this->cacheKey);
+        $configs = Yii::$app->cache->get(self::$cacheKey);
         if ($configs === FALSE OR $noCache === TRUE) {
             $configs = self::find()->asArray()->all();
-            Yii::$app->cache->set($this->cacheKey, $configs);
+            Yii::$app->cache->set(self::$cacheKey, $configs);
         }
         
         foreach ($configs as $config) {
@@ -101,5 +101,43 @@ class LetConfig extends base\LetConfigBase {
             return (eval('return (' . $value . ');'));
         else return FALSE;
     }
-
+    
+     /**
+     * get list module from table config
+     * @return array
+     */
+    public static function getModuleList() {
+        $sql = "SELECT DISTINCT SUBSTRING(name, 1, INSTR(name, '.') - 1) as module FROM `letyii_config`";
+        $result = Yii::$app->db->createCommand($sql)->queryAll();
+        if ($result) {
+            return $result;
+        } else {
+            return false;
+        }
+    }
+    
+    public static function filter($module = '', $keyword = '') {
+        $data = self::find();
+        if (!empty($module) AND in_array($module, self::getModuleList())) {
+            $data->andWhere('name LIKE :module', [':module' => $module . '.%']);
+        }
+        if (!empty($keyword)) {
+            $data->andWhere('name LIKE :keyword', [':keyword' => '%.%' . $keyword . '%']);
+        }
+        return $data->asArray()->all();
+    }
+    
+    public static function asDataAutocomplete ($data, $attribute) {
+        $result = [];
+        foreach ($data as $item) {
+            if (isset($item[$attribute])) {
+                $config = explode('.', $item[$attribute]);
+                if (isset($config[1]))
+                    $result[] = $config[1];
+                else
+                    $result[] = $config[0];
+            }
+        }
+        return $result;
+    }
 }
