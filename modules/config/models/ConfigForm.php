@@ -30,7 +30,7 @@ class ConfigForm extends LetConfig
             [['name', 'module', 'key'], 'required'],
             [['value'], 'string'],
             [['name'], 'string', 'max' => 20],
-            [['type'], 'string', 'max' => 7]
+            [['type'], 'string', 'max' => 20]
         ];
     }
 }

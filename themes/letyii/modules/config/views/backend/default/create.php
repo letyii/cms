@@ -3,7 +3,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use app\modules\config\models\LetConfig;
 $this->registerCssFile(\yii\helpers\Url::base() . '/modules/config/assets/css/config.css');
-$this->registerCssFile(\yii\helpers\Url::base() . '/modules/config/assets/js/config.js');
+$this->registerJsFile(\yii\helpers\Url::base() . '/modules/config/assets/js/config.js', [\yii\web\JqueryAsset::className()]);
 ?>
 <div style="height: 20px"></div>
 <div class="container">
