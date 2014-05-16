@@ -39,13 +39,19 @@ class DefaultController extends BackendController
         $ignoreModule = ['gii', 'config', 'debug'];
         foreach (array_keys(Yii::$app->modules) as $module) {
             if (!in_array($module, $ignoreModule))
-                $modules[] = $module;
+                $modules[$module] = $module;
         }
         
         $model = new ConfigForm;
         if ($model->load(Yii::$app->request->post())) {
             $model->name = $model->module . '.' . $model->key;
             $model->type = $type;
+            if ($type == 'dropdown' OR $type == 'checkbox') {
+                foreach ($model->value as $valueOption) {
+                    $value[$valueOption] = FALSE;
+                }
+                $model->value = json_encode($value);
+            }
             $model->save();
         }
         
