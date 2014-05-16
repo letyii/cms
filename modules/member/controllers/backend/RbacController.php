@@ -10,6 +10,8 @@ namespace app\modules\member\controllers\backend;
 
 use Yii;
 use app\components\BackendController;
+use app\modules\member\models\LetAuthItem;
+use app\modules\member\models\search\LetAuthItemSearch;
 
 class RbacController extends BackendController
 {
@@ -26,11 +28,17 @@ class RbacController extends BackendController
     
     public function actionRole()
     {
-        return $this->render('role');
+        $searchModel = new LetAuthItemSearch;
+        $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
+
+        return $this->render('role', [
+            'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
+        ]);
     }
     
     public function actionPermission()
     {
         return $this->render('permission');
-    }
+    }    
 }

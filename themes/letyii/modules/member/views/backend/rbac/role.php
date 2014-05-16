@@ -31,7 +31,7 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/member/assets/js/memb
                             </button>
                         </div>-->
                         <div class="btn-group pull-right">
-                            <a class="btn btn-success" href="<?php echo yii\helpers\Url::toRoute(['backend/ajax/updatelist']); ?>">
+                            <a class="btn btn-success" href="javascript:;" onclick="js:createRole('<?php echo yii\helpers\Url::toRoute(['backend/ajax/createrole']); ?>');">
                                 Tạo vai trò
                             </a>
                         </div>
@@ -47,6 +47,49 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/member/assets/js/memb
                         </div>
                         <div class="widget-body no-padd">
                             <div class="table-responsive">
+                                <?= app\components\LetGridView::widget([
+                                    'dataProvider' => $dataProvider,
+                                    'filterModel' => $searchModel,                                    
+                                    'columns' => [
+                                        ['class' => 'yii\grid\SerialColumn'],
+
+                                        'name',
+                                        'type',
+                                        'description:ntext',
+                                        'rule_name',
+                                        'data:ntext',
+                                        // 'created_at',
+                                        // 'updated_at',
+
+                                        [
+                                            'class' => 'app\components\LetActionColumn',
+                                            'options' => [
+                                                'width' => '90px',
+                                            ],
+                                            'buttons' => [
+                                                'update' => function ($url, $model) {
+                                                    $url = yii\helpers\Url::toRoute(['backend/ajax/updaterole']);
+                                                    return Html::a('<i class="fa fa-pencil"></i>', $url, [
+                                                        'class' => 'btn btn-xs btn-danger',
+                                                        'title' => Yii::t('yii', 'Update'),
+                                                        'onclick' => "js:updateRole('{$url}', '{$model->name}'); return false;"
+                                                    ]);
+                                                },          
+                                                'delete' => function ($url, $model) {
+                                                    $url = yii\helpers\Url::toRoute(['backend/ajax/deleterole']);
+                                                    return Html::a('<i class="fa fa-trash-o"></i>', $url, [
+                                                        'class' => 'btn btn-xs btn-success',
+                                                        'title' => Yii::t('yii', 'Delete'),
+                                                        'onclick' => "js:deleteRole('{$url}', '{$model->name}'); return false;"
+                                                    ]);
+                                                }
+                                            ]
+                                        ],
+                                    ],
+                                ]); 
+                                ?>
+                                
+                                <?php /*
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
@@ -79,6 +122,7 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/member/assets/js/memb
                                         </tr>
                                     </tbody>
                                 </table>
+                                */ ?>
                             </div>
                         </div>
                     </div>
