@@ -80,7 +80,7 @@ BackendAsset::register($this);
 
                 <!-- Mainbar starts -->
                 <div class="mainbar">
-                    <?php echo $this->render('//block/_box_dashboard'); ?>
+                    <?php // echo $this->render('//block/_box_dashboard'); ?>
                     <?php echo $this->render('//block/_box_pathway'); ?>
 
                     <?php echo $content; ?>

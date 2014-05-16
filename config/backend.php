@@ -3,7 +3,7 @@
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
-    'language' => 'vi-VN',
+    'language' => 'vi',
     'bootstrap' => ['log'],
     'extensions' => require(__DIR__ . '/../vendor/yiisoft/extensions.php'),
     'components' => [

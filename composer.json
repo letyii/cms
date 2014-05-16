@@ -16,6 +16,7 @@
 		"yiisoft/yii2-bootstrap": "*",
 		"yiisoft/yii2-swiftmailer": "*",
 		"yiisoft/yii2-jui": "*",
+        "letyii/yii2-tinymce": "dev-master",
         "creocoder/yii2-nested-set-behavior": "dev-master",
         "marciocamello/yii2-x-editable": "dev-master"
 	},

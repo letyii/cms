@@ -19,6 +19,8 @@ class ConfigForm extends LetConfig
     public $module;
     
     public $key;
+    
+//    public $saveType = 1; // 1 - save to list | 0 - apply to edit
 
 
     /**

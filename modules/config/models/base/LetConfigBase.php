@@ -30,7 +30,7 @@ class LetConfigBase extends \yii\db\ActiveRecord
             [['name'], 'required'],
             [['value'], 'string'],
             [['name'], 'string', 'max' => 20],
-            [['type'], 'string', 'max' => 7]
+            [['type'], 'string', 'max' => 8]
         ];
     }
 

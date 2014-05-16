@@ -1,33 +1,22 @@
 <?php
-use yii\widgets\ActiveForm;
-use app\modules\config\models\LetConfig;
-?>
-<?php
+use yii\bootstrap\ActiveForm;
 $form = ActiveForm::begin([
     'id' => 'formDefault',
-    'options' => ['role' => 'form', 'class' => 'form-horizontal'],
+    'layout' => 'horizontal',
+    'fieldConfig' => [
+        'template' => "{label}\n<div class='col-lg-10'>{input}\n{hint}\n{error}</div>",
+        'horizontalCssClasses' => [
+            'label' => 'col-lg-2',
+        ],
+    ],
 ]);
 ?>
-<div class="form-group">
-    <label class="col-lg-2 control-label">Module</label>
-    <div class="col-lg-10">
-        <?php echo $form->field($model, 'module')->dropDownList($modules, ['class' => 'form-control', 'prompt'=>'Chọn module'])->label(FALSE); ?>
-    </div>
-</div>
 
-<div class="form-group">
-    <label class="col-lg-2 control-label">Key</label>
-    <div class="col-lg-10">
-        <?php echo $form->field($model, 'key')->textInput(['class' => 'form-control', 'placeholder' => 'Nhập key'])->label(FALSE); ?>
-    </div>
-</div>
+<?php echo $form->field($model, 'module')->dropDownList($modules, ['class' => 'form-control', 'prompt'=>'Chọn module']); ?>
 
-<div class="form-group">
-    <label class="col-lg-2 control-label">Value</label>
-    <div class="col-lg-10">
-        <?php echo $form->field($model, 'value')->textarea(['class' => 'form-control', 'placeholder' => 'Nhập nội dung', 'rows' => 4])->label(FALSE); ?>
-    </div>
-</div>
+<?php echo $form->field($model, 'key')->textInput(['class' => 'form-control', 'placeholder' => 'Nhập key']); ?>
+
+<?php echo $form->field($model, 'value')->textarea(['class' => 'form-control', 'placeholder' => 'Nhập value']); ?>
 
 <div class="clearfix"></div>
 <?php ActiveForm::end(); ?>

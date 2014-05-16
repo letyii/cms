@@ -36,11 +36,11 @@ class DefaultController extends BackendController
             return FALSE;
         
         // Convert module array
-        $modules = LetConfig::getModuleList();
-        foreach ($modules as $module) {
-            $result[$module['module']] = $module['module'];
+        $ignoreModule = ['gii', 'config', 'debug'];
+        foreach (array_keys(Yii::$app->modules) as $module) {
+            if (!in_array($module, $ignoreModule))
+                $modules[] = $module;
         }
-        $modules = $result;
         
         $model = new ConfigForm;
         if ($model->load(Yii::$app->request->post())) {
