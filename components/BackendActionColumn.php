@@ -6,7 +6,7 @@ use Yii;
 use yii\grid\ActionColumn;
 use yii\helpers\Html;
 
-class LetActionColumn extends ActionColumn {
+class BackendActionColumn extends ActionColumn {
     
     public $template = '{update} {view} {delete}';
 
@@ -15,6 +15,15 @@ class LetActionColumn extends ActionColumn {
      */
     protected function initDefaultButtons()
     {
+        if (!isset($this->buttons['boolean'])) {
+            $this->buttons['boolean'] = function ($url, $model) {
+                return Html::a('<i class="fa fa-times"></i>', $url, [
+                    'class' => 'btn btn-xs btn-info',
+                    'title' => Yii::t('yii', 'View'),
+                    'data-pjax' => '0',
+                ]);
+            };
+        }
         if (!isset($this->buttons['view'])) {
             $this->buttons['view'] = function ($url, $model) {
                 return Html::a('<i class="fa fa-times"></i>', $url, [

@@ -4,7 +4,7 @@ namespace app\components;
 
 use yii\grid\GridView;
 
-class LetGridView extends GridView {
+class BackendGridView extends GridView {
         
     public $layout = "{items}\n{pager}";
     

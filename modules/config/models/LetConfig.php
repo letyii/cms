@@ -113,7 +113,11 @@ class LetConfig extends base\LetConfigBase {
         $module = Yii::$app->cache->get(self::$cacheModuleList); 
         if ($module === FALSE OR $noCache === TRUE) {
             $sql = "SELECT DISTINCT SUBSTRING(name, 1, INSTR(name, '.') - 1) as module FROM `letyii_config`";
-            $module = Yii::$app->db->createCommand($sql)->queryAll();
+            $data = Yii::$app->db->createCommand($sql)->queryAll();
+            $module = [];
+            foreach ($data as $value) {
+                $module[] = $value['module'];
+            }
             if (empty($module))
                 return false;
             Yii::$app->cache->set(self::$cacheModuleList, $module);

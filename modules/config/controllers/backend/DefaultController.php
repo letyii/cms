@@ -27,17 +27,14 @@ class DefaultController extends BackendController
             LetConfig::saveAll($configs, $dataPost);
             $configs = LetConfig::filter($module, $keyword);
         }
-//        foreach($config as $key => $value) {
-//            $key_spit = explode('.', $key);
-//            if(is_string($value['value']) and !isset($_REQUEST['config_'.$key_spit[1]])) {
-//                $_REQUEST['config_'.$key_spit[1]] = $value['value'];
-//            }
-//        }
-
-
-        $module = LetConfig::getModuleList();
+        
+        $modules = ['' => 'Lọc theo module'];
+        foreach (LetConfig::getModuleList(TRUE) as $module) {
+            $modules[$module] = $module;
+        }
+        
         return $this->render('index', [
-            'module' => $module,
+            'modules' => $modules,
             'configs' => $configs,
         ]);
     }

@@ -47,7 +47,7 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/member/assets/js/memb
                         </div>
                         <div class="widget-body no-padd">
                             <div class="table-responsive">
-                                <?= app\components\LetGridView::widget([
+                                <?= app\components\BackendGridView::widget([
                                     'dataProvider' => $dataProvider,
                                     'filterModel' => $searchModel,                                    
                                     'columns' => [
@@ -62,7 +62,7 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/member/assets/js/memb
                                         // 'updated_at',
 
                                         [
-                                            'class' => 'app\components\LetActionColumn',
+                                            'class' => 'app\components\BackendActionColumn',
                                             'options' => [
                                                 'width' => '90px',
                                             ],
