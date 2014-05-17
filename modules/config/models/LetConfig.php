@@ -10,6 +10,8 @@ namespace app\modules\config\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
+use yii\helpers\Json;
 
 class LetConfig extends base\LetConfigBase {
 
@@ -34,7 +36,6 @@ class LetConfig extends base\LetConfigBase {
      * @return string
      */
     public static function get($key, $defaultValue = '') {
-        $this->beforeSave($insert);
         $configs = self::getListFromDb();
         if (!isset($configs[$key])) { // Neu khong ton tai key trong db
             $config = self::getDefault($key); // Tim trong file config cua module xem co khong
@@ -130,7 +131,7 @@ class LetConfig extends base\LetConfigBase {
         }
         return $data->asArray()->all();
     }
-    
+
     public static function asDataAutocomplete ($data, $attribute) {
         $result = [];
         foreach ($data as $item) {
@@ -143,5 +144,42 @@ class LetConfig extends base\LetConfigBase {
             }
         }
         return $result;
+    }
+
+    /**
+     * Save all data
+     * @param array $dataDb is data get from DB
+     * @param array $dataPost is data get from $_POST
+     */
+    public static function saveAll ($dataDb, $dataPost) {
+        foreach ($dataDb as $config) {
+            if (!isset($dataPost[$config['name']])) // Gia tri cua name trong db khong ton tai tren form thi bo qua
+                continue;
+            if (in_array($config['type'], ['text', 'textarea'])) { // Truong hop luu dang text va textarea
+                $valueToDb = Html::encode($dataPost[$config['name']]);
+            } elseif ($config['type'] == 'dropdown') { // Truong hop luu dang dropdown
+                $valueDb = Json::decode($config['value']);
+                foreach ($valueDb as $optionNameDb => $optionValueDb) { // Xu ly tung Option lay trong db cua moi config
+                    if ($dataPost[$config['name']] == $optionNameDb)
+                        $valueToDb[$optionNameDb] = TRUE;
+                    else
+                        $valueToDb[$optionNameDb] = FALSE;
+                }
+                $valueToDb = Json::encode($valueToDb);
+            } elseif ($config['type'] == 'checkbox') { // Truong hop luu dang checkbox
+                $valueDb = Json::decode($config['value']);
+                foreach ($valueDb as $optionNameDb => $optionValueDb) { // Xu ly tung Option lay trong db cua moi config
+                    if (in_array($optionNameDb, $dataPost[$config['name']]))
+                        $valueToDb[$optionNameDb] = TRUE;
+                    else
+                        $valueToDb[$optionNameDb] = FALSE;
+                }
+                $valueToDb = Json::encode($valueToDb);
+            }
+            $model = self::findOne($config['name']);
+            $model->value = $valueToDb;
+            $model->save();
+            unset($valueToDb);
+        }
     }
 }

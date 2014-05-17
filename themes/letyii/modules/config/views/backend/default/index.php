@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\helpers\Url;
+use \yii\helpers\Json;
 use app\modules\config\models\LetConfig;
 $this->registerCssFile(\yii\helpers\Url::base() . '/modules/config/assets/css/config.css');
 $this->registerCssFile(\yii\helpers\Url::base() . '/modules/config/assets/js/config.js');
@@ -8,7 +9,7 @@ $this->registerCssFile(\yii\helpers\Url::base() . '/modules/config/assets/js/con
 <div style="height: 20px"></div>
 <div class="container">
      <div class="btn-group pull-left" data-toggle="buttons">
-                <button class="btn btn-success" onclick="updateList('<?php echo yii\helpers\Url::toRoute(['backend/ajax/updatelist']); ?>');">
+                    <button class="btn btn-success" onclick='$("#formDefault").submit();'>
                     Lưu thay đổi
                 </button >
             </div>
@@ -52,12 +53,9 @@ $this->registerCssFile(\yii\helpers\Url::base() . '/modules/config/assets/js/con
                             </td>
                             <div id="suggestions"></div>
                             <td align="right" style="width: 16%; padding-left: 12px;">
-                                
-
-                                
                                 <select class="form-control">
                                     <option value="">Chọn Module</option>
-                                    <?php foreach ($module as $key => $value): ?>
+                                    <?php foreach ($module as $value): ?>
                                     <option value="<?php echo Html::encode($value['module']);?>"><?php echo Html::encode($value['module']);?></option>
                                     <?php endforeach; ?>
                                 </select>
@@ -68,30 +66,41 @@ $this->registerCssFile(\yii\helpers\Url::base() . '/modules/config/assets/js/con
                 <div class="clearfix"></div>
             </div>
             <div class="widget-body">
-                <form class="form-horizontal" role="form">
-
+                <?php echo Html::beginForm('', 'POST', ['id' => 'formDefault', 'role' => 'form', 'class' => 'form-horizontal']); ?>
+                    <?php foreach ($configs as $config): ?>
                     <div class="form-group">
-                        <label class="col-lg-2 control-label">Max Level</label>
+                        <?php if($config['type'] == "text" || $config['type'] == "textarea"): ?>
+                        <label class="col-lg-2 control-label"><?php echo $config['name'];?></label>
                         <div class="col-lg-10">
-                            <input type="text" name="config_max_level" id="config_max_level" class="form-control">
+                            <input type="text" name="config[<?php echo $config['name']; ?>]" id="config_max_level"
+                                   class="form-control" value="<?php echo $config['value'];?>">
                         </div>
-                    </div> 
-                    
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Min Level</label>
-                        <div class="col-lg-10">
-                            <input type="text" name="config_min_level" id="config_min_level" class="form-control">
-                        </div>
-                    </div> 
-                    
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Login Expire</label>
-                        <div class="col-lg-10">
-                            <input type="text" name="" class="form-control">
-                        </div>
-                    </div> 
-                    
-                </form>
+                        <?php elseif ($config['type'] == "dropdown" AND $config['value'] !== '[]'): ?>
+                            <label class="col-lg-2 control-label"><?php echo $config['name'];?></label>
+                            <?php $values = Json::decode($config['value']); ?>
+                            <div class="col-lg-10">
+                                <select class="form-control" name="config[<?php echo $config['name']; ?>]">
+                                    <?php foreach($values as $optionName => $value): ?>
+                                        <option value="<?php echo $optionName;?>" <?php echo $value == TRUE? "selected" : ""; ?>><?php echo $optionName; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        <?php elseif ($config['type'] == "checkbox"): ?>
+                            <label class="col-lg-2 control-label"><?php echo $config['name'];?></label>
+                            <?php $values = json_decode($config['value']); ?>
+                            <div class="col-lg-10">
+                                <?php foreach($values as $optionName => $value): ?>
+                                <label class="checkbox-inline">
+                                <input <?php echo $value == TRUE? "checked" : ""; ?>
+                                        type="checkbox" name="config[<?php echo $config['name']; ?>][<?php echo $optionName; ?>]" id="config_max_level"
+                                        class="" value="<?php echo $optionName;?>"><?php echo $optionName;?>
+                                </label>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    <?php endforeach; ?>
+                <?php echo Html::endForm(); ?>
             </div>
         </div>
     </div>

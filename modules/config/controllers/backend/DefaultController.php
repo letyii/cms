@@ -19,15 +19,27 @@ class DefaultController extends BackendController
 {
     public function actionIndex()
     {
-        $config = LetConfig::getListFromDb();
-        foreach($config as $key => $value) {
-            $key_spit = explode('.', $key);
-            if(is_string($value['value']) and !isset($_REQUEST['config_'.$key_spit[1]])) {
-                $_REQUEST['config_'.$key_spit[1]] = $value['value'];
-            }
+        $module = Yii::$app->request->get('module', '');
+        $keyword = Yii::$app->request->get('keyword', '');
+        $configs = LetConfig::filter($module, $keyword);
+
+        if ($dataPost = Yii::$app->request->post('config')) {
+            LetConfig::saveAll($configs, $dataPost);
+            $configs = LetConfig::filter($module, $keyword);
         }
+//        foreach($config as $key => $value) {
+//            $key_spit = explode('.', $key);
+//            if(is_string($value['value']) and !isset($_REQUEST['config_'.$key_spit[1]])) {
+//                $_REQUEST['config_'.$key_spit[1]] = $value['value'];
+//            }
+//        }
+
+
         $module = LetConfig::getModuleList();
-        return $this->render('index', array('module' => $module));
+        return $this->render('index', [
+            'module' => $module,
+            'configs' => $configs,
+        ]);
     }
     
     public function actionCreate() {
@@ -47,8 +59,11 @@ class DefaultController extends BackendController
             $model->name = $model->module . '.' . $model->key;
             $model->type = $type;
             if ($type == 'dropdown' OR $type == 'checkbox') {
+                $value = [];
                 foreach ($model->value as $valueOption) {
-                    $value[$valueOption] = FALSE;
+                    if (!empty($valueOption)) {
+                        $value[$valueOption] = FALSE;
+                    }
                 }
                 $model->value = json_encode($value);
             }
