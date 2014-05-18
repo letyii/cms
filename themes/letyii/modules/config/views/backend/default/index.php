@@ -78,16 +78,19 @@ use app\modules\config\models\LetConfig;
                 <?php foreach ($configs as $config): ?>
                     <div class="form-group">
                         <?php if ($config['type'] == "text" || $config['type'] == "textarea"): ?>
-                            <label class="col-lg-2 control-label"><?php echo $config['name']; ?></label>
-                            <div class="col-lg-10">
+                            <label class="col-lg-3 control-label"><?php echo $config['name']; ?>
+                                <a href="<?php echo Url::toRoute(['backend/default/update', 'name' => $config['name']]); ?>"><i class="fa fa-pencil"></i></a>
+                            </label>
+                            <div class="col-lg-9">
                                 <?php echo Html::input($config['type'], 'config[' . $config['name'] . ']', $config['value'], [
                                     'class' => 'form-control',
                                 ]) ?>
                             </div>
                         <?php elseif ($config['type'] == "dropdown" AND $config['value'] !== '[]'): ?>
-                            <label class="col-lg-2 control-label"><?php echo $config['name']; ?></label>
-
-                            <div class="col-lg-10">
+                            <label class="col-lg-3 control-label"><?php echo $config['name']; ?>
+                                <a href="<?php echo Url::toRoute(['backend/default/update', 'name' => $config['name']]); ?>"><i class="fa fa-pencil"></i></a>
+                            </label>
+                            <div class="col-lg-9">
                                 <?php $values = Json::decode($config['value']); ?>
                                 <select class="form-control" name="config[<?php echo $config['name']; ?>]">
                                     <?php foreach ($values as $optionName => $value): ?>
@@ -96,9 +99,11 @@ use app\modules\config\models\LetConfig;
                                 </select>
                             </div>
                         <?php elseif ($config['type'] == "checkbox"): ?>
-                            <label class="col-lg-2 control-label"><?php echo $config['name']; ?></label>
+                            <label class="col-lg-3 control-label"><?php echo $config['name']; ?>
+                                <a href="<?php echo Url::toRoute(['backend/default/update', 'name' => $config['name']]); ?>"><i class="fa fa-pencil"></i></a>
+                            </label>
                                 <?php $values = json_decode($config['value']); ?>
-                            <div class="col-lg-10">
+                            <div class="col-lg-9">
                                 <?php foreach ($values as $optionName => $value): ?>
                                 <label class="checkbox-inline">
                                     <input <?php echo $value == TRUE ? "checked" : ""; ?>

@@ -28,7 +28,7 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/config/assets/js/conf
                 <h4>Tạo config</h4>
             </div>
             <div class="widget-body">
-                <?php echo $this->render('_form_' . Yii::$app->request->get('type'), [
+                <?php echo $this->render('_form_' . $model->type, [
                     'model' => $model,
                     'modules' => $modules,
                 ]); ?>

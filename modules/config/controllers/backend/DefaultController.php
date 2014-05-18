@@ -40,7 +40,7 @@ class DefaultController extends BackendController
     }
     
     public function actionCreate() {
-        $type = ArrayHelper::getValue($_GET, 'type');
+        $type = Yii::$app->request->get('type');
         if (empty($type))
             return FALSE;
         
@@ -68,10 +68,37 @@ class DefaultController extends BackendController
         }
         
         return $this->render('create', [
-            'type' => $type,
             'model' => $model,
             'modules' => $modules,
         ]);
     }
-    
+
+    public function actionUpdate() {
+        $name = Yii::$app->request->get('name');
+        if (empty($name))
+            return FALSE;
+
+        $module = Yii::$app->request->get('module', '');
+//        $keyword = Yii::$app->request->get('keyword', '');
+        $configs = LetConfig::get($name, "");
+//        die;
+        // Convert module array
+        $ignoreModule = ['gii', 'config', 'debug'];
+        foreach (array_keys(Yii::$app->modules) as $module) {
+            if (!in_array($module, $ignoreModule))
+                $modules[$module] = $module;
+        }
+
+        $model = ConfigForm::findOne($name);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->name = $model->module . '.' . $model->key;
+            $model->type = $type;
+            $model->save();
+        }
+
+        return $this->render('update', [
+            'model' => $model,
+            'modules' => $modules,
+        ]);
+    }
 }
