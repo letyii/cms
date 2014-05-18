@@ -10,6 +10,7 @@ namespace app\modules\config\models;
 
 use Yii;
 use app\modules\config\models\LetConfig;
+use yii\db\ActiveQuery;
 
 /**
  * LoginForm is the model behind the login form.
@@ -35,4 +36,19 @@ class ConfigForm extends LetConfig
             [['type'], 'string', 'max' => 20]
         ];
     }
+    
+    /**
+     * @inheritdoc
+     */
+    public function afterFind()
+    {
+        $array = explode('.', $this->name);
+        if (isset($array[1])) {
+            $this->module = $array[0];
+            $this->key = $array[1];
+        } else
+            $this->key = $array[1];
+        parent::afterFind();
+    }
+
 }
