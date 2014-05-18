@@ -8,7 +8,10 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/config/assets/js/conf
 <div style="height: 20px"></div>
 <div class="container">
     <div class="btn-group pull-left" data-toggle="buttons">
-        <button class="btn btn-success" onclick="$('#formDefault').submit();">Lưu thay đổi</button>
+        <?php echo Html::button('Lưu thay đổi', [
+            'class' => 'btn btn-success',
+            'onclick' => '$("#formDefault").submit();',
+        ]) ?>
     </div>
     <div class="btn-group pull-right">
         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
