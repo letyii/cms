@@ -1,12 +1,10 @@
 <?php
-
 namespace app\components;
 
 use Yii;
-use yii\grid\ActionColumn;
 use yii\helpers\Html;
 
-class BackendActionColumn extends ActionColumn {
+class ActionColumn extends \yii\grid\ActionColumn {
     
     public $template = '{update} {view} {delete}';
 

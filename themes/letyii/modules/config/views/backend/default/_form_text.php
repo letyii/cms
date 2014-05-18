@@ -1,6 +1,6 @@
 <?php
-use app\components\BackendActiveForm;
-$form = BackendActiveForm::begin([
+use app\components\ActiveForm;
+$form = ActiveForm::begin([
     'id' => 'formDefault',
     'layout' => 'horizontal',
 ]);
@@ -13,4 +13,4 @@ $form = BackendActiveForm::begin([
 <?php echo $form->field($model, 'value')->textInput(['class' => 'form-control', 'placeholder' => 'Nhập value']); ?>
 
 <div class="clearfix"></div>
-<?php BackendActiveForm::end(); ?>
+<?php ActiveForm::end(); ?>

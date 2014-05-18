@@ -1,11 +1,9 @@
 <?php
-
 namespace app\components;
 
-use yii\grid\GridView;
 use yii\helpers\Html;
 
-class BackendGridView extends GridView {
+class GridView extends \yii\grid\GridView {
     public $title = 'Table list';
             
     public $layout = "

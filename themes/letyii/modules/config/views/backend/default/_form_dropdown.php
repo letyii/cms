@@ -1,6 +1,6 @@
 <?php
-use app\components\BackendActiveForm;
-$form = BackendActiveForm::begin([
+use app\components\ActiveForm;
+$form = ActiveForm::begin([
     'id' => 'formDefault',
     'layout' => 'horizontal',
 ]);
@@ -34,4 +34,4 @@ function add() {
 
 <div class="pull-right"><button type="button" class="btn btn-default" onclick='add()'>Thêm lựa chọn</button></div>
 <div class="clearfix"></div>
-<?php BackendActiveForm::end(); ?>
+<?php ActiveForm::end(); ?>
