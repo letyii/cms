@@ -11,7 +11,15 @@ $form = BackendActiveForm::begin([
 <?php echo $form->field($model, 'key')->textInput(['class' => 'form-control', 'placeholder' => 'Nhập key']); ?>
 
 <div id="option_list">
-	<?php echo $form->field($model, 'value[]')->textInput(['class' => 'form-control', 'placeholder' => 'Nhập value']); ?>
+    <?php
+    if (empty($model->optionList)) {
+        echo $form->field($model, 'value[]')->textInput(['class' => 'form-control', 'placeholder' => 'Nhập value']);
+    } else {
+        foreach ($model->optionList as $optonName => $optionValue) {
+            echo $form->field($model, 'value[]')->textInput(['class' => 'form-control', 'placeholder' => 'Nhập value', 'value' => $optonName]);
+        }
+    }
+    ?>
 </div>
 
 <div class="clearfix"></div>

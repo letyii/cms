@@ -15,9 +15,48 @@ use yii\helpers\Json;
 
 class LetConfig extends base\LetConfigBase {
 
+    public $module;
+
+    public $key;
+
+    public $optionList;
+
     private static $cacheListFromDb = 'config.ListFromDb';
     
     private static $cacheModuleList = 'config.ModuleList';
+
+//    public $saveType = 1; // 1 - save to list | 0 - apply to edit
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['name', 'module', 'key'], 'required'],
+            [['value'], 'string'],
+            [['name'], 'string', 'max' => 50],
+            [['type'], 'string', 'max' => 20]
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function afterFind()
+    {
+        $array = explode('.', $this->name);
+        if (isset($array[1])) {
+            $this->module = $array[0];
+            $this->key = $array[1];
+        } else
+            $this->key = $array[1];
+
+        if ($this->type == "dropdown" OR $this->type == "checkbox") {
+            $this->optionList = Json::decode($this->value);
+        }
+        parent::afterFind();
+    }
 
     /**
      * @inheritdoc
@@ -28,7 +67,26 @@ class LetConfig extends base\LetConfigBase {
         Yii::$app->cache->delete(self::$cacheModuleList);
         return parent::beforeSave($insert);
     }
-    
+
+    /**
+     * Convert POST data to DB data
+     * @param string $type
+     */
+    public function convertData($type = 'text') {
+        $this->name = $this->module . '.' . $this->key;
+        $this->type = $type;
+
+        if ($type == 'dropdown' OR $type == 'checkbox') {
+            $value = [];
+            foreach ($this->value as $valueOption) {
+                if (!empty($valueOption)) {
+                    $value[$valueOption] = FALSE;
+                }
+            }
+            $this->value = Json::encode($value);
+        }
+    }
+
     /**
      * Get value by key
      * @param string $key

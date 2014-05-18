@@ -11,7 +11,7 @@ namespace app\modules\config\controllers\backend;
 use Yii;
 use app\components\BackendController;
 use app\modules\config\models\LetConfig;
-use app\modules\config\models\ConfigForm;
+use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 
@@ -28,46 +28,42 @@ class DefaultController extends BackendController
             LetConfig::saveAll($configs, $dataPost);
             $configs = LetConfig::filter($module, $keyword);
         }
-        
+
         $modules = ['' => 'Lọc theo module'];
         foreach (LetConfig::getModuleList(TRUE) as $module) {
             $modules[$module] = $module;
         }
-        
+
         return $this->render('index', [
             'modules' => $modules,
             'configs' => $configs,
         ]);
     }
-    
-    public function actionCreate() {
+
+    public function actionCreate()
+    {
         $type = Yii::$app->request->get('type');
         if (empty($type))
             return FALSE;
-        
+
         // Convert module array
         $ignoreModule = ['gii', 'config', 'debug'];
         foreach (array_keys(Yii::$app->modules) as $module) {
             if (!in_array($module, $ignoreModule))
                 $modules[$module] = $module;
         }
-        
-        $model = new ConfigForm;
+
+        $model = new LetConfig;
         if ($model->load(Yii::$app->request->post())) {
-            $model->name = $model->module . '.' . $model->key;
-            $model->type = $type;
-            if ($type == 'dropdown' OR $type == 'checkbox') {
-                $value = [];
-                foreach ($model->value as $valueOption) {
-                    if (!empty($valueOption)) {
-                        $value[$valueOption] = FALSE;
-                    }
-                }
-                $model->value = Json::encode($value);
-            }
+            $model->convertData($type);
+           /* if (!$model->validate()) {
+                var_dump($model->value);
+                var_dump($model->errors);
+//                var_dump($model);
+            }*/
             $model->save();
         }
-        
+
         return $this->render('create', [
             'model' => $model,
             'modules' => $modules,
@@ -79,10 +75,6 @@ class DefaultController extends BackendController
         if (empty($name))
             return FALSE;
 
-        $module = Yii::$app->request->get('module', '');
-//        $keyword = Yii::$app->request->get('keyword', '');
-        $configs = LetConfig::get($name, "");
-//        die;
         // Convert module array
         $ignoreModule = ['gii', 'config', 'debug'];
         foreach (array_keys(Yii::$app->modules) as $module) {
@@ -90,13 +82,19 @@ class DefaultController extends BackendController
                 $modules[$module] = $module;
         }
 
-        $model = ConfigForm::findOne($name);
+        $model = LetConfig::findOne($name);
         if ($model->load(Yii::$app->request->post())) {
             $model->name = $model->module . '.' . $model->key;
-            $model->type = $type;
-            $model->save();
+            $model->convertData($model->type);
+            /*if (!$model->validate()) {
+                var_dump($model->value);
+                var_dump($model->errors);
+//                var_dump($model);
+            }*/
+            var_dump($model->errors);
+            if ($model->save())
+                return $this->redirect(Url::toRoute(['backend/default/index']));
         }
-
         return $this->render('update', [
             'model' => $model,
             'modules' => $modules,

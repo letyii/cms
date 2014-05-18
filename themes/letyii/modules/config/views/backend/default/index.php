@@ -76,9 +76,9 @@ use app\modules\config\models\LetConfig;
             <div class="widget-body">
                 <?php echo Html::beginForm('', 'POST', ['id' => 'formDefault', 'role' => 'form', 'class' => 'form-horizontal']); ?>
                 <?php foreach ($configs as $config): ?>
+                    <?php if ($config['type'] == "text" || $config['type'] == "textarea"): ?>
                     <div class="form-group">
-                        <?php if ($config['type'] == "text" || $config['type'] == "textarea"): ?>
-                            <label class="col-lg-3 control-label"><?php echo $config['name']; ?>
+                        <label class="col-lg-3 control-label"><?php echo $config['name']; ?>
                                 <a href="<?php echo Url::toRoute(['backend/default/update', 'name' => $config['name']]); ?>"><i class="fa fa-pencil"></i></a>
                             </label>
                             <div class="col-lg-9">
@@ -86,7 +86,9 @@ use app\modules\config\models\LetConfig;
                                     'class' => 'form-control',
                                 ]) ?>
                             </div>
-                        <?php elseif ($config['type'] == "dropdown" AND $config['value'] !== '[]'): ?>
+                    </div>
+                    <?php elseif ($config['type'] == "dropdown" AND $config['value'] !== '[]'): ?>
+                    <div class="form-group">
                             <label class="col-lg-3 control-label"><?php echo $config['name']; ?>
                                 <a href="<?php echo Url::toRoute(['backend/default/update', 'name' => $config['name']]); ?>"><i class="fa fa-pencil"></i></a>
                             </label>
@@ -98,7 +100,9 @@ use app\modules\config\models\LetConfig;
                                     <?php endforeach; ?>
                                 </select>
                             </div>
-                        <?php elseif ($config['type'] == "checkbox"): ?>
+                    </div>
+                    <?php elseif ($config['type'] == "checkbox"): ?>
+                    <div class="form-group">
                             <label class="col-lg-3 control-label"><?php echo $config['name']; ?>
                                 <a href="<?php echo Url::toRoute(['backend/default/update', 'name' => $config['name']]); ?>"><i class="fa fa-pencil"></i></a>
                             </label>
@@ -112,8 +116,8 @@ use app\modules\config\models\LetConfig;
                                 </label>
                                 <?php endforeach; ?>
                             </div>
-                    <?php endif; ?>
                     </div>
+                    <?php endif; ?>
                 <?php endforeach; ?>
                 <?php echo Html::endForm(); ?>
             </div>
