@@ -13,6 +13,7 @@ use app\components\BackendController;
 use app\modules\config\models\LetConfig;
 use app\modules\config\models\ConfigForm;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 
 
 class DefaultController extends BackendController
@@ -62,7 +63,7 @@ class DefaultController extends BackendController
                         $value[$valueOption] = FALSE;
                     }
                 }
-                $model->value = json_encode($value);
+                $model->value = Json::encode($value);
             }
             $model->save();
         }
