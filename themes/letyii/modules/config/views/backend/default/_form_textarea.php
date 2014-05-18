@@ -1,14 +1,8 @@
 <?php
-use yii\bootstrap\ActiveForm;
-$form = ActiveForm::begin([
+use app\components\BackendActiveForm;
+$form = BackendActiveForm::begin([
     'id' => 'formDefault',
     'layout' => 'horizontal',
-    'fieldConfig' => [
-        'template' => "{label}\n<div class='col-lg-10'>{input}\n{hint}\n{error}</div>",
-        'horizontalCssClasses' => [
-            'label' => 'col-lg-2',
-        ],
-    ],
 ]);
 ?>
 
@@ -19,4 +13,4 @@ $form = ActiveForm::begin([
 <?php echo $form->field($model, 'value')->textarea(['class' => 'form-control', 'placeholder' => 'Nhập value']); ?>
 
 <div class="clearfix"></div>
-<?php ActiveForm::end(); ?>
+<?php BackendActiveForm::end(); ?>
