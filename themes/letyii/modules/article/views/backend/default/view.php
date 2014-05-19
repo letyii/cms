@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\DetailView;
+use app\components\DetailView;
 
 /**
  * @var yii\web\View $this
@@ -14,11 +14,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="let-article-base-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?php echo Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('article', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('article', 'Delete'), ['delete', 'id' => $model->id], [
+        <?php echo Html::a(Yii::t('article', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?php echo Html::a(Yii::t('article', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => Yii::t('article', 'Are you sure you want to delete this item?'),
@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-    <?= DetailView::widget([
+    <?php echo DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
@@ -51,5 +51,4 @@ $this->params['breadcrumbs'][] = $this->title;
             'status',
         ],
     ]) ?>
-
 </div>

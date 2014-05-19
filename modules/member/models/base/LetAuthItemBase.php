@@ -19,7 +19,7 @@ use Yii;
  * @property AuthRule $ruleName
  * @property AuthItemChild $authItemChild
  */
-class LetAuthItemBase extends \yii\db\ActiveRecord
+class LetAuthItemBase extends \app\components\ActiveRecord
 {
     /**
      * @inheritdoc

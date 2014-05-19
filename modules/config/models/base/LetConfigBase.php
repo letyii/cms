@@ -11,7 +11,7 @@ use Yii;
  * @property string $value
  * @property string $type
  */
-class LetConfigBase extends \yii\db\ActiveRecord
+class LetConfigBase extends \app\components\ActiveRecord
 {
     /**
      * @inheritdoc

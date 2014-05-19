@@ -27,7 +27,7 @@ use Yii;
  * @property integer $promotion
  * @property integer $status
  */
-class LetArticleBase extends \yii\db\ActiveRecord
+class LetArticleBase extends \app\components\ActiveRecord
 {
     /**
      * @inheritdoc

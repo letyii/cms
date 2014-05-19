@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use app\components\ActiveForm;
+use app\components\DatePicker;
 
 /**
  * @var yii\web\View $this
@@ -10,27 +11,56 @@ use app\components\ActiveForm;
  */
 ?>
 
-<?php $form = ActiveForm::begin([
-    'id' => 'formDefault',
-    'layout' => 'horizontal',
-]);
+<?php
+
+$form = ActiveForm::begin([
+            'id' => 'formDefault',
+            'layout' => 'horizontal',
+        ]);
 ?>
 
 <?php echo $form->field($model, 'title')->textInput(['maxlength' => 255]) ?>
 
-<?php echo $form->field($model, 'content')->textarea(['rows' => 6]) ?>
+<?php echo $form->field($model, 'content')->widget(letyii\tinymce\Tinymce::className(), [
+    'options' => [
+        'id' => 'testid',
+        'class' => 'abc',
+    ],
+    'configs' => [
+        'selector' => 'textarea#testid',
+        'link_list' => [
+            [
+                'title' => 'My page 1',
+                'value' => 'http://www.tinymce.com',
+            ],
+            [
+                'title' => 'My page 2',
+                'value' => 'http://www.tinymce.com',
+            ],
+        ],
+    ],
+]);
+?>
 
+<?php
+echo $form->field($model, 'from_time')->widget(DatePicker::className([
+    'clientOptions' => [
+        'dateFormat' => 'yy-mm-dd',
+    ],
+    'options' => ['class' => 'form-control'],
+]));
+?>
 <?php echo $form->field($model, 'from_time')->textInput() ?>
 
 <?php echo $form->field($model, 'to_time')->textInput() ?>
 
-<?php echo $form->field($model, 'created_time')->textInput() ?>
-
-<?php echo $form->field($model, 'updated_time')->textInput() ?>
-
 <?php echo $form->field($model, 'creator')->textInput(['maxlength' => 11]) ?>
 
+<?php echo $form->field($model, 'created_time')->textInput() ?>
+
 <?php echo $form->field($model, 'editor')->textInput(['maxlength' => 11]) ?>
+
+<?php echo $form->field($model, 'updated_time')->textInput() ?>
 
 <?php echo $form->field($model, 'promotion')->textInput() ?>
 
@@ -51,10 +81,6 @@ use app\components\ActiveForm;
 <?php echo $form->field($model, 'seo_title')->textInput(['maxlength' => 70]) ?>
 
 <?php echo $form->field($model, 'seo_desc')->textInput(['maxlength' => 160]) ?>
-
-<!--<div class="form-group">
-    <?php echo Html::submitButton($model->isNewRecord ? Yii::t('article', 'Create') : Yii::t('article', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-</div>-->
 
 <?php ActiveForm::end(); ?>
 

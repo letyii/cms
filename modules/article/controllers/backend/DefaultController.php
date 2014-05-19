@@ -3,7 +3,6 @@
 namespace app\modules\article\controllers\backend;
 
 use Yii;
-use app\modules\article\models\base\LetArticleBase;
 use app\modules\article\models\LetArticle;
 use app\components\BackendController;
 use yii\web\NotFoundHttpException;
@@ -60,7 +59,7 @@ class DefaultController extends BackendController
      */
     public function actionCreate()
     {
-        $model = new LetArticleBase;
+        $model = new LetArticle;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -112,7 +111,7 @@ class DefaultController extends BackendController
      */
     protected function findModel($id)
     {
-        if (($model = LetArticleBase::findOne($id)) !== null) {
+        if (($model = LetArticle::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

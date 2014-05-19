@@ -51,10 +51,3 @@ $this->params['breadcrumbs'][] = $this->title;
         ?>
     </div>
 </div>
-
-
-<div class="let-article-base-index">
-
-
-
-</div>

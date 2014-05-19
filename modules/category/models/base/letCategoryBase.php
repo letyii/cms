@@ -15,7 +15,7 @@ use Yii;
  * @property string $title
  * @property string $module
  */
-class letCategoryBase extends \yii\db\ActiveRecord
+class letCategoryBase extends \app\components\ActiveRecord
 {
     /**
      * @inheritdoc
