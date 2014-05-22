@@ -3,54 +3,65 @@ namespace app\components;
 
 use Yii;
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 
-class ActionColumn extends \yii\grid\ActionColumn {
+class ActionColumn extends \kartik\grid\ActionColumn {
     
-    public $template = '{update} {view} {delete}';
+    private $_isDropdown = false;
+    
+    public $template = '{view} {update} {delete}';
 
     /**
      * Initializes the default button rendering callbacks
      */
-    protected function initDefaultButtons()
-    {
-        if (!isset($this->buttons['boolean'])) {
-            $this->buttons['boolean'] = function ($url, $model) {
-                return Html::a('<i class="fa fa-times"></i>', $url, [
-                    'class' => 'btn btn-xs btn-info',
-                    'title' => Yii::t('yii', 'View'),
-                    'data-pjax' => '0',
-                ]);
-            };
-        }
+    protected function initDefaultButtons() {
         if (!isset($this->buttons['view'])) {
             $this->buttons['view'] = function ($url, $model) {
-                return Html::a('<i class="fa fa-times"></i>', $url, [
-                    'class' => 'btn btn-xs btn-info',
-                    'title' => Yii::t('yii', 'View'),
-                    'data-pjax' => '0',
-                ]);
+                $options = $this->viewOptions;
+                $title = Yii::t('kvgrid', 'View');
+                $icon = '<span class="glyphicon glyphicon-eye-open"></span>';
+                $label = ArrayHelper::remove($options, 'label', ($this->_isDropdown ? $icon . ' ' . $title : $icon));
+                $options += ['title' => Yii::t('kvgrid', 'View'), 'data-pjax' => '0'];
+                if ($this->_isDropdown) {
+                    $options['tabindex'] = '-1';
+                    return '<li>' . Html::a($label, $url, $options) . '</li>' . PHP_EOL;
+                }
+                else {
+                    return Html::a($label, $url, $options);
+                }
             };
         }
         if (!isset($this->buttons['update'])) {
             $this->buttons['update'] = function ($url, $model) {
-                return Html::a('<i class="fa fa-pencil"></i>', $url, [
-                    'class' => 'btn btn-xs btn-danger',
-                    'title' => Yii::t('yii', 'Update'),
-                    'data-pjax' => '0',
-                ]);
+                $options = $this->updateOptions;
+                $title = Yii::t('kvgrid', 'Update');
+                $icon = '<span class="glyphicon glyphicon-pencil"></span>';
+                $label = ArrayHelper::remove($options, 'label', ($this->_isDropdown ? $icon . ' ' . $title : $icon));
+                $options += ['title' => Yii::t('kvgrid', 'Update'), 'data-pjax' => '0'];
+                if ($this->_isDropdown) {
+                    $options['tabindex'] = '-1';
+                    return '<li>' . Html::a($label, $url, $options) . '</li>' . PHP_EOL;
+                }
+                else {
+                    return Html::a($label, $url, $options);
+                }
             };
         }
         if (!isset($this->buttons['delete'])) {
             $this->buttons['delete'] = function ($url, $model) {
-                return Html::a('<i class="fa fa-trash-o"></i>', $url, [
-                    'class' => 'btn btn-xs btn-success',
+                $options = $this->deleteOptions;
+                $icon = '<span class="glyphicon glyphicon-trash"></span>';
+                $label = ArrayHelper::remove($options, 'label', ($this->_isDropdown ? $icon . ' ' . $title : $icon));
+                $options += [
                     'title' => Yii::t('yii', 'Delete'),
-                    'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
-                    'data-method' => 'post',
-                    'data-pjax' => '0',
-                ]);
+                    'style' => 'cursor: pointer',
+//                    'data-method' => 'post',
+//                    'data-pjax' => '0',
+                    'href' => 'javascript:void(0);',
+                    'onclick' => "deleteRow('".Yii::$app->urlManager->createUrl(['cms/backend/crud/delete'])."', '".$model->tableName()."', '".$model->id."');",
+                ];
+                return Html::a($label, NULL, $options);
             };
         }
     }
-    
 }

@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\modules\article\models\base\LetArticleBase;
+use app\models\User;
 
 /**
  * LetArticle represents the model behind the search form about `app\modules\article\models\base\LetArticleBase`.
@@ -62,5 +63,13 @@ class LetArticle extends LetArticleBase
             ->andFilterWhere(['like', 'seo_desc', $this->seo_desc]);
 
         return $dataProvider;
+    }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCreator()
+    {
+        return $this->hasOne(User::className(), ['creator' => 'id']);
     }
 }

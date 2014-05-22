@@ -18,7 +18,7 @@ use yii\helpers\Url;
                 <div class="tab-pane fade active in" id="posts">
                     <div class="widget">
                         <div class="widget-head">
-                            <h5 class="pull-left"><i class="fa fa-camera"></i> Phân quyền</h5>	
+                            <h5 class="pull-left"><i class="glyphicon glyphicon-camera"></i> Phân quyền</h5>	
                             <div class="clearfix"></div>
                         </div>
                         <div class="widget-body">

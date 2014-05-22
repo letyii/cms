@@ -7,9 +7,9 @@ use yii\widgets\ActiveForm;
 
             <!-- Nav tabs -->
             <ul class="nav nav-tabs nav-justified">
-                <li class="active"><a href="#login" data-toggle="tab"><i class="fa fa-sign-in"></i> Login</a></li>
-                <li><a href="#register" data-toggle="tab"><i class="fa fa-pencil"></i> Register</a></li>
-                <li><a href="#contact" data-toggle="tab"><i class="fa fa-envelope"></i> Contact</a></li>
+                <li class="active"><a href="#login" data-toggle="tab"><i class="glyphicon glyphicon-sign-in"></i> Login</a></li>
+                <li><a href="#register" data-toggle="tab"><i class="glyphicon glyphicon-pencil"></i> Register</a></li>
+                <li><a href="#contact" data-toggle="tab"><i class="glyphicon glyphicon-envelope"></i> Contact</a></li>
             </ul>
 
             <!-- Tab panes -->

@@ -7,9 +7,7 @@ $(document).ready(function() {
             $('.checkone').prop('checked', false);
         }
     });
-});
 
-$(document).ready(function() {
     $('.check_all_tree').click(function() {
         if ($(this).is(':checked')) {
             $(this).parent().find('input:checkbox').prop('checked', true);
@@ -24,6 +22,20 @@ function updateCheck() {
     $('input.check_all_tree').change(function() {
         if ($(this).is(':checked')) {
             $(this).closest('ul').siblings('input:checkbox').prop('checked', true).closest('ul').siblings('input:checkbox').prop('checked', true);
+        }
+    });
+}
+
+// Delete row
+function deleteRow(url, table, id) {
+    console.log(url);
+    $.ajax({
+        url: url,
+        data: 'table=' + table + '&id=' + id,
+        method: 'POST'
+    }).done(function(result) {
+        if (result == '1') {
+            $('tr[data-key='+id+']').hide();
         }
     });
 }

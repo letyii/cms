@@ -112,7 +112,7 @@ class letCategory extends base\letCategoryBase {
     public static function getModules() {
         $modules = array();
         foreach (array_keys(Yii::$app->modules) as $module) {
-            if (in_array($module, array('debug', 'gii', 'category'))) // Bo qua 1 so module khong dung cho category
+            if (in_array($module, array('cms', 'debug', 'gii', 'category', 'config', 'gridview'))) // Bo qua 1 so module khong dung cho category
                 continue;
             $modules[$module] = $module;
         };

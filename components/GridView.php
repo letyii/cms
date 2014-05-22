@@ -3,42 +3,14 @@ namespace app\components;
 
 use yii\helpers\Html;
 
-class GridView extends \yii\grid\GridView {
-    public $title = 'Table list';
-            
-    public $layout = "
-        <div class='widget'>\n
-            <div class='widget-head'>\n
-                <div class='pull-left'><h5>{title}</h5></div>\n
-                <div class='pull-right'>{pager}</div>\n
-                <div class='clearfix'></div>\n
-            </div>\n
-            <div class='widget-body no-padd'><div class='table-responsive'>{items}</div></div>\n
-            <div class='widget-foot'>\n
-                <div class='pull-left'>{summary}</div>\n
-                <div class='pull-right'>{pager}</div>\n
-                <div class='clearfix'></div>\n
-            </div>\n
-        </div>\n";
+class GridView extends \kartik\grid\GridView {
     
-    /**
-     * @inheritdoc
-     */
-    public function renderSection($name)
+    public function init() {
+        return parent::init();
+    }
+    
+    public function run()
     {
-        switch ($name) {
-            case '{title}':
-                return $this->title;
-            case '{summary}':
-                return $this->renderSummary();
-            case '{items}':
-                return $this->renderItems();
-            case '{pager}':
-                return $this->renderPager();
-            case '{sorter}':
-                return $this->renderSorter();
-            default:
-                return false;
-        }
+        parent::run();
     }
 }

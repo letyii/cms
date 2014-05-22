@@ -34,7 +34,8 @@ class LetArticleBase extends \app\components\ActiveRecord
      */
     public static function tableName()
     {
-        return 'letyii_article';
+        return '{{%article}}';
+//        return 'letyii_article';
     }
 
     /**

@@ -4,22 +4,22 @@
                             <div class="row">
                                 <!-- Page heading -->
                                 <div class="col-md-3 col-sm-6 col-xs-6">
-                                    <h2><i class="fa fa-desktop"></i> Dashboard</h2>
+                                    <h2><i class="glyphicon glyphicon-desktop"></i> Dashboard</h2>
                                 </div>
                                 <!-- Mini status -->
                                 <div class="col-md-6 col-sm-0 hidden-sm hidden-xs">
                                     <span class="ph-status">
-                                        <a href="#"><strong>Visits</strong> <i class="fa fa-chevron-up ph-red"></i> 25% &nbsp; -</a>
-                                        <a href="#"><strong>Stock</strong> <i class="fa fa-chevron-down ph-green"></i> 15.0 &nbsp; -</a>
-                                        <a href="#"><strong>Profit</strong> <i class="fa fa-chevron-up ph-red"></i> $500</a>
+                                        <a href="#"><strong>Visits</strong> <i class="glyphicon glyphicon-chevron-up ph-red"></i> 25% &nbsp; -</a>
+                                        <a href="#"><strong>Stock</strong> <i class="glyphicon glyphicon-chevron-down ph-green"></i> 15.0 &nbsp; -</a>
+                                        <a href="#"><strong>Profit</strong> <i class="glyphicon glyphicon-chevron-up ph-red"></i> $500</a>
                                     </span>
                                 </div>
                                 <!-- Icons -->
                                 <div class="col-md-3 col-sm-6 col-xs-6">
                                     <span class="ph-misc pull-right">
-                                        <a href="#" class="bs-tooltip" title="Share" data-placement="bottom"><i class="fa fa-share"></i> </a>
-                                        <a href="#" class="bs-tooltip" title="Export" data-placement="bottom"><i class="fa fa-upload"></i> </a>
-                                        <a href="#" class="bs-tooltip" title="Print" data-placement="bottom"><i class="fa fa-print"></i> </a> 
+                                        <a href="#" class="bs-tooltip" title="Share" data-placement="bottom"><i class="glyphicon glyphicon-share"></i> </a>
+                                        <a href="#" class="bs-tooltip" title="Export" data-placement="bottom"><i class="glyphicon glyphicon-upload"></i> </a>
+                                        <a href="#" class="bs-tooltip" title="Print" data-placement="bottom"><i class="glyphicon glyphicon-print"></i> </a> 
                                     </span>
                                     <div class="clearfix"></div>
                                 </div>	
@@ -48,16 +48,16 @@
                                         <!-- Arrow info -->
                                         <div class="hero-arrow-block">
                                             <div>
-                                                51% <i class="fa fa-chevron-up ha-green"></i> &nbsp;
-                                                82% <i class="fa fa-chevron-down ha-red"></i>
+                                                51% <i class="glyphicon glyphicon-chevron-up ha-green"></i> &nbsp;
+                                                82% <i class="glyphicon glyphicon-chevron-down ha-red"></i>
                                             </div>
                                             <div>
-                                                10% <i class="fa fa-chevron-down ha-red"></i> &nbsp;
-                                                15% <i class="fa fa-chevron-up ha-green"></i>
+                                                10% <i class="glyphicon glyphicon-chevron-down ha-red"></i> &nbsp;
+                                                15% <i class="glyphicon glyphicon-chevron-up ha-green"></i>
                                             </div>
                                             <div>
-                                                25% <i class="fa fa-chevron-down ha-green"></i> &nbsp;
-                                                35% <i class="fa fa-chevron-up ha-red"></i>
+                                                25% <i class="glyphicon glyphicon-chevron-down ha-green"></i> &nbsp;
+                                                35% <i class="glyphicon glyphicon-chevron-up ha-red"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -69,7 +69,7 @@
                             <div class="hero-block-two">
                                 <div class="row">
                                     <div class="col-md-3 col-sm-3 col-xs-3 text-center">
-                                        <i class="fa fa-user"></i>
+                                        <i class="glyphicon glyphicon-user"></i>
                                     </div>
                                     <!-- Labels -->
                                     <div class="col-md-9 col-sm-9 col-xs-9">

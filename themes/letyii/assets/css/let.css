@@ -1,19 +1,4 @@
-/* Quy định lại */
-body {font-family: Arial;}
-a {color: #000;}
-b, strong {font-weight: bold;}
-
-.mainbar, .sidebar {min-height: 1000px;}
-.sidebar {height: auto;}
-.page-posts input,
-.page-posts textarea
-.page-posts select {
-	margin-top:5px;
-	margin-bottom:5px;
-	font-size:13px !important;
-}
-.widget .widget-foot .pagination, .widget .widget-head .pagination {margin: 0;}
-
-/* Quy định mới */
 .fix_table_width td, .fix_table_width th {width: 1%; white-space: nowrap; text-align: center;}
 .fix_table_width .td_free {width: auto; white-space: normal; text-align: left;}
+
+.margin-bottom {margin-bottom: 10px;}
