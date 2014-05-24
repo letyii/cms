@@ -92,34 +92,49 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/member/assets/js/memb
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,                                    
                 'columns' => [
-                    ['class' => 'yii\grid\SerialColumn'],
+                    ['class' => 'kartik\grid\SerialColumn'],
 
                     'name',
-                    'type',
+                    [
+                        'attribute' => 'type',
+                        'value' => function ($model, $index, $widget) {
+                            if ($model->type == 1) {
+                                return 'Vai trò';
+                            } elseif ($model->type == 2) {
+                                return 'Phân quyền';
+                            }
+                        },
+                    ],
                     'description:ntext',
                     'rule_name',
                     'data:ntext',
-                    // 'created_at',
-                    // 'updated_at',
-
+                    [
+                        'header' => 'Gán quyền',
+                        'mergeHeader' => true,
+                        'hAlign' => 'center', 
+                        'vAlign' => 'middle',
+                        'value' => function ($model, $index, $widget) {
+                            if ($model->type == 1) {
+                                return Html::a('Gán quyền', ['backend/rbac/assign'], [
+                                    'class' => 'btn btn-xs btn-success',
+                                ]);
+                            } else {
+                                return '';
+                            }
+                        },
+                        'format'=>'raw',
+                    ],
                     [
                         'class' => 'app\components\ActionColumn',
                         'options' => [
                             'width' => '90px',
                         ],
+                        'template' => '{delete}',
                         'buttons' => [
-                            'update' => function ($url, $model) {
-                                $url = yii\helpers\Url::toRoute(['backend/ajax/updateitem']);
-                                return Html::a('<i class="glyphicon glyphicon-pencil"></i>', $url, [
-                                    'class' => 'btn btn-xs btn-danger',
-                                    'title' => Yii::t('yii', 'Update'),
-                                    'onclick' => "js:updateRole('{$url}', '{$model->name}'); return false;"
-                                ]);
-                            },          
                             'delete' => function ($url, $model) {
                                 $url = yii\helpers\Url::toRoute(['backend/ajax/deleteitem']);
-                                return Html::a('<i class="glyphicon glyphicon-trash-o"></i>', $url, [
-                                    'class' => 'btn btn-xs btn-success',
+                                return Html::a('<i class="glyphicon glyphicon-trash"></i>', NULL, [
+                                    'href' => 'javascript:void(0);',
                                     'title' => Yii::t('yii', 'Delete'),
                                     'onclick' => "js:deleteItem('{$url}', '{$model->name}'); return false;"
                                 ]);

@@ -31,7 +31,7 @@ echo GridView::widget([
         'image',
         'intro',
         [
-            'attribute' => 'creator', 
+            'attribute' => 'creator',
             'vAlign' => 'middle',
             'value' => function ($model, $index, $widget) { 
                 return Html::a($model->creatorBy->username,  
