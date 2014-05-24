@@ -34,13 +34,12 @@ echo GridView::widget([
             'attribute' => 'creator', 
             'vAlign' => 'middle',
             'value' => function ($model, $index, $widget) { 
-        var_dump($model->creator);
-//                return Html::a($model->author->name,  
-//                    '#', 
-//                    [
-//                        'title'=>'View author detail', 
-//                        'onclick'=>'alert("This will open the author page.\n\nDisabled for this demo!")'
-//                    ]);
+                return Html::a($model->creatorBy->username,  
+                    '#', 
+                    [
+                        'title'=>'View author detail', 
+                        'onclick'=>'alert("This will open the author page.\n\nDisabled for this demo!")'
+                    ]);
             },
             'filterType' => GridView::FILTER_SELECT2,
             'filter' => ArrayHelper::map(\app\models\User::find()->orderBy('username')->asArray()->all(), 'id', 'username'), 

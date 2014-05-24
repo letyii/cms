@@ -1,5 +1,4 @@
 <?php
-
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
@@ -22,7 +21,8 @@ BackendAsset::register($this);
         <title><?php echo Html::encode($this->title) ?></title>
         <?php
         // Css
-        $this->registerCssFile($this->theme->baseUrl . '/assets/css/let.css');
+        $this->registerCssFile($this->theme->baseUrl . '/assets/css/letbootstrap.css', [\yii\bootstrap\BootstrapAsset::className()]);
+        $this->registerCssFile($this->theme->baseUrl . '/assets/css/let.css', [\yii\bootstrap\BootstrapAsset::className()]);
         
         // Javascript
         $this->registerJsFile($this->theme->baseUrl . '/assets/js/let.js', [\yii\web\JqueryAsset::className()]);
@@ -35,7 +35,7 @@ BackendAsset::register($this);
             <?php
             $modules = [];
             foreach (array_keys(Yii::$app->modules) as $module){
-                if ($module == 'debug')
+                if (in_array($module, ['cms', 'debug', 'gridview']))
                     continue;
                 $moduleUrl = ($module == 'gii') ? '/' . $module : '/' . $module . '/backend/default/index';
                 $modules[] = ['label' => $module, 'url' => [$moduleUrl]];
@@ -47,7 +47,7 @@ BackendAsset::register($this);
                 'brandLabel' => 'LetYii CMS 1.0 Alpha',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
-                    'class' => 'navbar-inverse navbar-static-top',
+                    'class' => 'navbar-default navbar-static-top',
                 ],
             ]);
             echo Nav::widget([

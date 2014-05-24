@@ -1,5 +1,4 @@
 <?php
-
 namespace app\modules\article\models;
 
 use Yii;
@@ -29,7 +28,7 @@ class LetArticle extends LetArticleBase
 
     public function search($params)
     {
-        $query = LetArticleBase::find();
+        $query = LetArticle::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -68,8 +67,10 @@ class LetArticle extends LetArticleBase
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCreator()
+    public function getCreatorBy()
     {
-        return $this->hasOne(User::className(), ['creator' => 'id']);
+        $data = $this->hasOne(User::className(), ['id' => 'creator']);
+//        var_dump($data); die;
+        return $data;
     }
 }

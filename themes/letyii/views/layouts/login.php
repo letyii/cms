@@ -19,25 +19,15 @@ BackendAsset::register($this);
         <meta charset="<?= Yii::$app->charset ?>"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?= Html::encode($this->title) ?></title>
-        <?php $this->head() ?>
-
         <?php
-        ///////////////// Css /////////////////
-        $this->registerCssFile($this->theme->baseUrl . '/assets/css/font-awesome.min.css');
-        $this->registerCssFile($this->theme->baseUrl . '/assets/css/style.css');
-        $this->registerCssFile($this->theme->baseUrl . '/assets/css/let.css');
+        // Css
+        $this->registerCssFile($this->theme->baseUrl . '/assets/css/letbootstrap.css', [\yii\bootstrap\BootstrapAsset::className()]);
+        $this->registerCssFile($this->theme->baseUrl . '/assets/css/let.css', [\yii\bootstrap\BootstrapAsset::className()]);
         
-        ///////////////// Javascript /////////////////
-        $this->registerJsFile($this->theme->baseUrl . '/assets/js/bootstrap.min.js', [\yii\web\JqueryAsset::className()]);
-        $this->registerJsFile($this->theme->baseUrl . '/assets/js/respond.min.js', [\yii\web\JqueryAsset::className()]);
-        $this->registerJsFile($this->theme->baseUrl . '/assets/js/html5shiv.js', [\yii\web\JqueryAsset::className()]);
+        // Javascript
+        $this->registerJsFile($this->theme->baseUrl . '/assets/js/let.js', [\yii\web\JqueryAsset::className()]);
         ?>
-        <!--[if IE]>
-            <link rel="stylesheet" type="text/css" href="<?php echo $this->theme->baseUrl; ?>/assets/css/style-ie.css" />
-        <![endif]-->
-
-        <!-- Favicon -->
-        <link rel="shortcut icon" href="#">
+        <?php $this->head() ?>
     </head>
 
     <body>

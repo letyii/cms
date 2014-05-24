@@ -7,8 +7,7 @@ use app\components\BackendController;
 
 class DefaultController extends BackendController
 {
-    public function actionIndex()
-    {
+    public function actionIndex() {
         $auth = Yii::$app->authManager;
         $auth->clearAll();
         
@@ -45,5 +44,11 @@ class DefaultController extends BackendController
         $auth->assign($god, 1);
         
         return $this->render('index');
+    }
+    
+    public function actionTest() {
+        $items = ['user12'];
+        $list = \app\modules\member\models\LetAuthItemChild::getAncestors($items);
+        var_dump($list);
     }
 }

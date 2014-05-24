@@ -66,8 +66,4 @@ if (YII_ENV_DEV) {
     $configs['modules']['gii'] = 'yii\gii\Module';
 }
 
-//echo '<pre>';
-//print_r($configs);
-//echo '</pre>';
-//die;
 return $configs;
