@@ -73,7 +73,8 @@ class AjaxController extends BackendController {
      * Delete a role
      */
     public function actionDeleteitem() {
-        $model = LetAuthItem::find()->where('name = :id', [':id' => ArrayHelper::getValue($_POST, 'id', '')])->one();       
+        $id = Yii::$app->request->post('id');
+        $model = LetAuthItem::find()->where('name = :id', [':id' => $id])->one();
         if ($model === null) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }

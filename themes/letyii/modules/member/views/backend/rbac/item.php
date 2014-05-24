@@ -107,7 +107,7 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/member/assets/js/memb
                                 return Html::a('<i class="glyphicon glyphicon-trash-o"></i>', $url, [
                                     'class' => 'btn btn-xs btn-success',
                                     'title' => Yii::t('yii', 'Delete'),
-                                    'onclick' => "js:deleteRole('{$url}', '{$model->name}'); return false;"
+                                    'onclick' => "js:deleteItem('{$url}', '{$model->name}'); return false;"
                                 ]);
                             }
                         ]
