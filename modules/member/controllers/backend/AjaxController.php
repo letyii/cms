@@ -23,6 +23,7 @@ class AjaxController extends BackendController {
     public function actionCreateitem() {
         $type = Yii::$app->request->post('type');
         $name = strtolower(Yii::$app->request->post('name'));
+        $description = Yii::$app->request->post('description');
         $action = array(
             'status' => 0,
             'message' => ''
@@ -34,6 +35,7 @@ class AjaxController extends BackendController {
         } elseif ($type == 2) {
             $model->type = LetAuthItem::TYPE_PERMISSION;
         }
+        $model->description = $description;
         $model->name = $name;
         if ($model->save()) {
             $action['status'] = 1;

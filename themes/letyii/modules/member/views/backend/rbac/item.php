@@ -38,6 +38,13 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/member/assets/js/memb
                         'class' => 'form-control',
                     ]); ?>
                 </div>
+                <div class="form-group">
+                    <label for="roleDescription">Description</label>
+                    <?php echo Html::textInput('roleDescription', '', [
+                        'id' => 'roleDescription',
+                        'class' => 'form-control',
+                    ]); ?>
+                </div>
                 <?php echo Html::button('Tạo mới', [
                     'class' => 'btn btn-success',
                     'onclick' => 'createItem("'.yii\helpers\Url::toRoute(['backend/ajax/createitem']).'", "1");',
@@ -63,6 +70,13 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/member/assets/js/memb
                     <label for="permissionName">Nhập tên phân quyền</label>
                     <?php echo Html::textInput('permissionName', '', [
                         'id' => 'permissionName',
+                        'class' => 'form-control',
+                    ]); ?>
+                </div>
+                <div class="form-group">
+                    <label for="permissionDescription">Description</label>
+                    <?php echo Html::textInput('permissionDescription', '', [
+                        'id' => 'permissionDescription',
                         'class' => 'form-control',
                     ]); ?>
                 </div>

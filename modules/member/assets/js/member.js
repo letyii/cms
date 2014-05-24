@@ -31,10 +31,11 @@ function updateRole($url, $roleId) {
 // Ajax handler create a type
 function createItem(url,type) {
     var itemName;
+    var description;
     if (type == '2') {
         var moduleName = $('#moduleName').val();
         var permissionName = $('input[name="permissionName"]').val();
-
+        description = $('#permissionDescription').val();
         itemName = moduleName + '.' + permissionName;
         if (permissionName == "") {
             itemName = "";
@@ -42,6 +43,7 @@ function createItem(url,type) {
     } else {
         type = '1';
         itemName = $('input[name="roleName"]').val();
+        description = $('#roleDescription').val();
     }
     if (itemName !== null && itemName !== "") {
         $.ajax({
@@ -50,6 +52,7 @@ function createItem(url,type) {
             dataType: 'JSON',
             data: {
                 name: itemName,
+                description: description,
                 type: type
             },
             success: function(data) {
