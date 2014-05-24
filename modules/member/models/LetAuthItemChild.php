@@ -8,6 +8,8 @@
 
 namespace app\modules\member\models;
 
+use yii\helpers\ArrayHelper;
+
 use Yii;
 
 class LetAuthItemChild extends base\LetAuthItemChildBase
@@ -15,8 +17,9 @@ class LetAuthItemChild extends base\LetAuthItemChildBase
     public static function getAncestors($items = [], $result = []) {
         // Get parent list of $item
         $list = self::find()->select('parent')->where(['child' => $items])->asArray()->all();
-        $list = \yii\helpers\ArrayHelper::map($list, 'parent', 'parent');
-        $result += $list;
+        $list = ArrayHelper::map($list, 'parent', 'parent');
+        $list = array_values($list);
+        $result = array_merge($result, $list);
         if (!empty($list)) {
             return self::getAncestors($list, $result);
         } else {
