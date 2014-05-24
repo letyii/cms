@@ -17,18 +17,18 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/member/assets/js/memb
                 <?php
                 echo Html::button('Tạo vai trò', [
                     'class' => 'btn btn-success',
-                    'onclick' => 'createItem("'.yii\helpers\Url::toRoute(['backend/ajax/createrole']).'", "1");',
+                    'onclick' => '$("#roleForm").slideToggle()',
                 ]);
                 echo Html::button('Tạo phân quyền', [
                     'class' => 'btn btn-success',
-                    'onclick' => '',
+                    'onclick' => '$("#permissionForm").slideToggle()',
                 ]);
                 ?>
             </div>
             <div class="clearfix"></div>
         </div>
 
-        <div class="panel panel-default" id="roleForm" style="display: block">
+        <div class="panel panel-default" id="roleForm" style="display: none">
             <div class="panel-heading">Tạo vai trò</div>
             <div class="panel-body">
                 <div class="form-group">
@@ -45,7 +45,7 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/member/assets/js/memb
             </div>
         </div>
 
-        <div class="panel panel-default" id="permissionForm" style="display: block">
+        <div class="panel panel-default" id="permissionForm" style="display: none">
             <div class="panel-heading">Tạo phân quyền</div>
             <div class="panel-body">
                 <div class="form-group">
