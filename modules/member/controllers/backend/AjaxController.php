@@ -20,15 +20,21 @@ class AjaxController extends BackendController {
     /**
      * Create a role
      */
-    public function actionCreaterole() {
+    public function actionCreateitem() {
+        $type = Yii::$app->request->post('type');
+        $name = strtolower(Yii::$app->request->post('name'));
         $action = array(
             'status' => 0,
             'message' => ''
         );
 
         $model = new LetAuthItem;
-        $model->type = LetAuthItem::TYPE_ROLE;
-        $model->name = strtolower(ArrayHelper::getValue($_POST, 'name', ''));
+        if ($type == 1) {
+            $model->type = LetAuthItem::TYPE_ROLE;
+        } elseif ($type == 2) {
+            $model->type = LetAuthItem::TYPE_PERMISSION;
+        }
+        $model->name = $name;
         if ($model->save()) {
             $action['status'] = 1;
         } else {
@@ -41,7 +47,7 @@ class AjaxController extends BackendController {
     /**
      * Update a role
      */
-    public function actionUpdaterole() {
+    public function actionUpdateitem() {
         $action = array(
             'status' => 0,
             'message' => ''
@@ -66,7 +72,7 @@ class AjaxController extends BackendController {
     /**
      * Delete a role
      */
-    public function actionDeleterole() {        
+    public function actionDeleteitem() {
         $model = LetAuthItem::find()->where('name = :id', [':id' => ArrayHelper::getValue($_POST, 'id', '')])->one();       
         if ($model === null) {
             throw new NotFoundHttpException('The requested page does not exist.');

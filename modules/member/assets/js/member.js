@@ -1,32 +1,3 @@
-// Ajax handler create a role
-function createRole($url) {
-
-    var $roleName = prompt("Tên vai trò:", "Nhập tên vai trò mới");
-    if ($roleName != null) {
-        $.ajax({
-            url: $url,
-            type: 'POST',           
-            dataType: 'JSON',
-            data: {
-                name: $roleName
-            },
-            success: function(data) {
-                if (data.status === 1) {
-                    // ko co ham yiiGirdView.update() nhu Yii 1
-                    alert('Tạo mới vai trò thành công');
-                    window.location.reload(true);
-                } else {
-                    $message = '';
-                    jQuery.each(data.message, function(key, val) {
-                        $message += val + "\n";
-                    });
-                    alert($message);
-                }
-            }
-        });
-    }
-}
-
 // Ajax handler update a role
 function updateRole($url, $roleId) {
     var $roleName = prompt("Tên vai trò:", $roleId);
@@ -76,3 +47,72 @@ function deleteRole($url, $roleId) {
     }
 }
 
+// Ajax handler create a type
+function createItem(url,type) {
+    var itemName;
+    if (type == '2') {
+        var moduleName = $('#moduleName').val();
+        var permissionName = $('input[name="permissionName"]').val();
+
+        itemName = moduleName + '.' + permissionName;
+        if (permissionName == "") {
+            itemName = "";
+        }
+    } else {
+        type = '1';
+        itemName = $('input[name="roleName"]').val();
+    }
+    if (itemName !== null && itemName !== "") {
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                name: itemName,
+                type: type
+            },
+            success: function(data) {
+                if (data.status === 1) {
+                    // ko co ham yiiGirdView.update() nhu Yii 1
+                    alert('Tạo mới thành công');
+                    window.location.reload(true);
+                } else {
+                    $message = '';
+                    jQuery.each(data.message, function(key, val) {
+                        $message += val + "\n";
+                    });
+                    alert($message);
+                }
+            }
+        });
+    }
+}
+
+// Ajax handler update a type
+function updateType(url, id, type) {
+    var $roleName = prompt("Tên vai trò:", $roleId);
+    if ($roleName != null) {
+        $.ajax({
+            url: $url,
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                id: $roleId,
+                name: $roleName
+            },
+            success: function(data) {
+                if (data.status === 1) {
+                    // ko co ham yiiGirdView.update() nhu Yii 1
+                    alert('Cập nhật vai trò thành công');
+                    window.location.reload(true);
+                } else {
+                    $message = '';
+                    jQuery.each(data.message, function(key, val) {
+                        $message += val + "\n";
+                    });
+                    alert($message);
+                }
+            }
+        });
+    }
+}

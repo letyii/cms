@@ -26,19 +26,14 @@ class RbacController extends BackendController
         return $this->render('index', $assign);
     }
     
-    public function actionRole()
+    public function actionItem()
     {
         $searchModel = new LetAuthItemSearch;
         $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
 
-        return $this->render('role', [
+        return $this->render('item', [
             'dataProvider' => $dataProvider,
             'searchModel' => $searchModel,
         ]);
     }
-    
-    public function actionPermission()
-    {
-        return $this->render('permission');
-    }    
 }
