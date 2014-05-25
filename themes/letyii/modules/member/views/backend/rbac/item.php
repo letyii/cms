@@ -6,8 +6,8 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/member/assets/js/memb
 
 <!-- Nav tabs -->
 <ul class="nav nav-tabs">
-    <li><?php Html::a('Cây quan hệ vai trò', ['backend/rbac/index']) ?></li>
-    <li class="active"><?php Html::a('Vai trò và phân quyền', ['backend/rbac/item']) ?></li>
+    <li><?php echo Html::a('Cây quan hệ vai trò', ['backend/rbac/index']) ?></li>
+    <li class="active"><?php echo Html::a('Vai trò và phân quyền', ['backend/rbac/item']) ?></li>
 </ul>
 
 <div class="panel panel-default" style="border-top: 0;"> <!-- Chinh lai sau -->
