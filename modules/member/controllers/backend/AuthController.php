@@ -22,13 +22,13 @@ class AuthController extends BackendController
     {
         echo 111;
     }
-    
+
     public function actionLogin()
     {
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) AND $model->login()) {
             return $this->goBack();
-        } else {            
+        } else {
             $this->layout = '/login';
             return $this->render('login', [
                 'model' => $model, // $model ko nhan gia tri moi, ma luon lay gia tri mac dinh. Dang tim hieu them.
@@ -39,6 +39,6 @@ class AuthController extends BackendController
     public function actionLogout()
     {
         Yii::$app->user->logout();
-        return $this->redirect(\Yii::$app->urlManager->createUrl(['member/backend/auth/login']));
+        return $this->redirect(['backend/auth/login']);
     }
 }

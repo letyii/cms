@@ -25,10 +25,10 @@ use app\modules\config\models\LetConfig;
             Tạo config <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-            <li><a href="<?php echo Url::toRoute(['backend/default/create', 'type' => 'text']); ?>">Text</a></li>
-            <li><a href="<?php echo Url::toRoute(['backend/default/create', 'type' => 'dropdown']); ?>">Dropdown</a></li>
-            <li><a href="<?php echo Url::toRoute(['backend/default/create', 'type' => 'checkbox']); ?>">Checkbox</a></li>
-            <li><a href="<?php echo Url::toRoute(['backend/default/create', 'type' => 'textarea']); ?>">Textarea</a></li>
+            <li><?php echo Html::a('Text', ['backend/default/create', 'type' => 'text']) ?></li>
+            <li><?php echo Html::a('Dropdown', ['backend/default/create', 'type' => 'dropdown']) ?></li>
+            <li><?php echo Html::a('Checkbox', ['backend/default/create', 'type' => 'checkbox']) ?></li>
+            <li><?php echo Html::a('Textarea', ['backend/default/create', 'type' => 'textarea']) ?></li>
         </ul>
     </div>
     <div class="clearfix"></div>

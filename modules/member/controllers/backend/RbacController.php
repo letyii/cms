@@ -8,11 +8,12 @@
 
 namespace app\modules\member\controllers\backend;
 
-use app\modules\member\models\LetAuthItemChild;
 use Yii;
 use app\components\BackendController;
+use app\modules\member\models\LetAuthItemChild;
 use app\modules\member\models\LetAuthItem;
 use app\modules\member\models\search\LetAuthItemSearch;
+use yii\helpers\ArrayHelper;
 
 class RbacController extends BackendController
 {
@@ -26,7 +27,7 @@ class RbacController extends BackendController
         $assign['treeHtml'] = $treeHtml;
         return $this->render('index', $assign);
     }
-    
+
     public function actionItem()
     {
         $searchModel = new LetAuthItemSearch;
@@ -39,53 +40,39 @@ class RbacController extends BackendController
     }
     public function actionUpdatechild()
     {
-        if (Yii::$app->request->post()) {
-            $assignedRoles = Yii::$app->request->post('assignedRole');
-            $assignedPermissions = Yii::$app->request->post('assignedPermission');
-            $id = 'user';
-            LetAuthItemChild::deleteChild($id);
-            $auth = Yii::$app->authManager;
-            $userId = $auth->getRole($id);
-            $getChildren = $auth->getChildren($id);
-            if (!empty($assignedPermissions)) {
-                foreach ($assignedPermissions as $assignedPermission) {
-                    if ($id != $assignedPermission) {
-                        $permissionChild = $auth->getPermission($assignedPermission);
-                        if (empty($getChildren[$assignedPermission]) && $permissionChild->type == 2) {
-                            $auth->addChild($userId, $permissionChild);
-                            echo $assignedPermission;
-                        }
-                    }
-                }
-            }
-            if (!empty($assignedRoles)) {
-                foreach ($assignedRoles as $assignedRole) {
-                    if ($id != $assignedRole) {
-                        $roleChild = $auth->getRole($assignedRole);
-                        if (empty($getChildren[$assignedRole]) && $roleChild->type == 1) {
-                            $auth->addChild($userId, $roleChild);
-                            echo $assignedRole;
-                        }
-                    }
-                }
-            }
-        } else {
-            $itemId = Yii::$app->request->get('id');
-            $listItems = LetAuthItem::assignEnable($itemId);
+        $item = Yii::$app->request->get('item');
+        if (empty($item))
+            return $this->redirect(['backend/rbac/item']);
 
-            $itemsRole = [];
-            $itemsPermission = [];
-            foreach($listItems as $listItem) {
-                if ($listItem['type'] == 1) {
-                    $itemsRole[$listItem['name']] = $listItem['name'];
-                } else {
-                    $itemsPermission[$listItem['name']] = $listItem['name'];
+        if (Yii::$app->request->post()) {
+            // Delete all child of $item
+            LetAuthItemChild::deleteChild($item);
+
+            $auth = Yii::$app->authManager;
+            $itemObject = $auth->getRole($item);
+            $roles = Yii::$app->request->post('role');
+            $permissions = Yii::$app->request->post('permission');
+
+            if (!empty($roles)) {
+                foreach ($roles as $role) {
+                    $roleObject = $auth->getRole($role);
+                    $auth->addChild($itemObject, $roleObject);
                 }
             }
-            return $this->render('updatechild', [
-                'itemsRole' => $itemsRole,
-                'itemsPermission' => $itemsPermission
-            ]);
+
+            if (!empty($permissions)) {
+                foreach ($permissions as $permission) {
+                    $permissionObject = $auth->getPermission($permission);
+                    $auth->addChild($itemObject, $permissionObject);
+                }
+            }
         }
+
+        // Get items enable and child list
+        $assign['itemsRole'] = ArrayHelper::map(LetAuthItem::assignEnable($item, LetAuthItem::TYPE_ROLE), 'name', 'name');
+        $assign['itemsPermission']= ArrayHelper::map(LetAuthItem::assignEnable($item, LetAuthItem::TYPE_PERMISSION), 'name', 'name');
+        $assign['child'] = LetAuthItemChild::getChild($item);
+
+        return $this->render('updatechild', $assign);
     }
 }

@@ -24,6 +24,7 @@ return [
     'components' => [
         'i18n' => [
             'translations' => [
+                'member' => ['class' => 'yii\i18n\PhpMessageSource', 'basePath' => '@app/messages'],
                 'category' => ['class' => 'yii\i18n\PhpMessageSource', 'basePath' => '@app/messages'],
                 'article' => ['class' => 'yii\i18n\PhpMessageSource', 'basePath' => '@app/messages'],
                 'gridview' => ['class' => 'yii\i18n\PhpMessageSource', 'basePath' => '@app/messages'],

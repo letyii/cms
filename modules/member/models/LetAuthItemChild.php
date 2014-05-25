@@ -28,7 +28,13 @@ class LetAuthItemChild extends base\LetAuthItemChildBase
         }
     }
 
+    public static function getChild($parent) {
+        $child = self::find()->select('child')->where('parent = :parent', [':parent' => $parent])->asArray()->all();
+        $child = ArrayHelper::map($child, 'child', 'child');
+        return $child = array_values($child);
+    }
+
     public static function deleteChild($parent) {
-        self::deleteAll('parent = :parent', [':parent' => $parent]);
+        return self::deleteAll('parent = :parent', [':parent' => $parent]);
     }
 }

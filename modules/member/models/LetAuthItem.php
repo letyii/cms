@@ -11,27 +11,29 @@ namespace app\modules\member\models;
 use yii\helpers\ArrayHelper;
 
 class LetAuthItem extends base\LetAuthItemBase {
-    
+
     const TYPE_ROLE = 1;
     const TYPE_PERMISSION = 2;
-    
+
     public function rules()
     {
         return ArrayHelper::merge(
-            parent::rules(), 
+            parent::rules(),
             [
                 [['name'], 'unique'],
             ]
         );
     }
 
-    public static function assignEnable($item)
+    public static function assignEnable($item, $type = NULL)
     {
         $ignoreItems = LetAuthItemChild::getAncestors([$item]);
+        $ignoreItems[] = $item;
         $listItems = self::find()->select(['name','type'])
-            ->where(['not in', 'name', $ignoreItems])
-            ->orderBy('type ASC')
-            ->asArray()->all();
+            ->where(['not in', 'name', $ignoreItems]);
+        if (!empty($type))
+            $listItems = $listItems->andWhere('type = :type', [':type' => $type]);
+        $listItems = $listItems->orderBy('type ASC')->asArray()->all();
         return $listItems;
     }
 

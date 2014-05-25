@@ -2,15 +2,18 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 $this->registerJsFile(\yii\helpers\Url::base() . '/modules/member/assets/js/member.js', [\yii\web\JqueryAsset::className()]);
+
+$this->params['breadcrumbs'][] = ['label' => Yii::t('member', 'Member'), 'url' => ['backend/default/index']];
+$this->params['breadcrumbs'][] = Yii::t('member', 'Role and Permission');
 ?>
 
 <!-- Nav tabs -->
 <ul class="nav nav-tabs">
-    <li><?php echo Html::a('Cây quan hệ vai trò', ['backend/rbac/index']) ?></li>
-    <li class="active"><?php echo Html::a('Vai trò và phân quyền', ['backend/rbac/item']) ?></li>
+    <li><?php echo Html::a(Yii::t('member', 'Role tree'), ['backend/rbac/index']) ?></li>
+    <li class="active"><?php echo Html::a(Yii::t('member', 'Role and Permission'), ['backend/rbac/item']) ?></li>
 </ul>
 
-<div class="panel panel-default" style="border-top: 0;"> <!-- Chinh lai sau -->
+<div class="panel panel-default" style="border-top: 0;">
     <div class="panel-body">
         <div class="margin-bottom">
             <div class="btn-group pull-right" data-toggle="buttons">
@@ -90,7 +93,7 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/member/assets/js/memb
         <div>
             <?php echo app\components\GridView::widget([
                 'dataProvider' => $dataProvider,
-                'filterModel' => $searchModel,                                    
+                'filterModel' => $searchModel,
                 'columns' => [
                     ['class' => 'kartik\grid\SerialColumn'],
 
@@ -111,12 +114,12 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/member/assets/js/memb
                     [
                         'header' => 'Gán quyền',
                         'mergeHeader' => true,
-                        'hAlign' => 'center', 
+                        'hAlign' => 'center',
                         'vAlign' => 'middle',
                         'value' => function ($model, $index, $widget) {
                             if ($model->type == 1) {
-                                return Html::a('Gán quyền', ['backend/rbac/assign'], [
-                                    'class' => 'btn btn-xs btn-success',
+                                return Html::a('Gán quyền', ['backend/rbac/updatechild', 'item' => $model->name], [
+                                    'class' => 'btn btn-xs btn-success'
                                 ]);
                             } else {
                                 return '';
@@ -142,7 +145,7 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/modules/member/assets/js/memb
                         ]
                     ],
                 ],
-            ]); 
+            ]);
             ?>
         </div>
     </div>

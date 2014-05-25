@@ -4,15 +4,39 @@ use yii\helpers\Html;
 use app\components\GridView;
 use yii\helpers\ArrayHelper;
 
-/**
- * @var yii\web\View $this
- * @var yii\data\ActiveDataProvider $dataProvider
- * @var app\modules\article\models\base\LetArticleSearch $searchModel
- */
-//$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Danh sách tin';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<div class="margin-bottom">
+    <div class="btn-group pull-right">
+        <?php
+        echo Html::a(Yii::t('yii', 'Delete'), ['backend/default/create'], [
+            'class' => 'btn btn-danger',
+            'onclick' => '$("#formDefault").submit();',
+        ]);
+        ?>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+<?php echo Yii::t('yii', 'Status'); ?>
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Active</a></li>
+                <li><a href="#">Inactive</a></li>
+            </ul>
+        </div>
+        <?php
+        echo Html::a(Yii::t('yii', 'Create'), ['backend/default/create'], [
+            'class' => 'btn btn-success',
+            'onclick' => '$("#formDefault").submit();',
+        ]);
+        ?>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
 <?php
-// Generate a bootstrap responsive striped table with row highlighted on hover
 echo GridView::widget([
     'panel' => [
         'heading' => 'Danh sách tin',
@@ -33,26 +57,24 @@ echo GridView::widget([
         [
             'attribute' => 'creator',
             'vAlign' => 'middle',
-            'value' => function ($model, $index, $widget) { 
-                return Html::a($model->creatorBy->username,  
-                    '#', 
-                    [
-                        'title'=>'View author detail', 
-                        'onclick'=>'alert("This will open the author page.\n\nDisabled for this demo!")'
-                    ]);
-            },
+            'value' => function ($model, $index, $widget) {
+        return Html::a($model->creatorBy->username, '#', [
+                    'title' => 'View author detail',
+                    'onclick' => 'alert("This will open the author page.\n\nDisabled for this demo!")'
+        ]);
+    },
             'filterType' => GridView::FILTER_SELECT2,
-            'filter' => ArrayHelper::map(\app\models\User::find()->orderBy('username')->asArray()->all(), 'id', 'username'), 
+            'filter' => ArrayHelper::map(\app\models\User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
             'filterWidgetOptions' => [
                 'pluginOptions' => ['allowClear' => true],
             ],
             'filterInputOptions' => ['placeholder' => 'Tìm user'],
-            'format'=>'raw'
+            'format' => 'raw'
         ],
         [
             'attribute' => 'status',
             'class' => '\kartik\grid\BooleanColumn',
-            'trueLabel' => 'Yes', 
+            'trueLabel' => 'Yes',
             'falseLabel' => 'No'
         ],
         [
@@ -60,8 +82,8 @@ echo GridView::widget([
 //            'deleteOptions' => ['label' => '<i class="glyphicon glyphicon-remove"></i>'],
         ],
     ],
-    'responsive'=>true,
-    'hover'=>true,
+    'responsive' => true,
+    'hover' => true,
 ]);
 ?>
 

@@ -6,10 +6,6 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assetbundle\BackendAsset;
 
-/**
- * @var \yii\web\View $this
- * @var string $content
- */
 BackendAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -23,7 +19,7 @@ BackendAsset::register($this);
         // Css
         $this->registerCssFile($this->theme->baseUrl . '/assets/css/letbootstrap.css', [\yii\bootstrap\BootstrapAsset::className()]);
         $this->registerCssFile($this->theme->baseUrl . '/assets/css/let.css', [\yii\bootstrap\BootstrapAsset::className()]);
-        
+
         // Javascript
         $this->registerJsFile($this->theme->baseUrl . '/assets/js/let.js', [\yii\web\JqueryAsset::className()]);
         ?>
@@ -53,7 +49,7 @@ BackendAsset::register($this);
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-left'],
                 'items' => [
-                    ['label' => 'Home', 'url' => \yii\helpers\Url::home()],
+                    ['label' => 'Home', 'url' => Url::home()],
                     $modules,
                     Yii::$app->user->isGuest ?
                         ['label' => 'Login', 'url' => ['/member/backend/auth/login']] :
@@ -69,8 +65,8 @@ BackendAsset::register($this);
                 <?php echo
                 Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                ])
-                ?>
+                ]); ?>
+                <?php echo $this->render('//block/_box_message'); ?>
                 <?php echo $content ?>
             </div>
         </div>
@@ -78,7 +74,7 @@ BackendAsset::register($this);
         <footer class="footer">
             <div class="container">
                 <p class="pull-left">&copy; LetYii Team <?php echo date('Y') ?></p>
-                <p class="pull-right"><?php echo Yii::powered() ?></p>
+                <p class="pull-right">Powered by LetYii</p>
             </div>
         </footer>
 
