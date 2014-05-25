@@ -45,10 +45,4 @@ class DefaultController extends BackendController
         
         return $this->render('index');
     }
-    
-    public function actionTest() {
-        $items = ['user12'];
-        $list = \app\modules\member\models\LetAuthItemChild::getAncestors($items);
-        var_dump($list);
-    }
 }

@@ -50,7 +50,7 @@ class AjaxController extends BackendController {
                 else
                     $result[] = $config[0];
             }
-            var_dump($result);
+//            var_dump($result);
         } catch (ErrorException $e) {
             echo 0;
         }

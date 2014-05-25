@@ -9,8 +9,8 @@ $this->registerCssFile(\yii\helpers\Url::base() . '/assetbundle/nestedset/css/tr
 
 <!-- Nav tabs -->
 <ul class="nav nav-tabs">
-    <li class="active"><a href="<?php echo Url::toRoute('backend/rbac/index'); ?>">Cây quan hệ vai trò</a></li>
-    <li><a href="<?php echo Url::toRoute('backend/rbac/item'); ?>">Vai trò và phân quyền</a></li>
+    <li class="active"><?php Html::a('Cây quan hệ vai trò', ['backend/rbac/index']) ?></li>
+    <li><?php Html::a('Vai trò và phân quyền', ['backend/rbac/item']) ?></li>
 </ul>
 
 <div class="panel panel-default" style="border-top: 0;"> <!-- Chinh lai sau -->

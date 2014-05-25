@@ -24,5 +24,15 @@ class LetAuthItem extends base\LetAuthItemBase {
             ]
         );
     }
-    
+
+    public static function assignEnable($item)
+    {
+        $ignoreItems = LetAuthItemChild::getAncestors([$item]);
+        $listItems = self::find()->select(['name','type'])
+            ->where(['not in', 'name', $ignoreItems])
+            ->orderBy('type ASC')
+            ->asArray()->all();
+        return $listItems;
+    }
+
 }
