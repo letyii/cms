@@ -21,7 +21,12 @@ class DefaultController extends BackendController
     public function actionCreate()
     {
         $model = new LetUser;
-var_dump($model->save());
+        $userName = Yii::$app->request->post('username');
+        $passWord = Yii::$app->request->post('password_hash');
+
+        $model->findByUsername($userName);
+        $model->validatePassword($passWord);
+//var_dump(Yii::$app->request->post());die;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['backend/default/index']);
         } else {

@@ -20,7 +20,7 @@ $form = ActiveForm::begin([
 ?>
 
 <?php echo $form->field($model, 'username')->textInput(['maxlength' => 255]) ?>
-<?php echo $form->field($model, 'password_hash')->textInput(['maxlength' => 100]) ?>
+<?php echo $form->field($model, 'password')->passwordInput(['maxlength' => 100]) ?>
 <?php echo $form->field($model, 'email')->textInput(['maxlength' => 100]) ?>
 <?php /*echo $form->field($model, 'content')->widget(letyii\tinymce\Tinymce::className(), [
     'options' => [
