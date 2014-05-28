@@ -3,14 +3,14 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 $this->registerJsFile(\yii\helpers\Url::base() . '/modules/member/assets/js/member.js', [\yii\web\JqueryAsset::className()]);
 
-$this->params['breadcrumbs'][] = ['label' => Yii::t('member', 'Member'), 'url' => ['backend/default/index']];
-$this->params['breadcrumbs'][] = Yii::t('member', 'Role and Permission');
+$this->params['breadcrumbs'][] = ['label' => Yii::t(Yii::$app->controller->module->id, 'Member'), 'url' => ['backend/default/index']];
+$this->params['breadcrumbs'][] = Yii::t(Yii::$app->controller->module->id, 'Role and Permission');
 ?>
 
 <!-- Nav tabs -->
 <ul class="nav nav-tabs">
-    <li><?php echo Html::a(Yii::t('member', 'Role tree'), ['backend/rbac/index']) ?></li>
-    <li class="active"><?php echo Html::a(Yii::t('member', 'Role and Permission'), ['backend/rbac/item']) ?></li>
+    <li><?php echo Html::a(Yii::t(Yii::$app->controller->module->id, 'Role tree'), ['backend/rbac/index']) ?></li>
+    <li class="active"><?php echo Html::a(Yii::t(Yii::$app->controller->module->id, 'Role and Permission'), ['backend/rbac/item']) ?></li>
 </ul>
 
 <div class="panel panel-default" style="border-top: 0;">
@@ -95,8 +95,6 @@ $this->params['breadcrumbs'][] = Yii::t('member', 'Role and Permission');
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
                 'columns' => [
-                    ['class' => 'kartik\grid\SerialColumn'],
-
                     'name',
                     [
                         'attribute' => 'type',
@@ -109,8 +107,6 @@ $this->params['breadcrumbs'][] = Yii::t('member', 'Role and Permission');
                         },
                     ],
                     'description:ntext',
-                    'rule_name',
-                    'data:ntext',
                     [
                         'header' => 'Gán quyền',
                         'mergeHeader' => true,
@@ -119,7 +115,7 @@ $this->params['breadcrumbs'][] = Yii::t('member', 'Role and Permission');
                         'value' => function ($model, $index, $widget) {
                             if ($model->type == 1) {
                                 return Html::a('Gán quyền', ['backend/rbac/updatechild', 'item' => $model->name], [
-                                    'class' => 'btn btn-xs btn-success'
+                                    'class' => 'btn btn-xs btn-primary'
                                 ]);
                             } else {
                                 return '';

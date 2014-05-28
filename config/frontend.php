@@ -11,7 +11,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => 'app\modules\member\models\LetUser',
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [

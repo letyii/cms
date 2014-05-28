@@ -18,7 +18,7 @@ use Yii;
  * @property string $create_time
  * @property string $update_time
  */
-class LetUserBase extends \yii\db\ActiveRecord
+class LetUserBase extends \app\components\ActiveRecord
 {
     /**
      * @inheritdoc

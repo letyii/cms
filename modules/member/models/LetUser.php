@@ -8,6 +8,7 @@
 
 namespace app\modules\member\models;
 
+use Yii;
 use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Security;
@@ -17,10 +18,72 @@ class LetUser extends base\LetUserBase implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
+    public $password;
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        $data = parent::attributeLabels();
+        $data['password'] = Yii::t('member', 'Password');
+        return $data;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            ['username', 'filter', 'filter' => 'trim'],
+            ['username', 'required'],
+            ['username', 'string', 'min' => 2, 'max' => 255],
+
+            ['email', 'filter', 'filter' => 'trim'],
+            ['email', 'required'],
+            ['email', 'email'],
+            ['email', 'unique', 'message' => 'This email address has already been taken.', 'on' => 'signup'],
+            ['email', 'exist', 'message' => 'There is no user with such email.', 'on' => 'requestPasswordResetToken'],
+
+            ['password', 'required', 'on' => 'signup'],
+            ['password', 'string', 'min' => 6],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function scenarios()
+    {
+        return [
+            'default' => ['username', 'email', 'password'],
+            'signup' => ['username', 'email', 'password'],
+            'resetPassword' => ['password'],
+            'requestPasswordResetToken' => ['email'],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if (($this->isNewRecord || $this->getScenario() === 'resetPassword') && !empty($this->password)) {
+                $this->password_hash = Security::generatePasswordHash($this->password);
+            }
+            if ($this->isNewRecord) {
+                $this->auth_key = Security::generateRandomKey();
+            }
+            return true;
+        }
+        return false;
+    }
 
     public function search($params)
     {
-        $query = LetUser::find();
+        $query = self::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -41,47 +104,6 @@ class LetUser extends base\LetUserBase implements IdentityInterface
         ]);
 
         return $dataProvider;
-    }
-
-    public function rules()
-    {
-        return [
-            ['username', 'filter', 'filter' => 'trim'],
-            ['username', 'required'],
-            ['username', 'string', 'min' => 2, 'max' => 255],
-
-            ['email', 'filter', 'filter' => 'trim'],
-            ['email', 'required'],
-            ['email', 'email'],
-            ['email', 'unique', 'message' => 'This email address has already been taken.', 'on' => 'signup'],
-            ['email', 'exist', 'message' => 'There is no user with such email.', 'on' => 'requestPasswordResetToken'],
-
-            ['password', 'required'],
-            ['password', 'string', 'min' => 6],
-        ];
-    }
-
-    public function scenarios()
-    {
-        return [
-            'signup' => ['username', 'email', 'password'],
-            'resetPassword' => ['password'],
-            'requestPasswordResetToken' => ['email'],
-        ];
-    }
-
-    public function beforeSave($insert)
-    {
-        if (parent::beforeSave($insert)) {
-            if (($this->isNewRecord || $this->getScenario() === 'resetPassword') && !empty($this->password)) {
-                $this->password_hash = Security::generatePasswordHash($this->password);
-            }
-            if ($this->isNewRecord) {
-                $this->auth_key = Security::generateRandomKey();
-            }
-            return true;
-        }
-        return false;
     }
 
     /**

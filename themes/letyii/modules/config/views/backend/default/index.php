@@ -4,6 +4,9 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use \yii\helpers\Json;
 use app\modules\config\models\LetConfig;
+
+$this->title = Yii::t(Yii::$app->controller->module->id, 'Config');
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="margin-bottom">
     <div class="btn-group pull-left" data-toggle="buttons">

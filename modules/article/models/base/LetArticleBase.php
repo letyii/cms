@@ -21,9 +21,9 @@ use Yii;
  * @property string $seo_url
  * @property string $seo_desc
  * @property string $creator
- * @property string $created_time
+ * @property string $create_time
  * @property string $editor
- * @property string $updated_time
+ * @property string $update_time
  * @property integer $promotion
  * @property integer $status
  */
@@ -46,7 +46,7 @@ class LetArticleBase extends \app\components\ActiveRecord
         return [
             [['title'], 'required'],
             [['content'], 'string'],
-            [['from_time', 'to_time', 'created_time', 'updated_time'], 'safe'],
+            [['from_time', 'to_time', 'create_time', 'update_time'], 'safe'],
             [['creator', 'editor', 'promotion', 'status'], 'integer'],
             [['title', 'image', 'author', 'source', 'seo_url'], 'string', 'max' => 255],
             [['intro', 'tags'], 'string', 'max' => 500],
@@ -75,9 +75,9 @@ class LetArticleBase extends \app\components\ActiveRecord
             'seo_url' => Yii::t('article', 'Seo Url'),
             'seo_desc' => Yii::t('article', 'Seo Desc'),
             'creator' => Yii::t('article', 'Creator'),
-            'created_time' => Yii::t('article', 'Created Time'),
+            'create_time' => Yii::t('article', 'Create Time'),
             'editor' => Yii::t('article', 'Editor'),
-            'updated_time' => Yii::t('article', 'Updated Time'),
+            'update_time' => Yii::t('article', 'Update Time'),
             'promotion' => Yii::t('article', 'Promotion'),
             'status' => Yii::t('article', 'Status'),
         ];

@@ -1,5 +1,7 @@
 <?php
 return [
+    'Article' => 'Bài viết',
+
 	'ID' => 'ID',
 	'Title' => 'Tiêu đề',
 	'Image' => 'Image',

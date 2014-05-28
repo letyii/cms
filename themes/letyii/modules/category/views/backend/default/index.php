@@ -1,16 +1,20 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 \yii\jui\SortableAsset::register($this);
 $this->registerCssFile(\yii\helpers\Url::base() . '/assetbundle/nestedset/css/tree.css');
 $this->registerJsFile(\yii\helpers\Url::base() . '/assetbundle/nestedset/js/jquery.mjs.nestedSortable.js', [\yii\web\JqueryAsset::className()]);
 $this->registerJsFile(\yii\helpers\Url::base() . '/assetbundle/nestedset/js/tree.js', [\yii\web\JqueryAsset::className()]);
+
+$this->title = Yii::t(Yii::$app->controller->module->id, 'Category');
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <!-- Content starts -->
 <div class="margin-bottom">
     <div class="btn-group pull-left" data-toggle="buttons">
-        <button class="btn btn-success" onclick="updateList('<?php echo yii\helpers\Url::toRoute(['backend/ajax/updatelist']); ?>');">
+        <button class="btn btn-success" onclick="updateList('<?php echo Url::toRoute(['backend/ajax/updatelist']); ?>');">
             Lưu thay đổi
         </button>
     </div>
@@ -20,7 +24,7 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/assetbundle/nestedset/js/tree
         </button>
         <ul class="dropdown-menu" role="menu">
             <?php foreach (\app\modules\category\models\letCategory::getModules() as $module): ?>
-                <li><a href="<?php echo yii\helpers\Url::toRoute(['backend/default/create', 'module' => $module]); ?>"><?php echo ucfirst($module); ?></a></li>
+                <li><a href="<?php echo Url::toRoute(['backend/default/create', 'module' => $module]); ?>"><?php echo ucfirst($module); ?></a></li>
 <?php endforeach; ?>
         </ul>
     </div>
@@ -28,7 +32,7 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/assetbundle/nestedset/js/tree
 </div>
 
 <div class="panel panel-default">
-    <div class="panel-heading">Tạo config</div>
+    <div class="panel-heading"><?php echo Html::encode($this->title); ?></div>
     <div class="panel-body">
         <input type="hidden" id="categoryChangedListJson" value="" />
         <div class="tree">

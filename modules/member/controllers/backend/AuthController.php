@@ -12,7 +12,7 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use app\components\BackendController;
-use app\models\LoginForm;
+use app\modules\member\models\LoginForm;
 use app\models\ContactForm;
 
 class AuthController extends BackendController

@@ -56,11 +56,11 @@ echo $form->field($model, 'from_time')->widget(DatePicker::className([
 
 <?php echo $form->field($model, 'creator')->textInput(['maxlength' => 11]) ?>
 
-<?php echo $form->field($model, 'created_time')->textInput() ?>
+<?php echo $form->field($model, 'create_time')->textInput() ?>
 
 <?php echo $form->field($model, 'editor')->textInput(['maxlength' => 11]) ?>
 
-<?php echo $form->field($model, 'updated_time')->textInput() ?>
+<?php echo $form->field($model, 'update_time')->textInput() ?>
 
 <?php echo $form->field($model, 'promotion')->textInput() ?>
 

@@ -80,7 +80,7 @@ class DefaultController extends BackendController
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) AND $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -103,10 +103,10 @@ class DefaultController extends BackendController
     }
 
     /**
-     * Finds the LetArticleBase model based on its primary key value.
+     * Finds the model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return LetArticleBase the loaded model
+     * @return the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)

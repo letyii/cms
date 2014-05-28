@@ -5,7 +5,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\modules\article\models\base\LetArticleBase;
-use app\models\User;
+use app\modules\member\models\LetUser;
 
 /**
  * LetArticle represents the model behind the search form about `app\modules\article\models\base\LetArticleBase`.
@@ -63,13 +63,13 @@ class LetArticle extends LetArticleBase
 
         return $dataProvider;
     }
-    
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getCreatorBy()
     {
-        $data = $this->hasOne(User::className(), ['id' => 'creator']);
+        $data = $this->hasOne(LetUser::className(), ['id' => 'creator']);
 //        var_dump($data); die;
         return $data;
     }

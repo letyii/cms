@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Html;
 
-$this->title = Yii::t(Yii::$app->controller->module->id, 'Create member');
+$this->title = Yii::t(Yii::$app->controller->module->id, 'Edit "{title}"', ['title' => $model->username]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t(Yii::$app->controller->module->id, 'Member'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

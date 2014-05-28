@@ -1,4 +1,4 @@
 <?php
 return [
-	'ID' => 'ID',
+	'Category' => 'Danh mục',
 ];

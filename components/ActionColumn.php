@@ -6,9 +6,9 @@ use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 
 class ActionColumn extends \kartik\grid\ActionColumn {
-    
+
     private $_isDropdown = false;
-    
+
     public $template = '{view} {update} {delete}';
 
     /**
@@ -21,7 +21,7 @@ class ActionColumn extends \kartik\grid\ActionColumn {
                 $title = Yii::t('kvgrid', 'View');
                 $icon = '<span class="glyphicon glyphicon-eye-open"></span>';
                 $label = ArrayHelper::remove($options, 'label', ($this->_isDropdown ? $icon . ' ' . $title : $icon));
-                $options += ['title' => Yii::t('kvgrid', 'View'), 'data-pjax' => '0'];
+                $options += ['title' => Yii::t('yii', 'View'), 'data-pjax' => '0'];
                 if ($this->_isDropdown) {
                     $options['tabindex'] = '-1';
                     return '<li>' . Html::a($label, $url, $options) . '</li>' . PHP_EOL;
@@ -37,7 +37,7 @@ class ActionColumn extends \kartik\grid\ActionColumn {
                 $title = Yii::t('kvgrid', 'Update');
                 $icon = '<span class="glyphicon glyphicon-pencil"></span>';
                 $label = ArrayHelper::remove($options, 'label', ($this->_isDropdown ? $icon . ' ' . $title : $icon));
-                $options += ['title' => Yii::t('kvgrid', 'Update'), 'data-pjax' => '0'];
+                $options += ['title' => Yii::t('yii', 'Update'), 'data-pjax' => '0'];
                 if ($this->_isDropdown) {
                     $options['tabindex'] = '-1';
                     return '<li>' . Html::a($label, $url, $options) . '</li>' . PHP_EOL;

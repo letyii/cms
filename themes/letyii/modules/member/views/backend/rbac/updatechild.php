@@ -2,15 +2,15 @@
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 
-$this->params['breadcrumbs'][] = ['label' => Yii::t('member', 'Member'), 'url' => ['backend/default/index']];
-$this->params['breadcrumbs'][] = ['label' => Yii::t('member', 'Role and Permission'), 'url' => ['backend/rbac/item']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t(Yii::$app->controller->module->id, 'Member'), 'url' => ['backend/default/index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t(Yii::$app->controller->module->id, 'Role and Permission'), 'url' => ['backend/rbac/item']];
 $this->params['breadcrumbs'][] = 'Gán quyền cho "' . Yii::$app->request->get('item') . '"';
 ?>
 
 <!-- Nav tabs -->
 <ul class="nav nav-tabs">
-    <li><?php echo Html::a(Yii::t('member', 'Role tree'), ['backend/rbac/index']) ?></li>
-    <li class="active"><?php echo Html::a(Yii::t('member', 'Role and Permission'), ['backend/rbac/item']) ?></li>
+    <li><?php echo Html::a(Yii::t(Yii::$app->controller->module->id, 'Role tree'), ['backend/rbac/index']) ?></li>
+    <li class="active"><?php echo Html::a(Yii::t(Yii::$app->controller->module->id, 'Role and Permission'), ['backend/rbac/item']) ?></li>
 </ul>
 
 <div class="panel panel-default" style="border-top: 0;"> <!-- Chinh lai sau -->

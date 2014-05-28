@@ -6,7 +6,7 @@
  * @author Mai Ba Duy <maibaduy@gmail.com>
  */
 
-namespace app\models;
+namespace app\modules\member\models;
 
 use Yii;
 use yii\base\Model;
@@ -72,7 +72,7 @@ class LoginForm extends Model
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = User::findByUsername($this->username);
+            $this->_user = LetUser::findByUsername($this->username);
         }
 
         return $this->_user;

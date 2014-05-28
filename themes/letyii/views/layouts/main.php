@@ -33,8 +33,12 @@ BackendAsset::register($this);
             foreach (array_keys(Yii::$app->modules) as $module){
                 if (in_array($module, ['cms', 'debug', 'gridview']))
                     continue;
-                $moduleUrl = ($module == 'gii') ? '/' . $module : '/' . $module . '/backend/default/index';
-                $modules[] = ['label' => $module, 'url' => [$moduleUrl]];
+
+                if ($module == 'gii')
+                    $modules[] = ['label' => 'Gii', 'url' => ['/' . $module]];
+                else
+                    $modules[] = ['label' => Yii::t($module, ucfirst($module)), 'url' => ['/' . $module . '/backend/default/index']];
+
             }
             if (!empty($modules))  {
                 $modules = ['label' => 'Modules', 'items' => $modules];
@@ -51,9 +55,7 @@ BackendAsset::register($this);
                 'items' => [
                     ['label' => 'Home', 'url' => Url::home()],
                     $modules,
-                    Yii::$app->user->isGuest ?
-                        ['label' => 'Login', 'url' => ['/member/backend/auth/login']] :
-                        ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                    ['label' => Yii::t('yii', 'Logout') . ' (' . Yii::$app->user->identity->username . ')',
                         'url' => ['/member/backend/auth/logout'],
                         'linkOptions' => ['data-method' => 'post']],
                 ],
@@ -62,6 +64,7 @@ BackendAsset::register($this);
             ?>
 
             <div class="container">
+                <?php echo $this->render('//block/_box_breadcrumbs'); ?>
                 <?php echo
                 Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],

@@ -3,13 +3,14 @@
 use yii\helpers\Html;
 use app\components\GridView;
 use yii\helpers\ArrayHelper;
+use app\modules\member\models\LetUser;
 
-$this->title = 'Danh sách tin';
+$this->title = Yii::t(Yii::$app->controller->module->id, 'Article');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="margin-bottom">
-    <div class="btn-group pull-right">
+    <div class="btn-group pull-left">
         <?php
         echo Html::a(Yii::t('yii', 'Delete'), ['backend/default/create'], [
             'class' => 'btn btn-danger',
@@ -39,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php
 echo GridView::widget([
     'panel' => [
-        'heading' => 'Danh sách tin',
+        'heading' => Yii::t(Yii::$app->controller->module->id, 'Article'),
         'after' => '{export}',
     ],
     'dataProvider' => $dataProvider,
@@ -58,13 +59,13 @@ echo GridView::widget([
             'attribute' => 'creator',
             'vAlign' => 'middle',
             'value' => function ($model, $index, $widget) {
-        return Html::a($model->creatorBy->username, '#', [
-                    'title' => 'View author detail',
-                    'onclick' => 'alert("This will open the author page.\n\nDisabled for this demo!")'
-        ]);
-    },
+            return Html::a($model->creatorBy->username, '#', [
+                'title' => 'View author detail',
+                'onclick' => 'alert("This will open the author page.\n\nDisabled for this demo!")'
+            ]);
+        },
             'filterType' => GridView::FILTER_SELECT2,
-            'filter' => ArrayHelper::map(\app\models\User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
+            'filter' => ArrayHelper::map(LetUser::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
             'filterWidgetOptions' => [
                 'pluginOptions' => ['allowClear' => true],
             ],

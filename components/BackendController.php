@@ -10,8 +10,6 @@ namespace app\components;
 
 use Yii;
 use yii\web\Controller;
-use yii\base\Action;
-use yii\base\ActionFilter;
 
 class BackendController extends Controller
 {
