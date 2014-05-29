@@ -16,7 +16,7 @@ class LetArticle extends LetArticleBase
     {
         return [
             [['id', 'creator', 'editor', 'promotion', 'status'], 'integer'],
-            [['title', 'image', 'intro', 'content', 'author', 'source', 'tags', 'from_time', 'to_time', 'seo_title', 'seo_url', 'seo_desc', 'created_time', 'updated_time'], 'safe'],
+            [['title', 'image', 'intro', 'content', 'author', 'source', 'tags', 'from_time', 'to_time', 'seo_title', 'seo_url', 'seo_desc', 'create_time', 'update_time'], 'safe'],
         ];
     }
 
@@ -43,9 +43,9 @@ class LetArticle extends LetArticleBase
             'from_time' => $this->from_time,
             'to_time' => $this->to_time,
             'creator' => $this->creator,
-            'created_time' => $this->created_time,
+            'create_time' => $this->create_time,
             'editor' => $this->editor,
-            'updated_time' => $this->updated_time,
+            'update_time' => $this->update_time,
             'promotion' => $this->promotion,
             'status' => $this->status,
         ]);

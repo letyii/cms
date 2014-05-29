@@ -25,7 +25,7 @@ class LetUserBase extends \app\components\ActiveRecord
      */
     public static function tableName()
     {
-        return 'letyii_user';
+        return '{{%user}}';
     }
 
     /**

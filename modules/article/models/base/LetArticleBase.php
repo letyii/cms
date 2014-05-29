@@ -35,7 +35,6 @@ class LetArticleBase extends \app\components\ActiveRecord
     public static function tableName()
     {
         return '{{%article}}';
-//        return 'letyii_article';
     }
 
     /**

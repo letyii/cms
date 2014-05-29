@@ -2,6 +2,7 @@
 namespace app\components;
 
 use Yii;
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 
@@ -58,7 +59,7 @@ class ActionColumn extends \kartik\grid\ActionColumn {
 //                    'data-method' => 'post',
 //                    'data-pjax' => '0',
                     'href' => 'javascript:void(0);',
-                    'onclick' => "deleteRow('".Yii::$app->urlManager->createUrl(['cms/backend/crud/delete'])."', '".$model->tableName()."', '".$model->id."');",
+                    'onclick' => "deleteRow('".Url::to(['/cms/backend/crud/delete'])."', '".$model->tableName()."', '".$model->id."');",
                 ];
                 return Html::a($label, NULL, $options);
             };
