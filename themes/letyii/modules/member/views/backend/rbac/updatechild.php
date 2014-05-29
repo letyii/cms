@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = 'Gán quyền cho "' . Yii::$app->request->get(
     <li class="active"><?php echo Html::a(Yii::t(Yii::$app->controller->module->id, 'Role and Permission'), ['backend/rbac/item']) ?></li>
 </ul>
 
-<div class="panel panel-default" style="border-top: 0;"> <!-- Chinh lai sau -->
+<div class="panel panel-default" style="border-top: 0;">
     <div class="panel-body">
         <div class="margin-bottom">
             <div class="btn-group pull-right">

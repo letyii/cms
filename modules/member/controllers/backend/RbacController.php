@@ -76,7 +76,8 @@ class RbacController extends BackendController
         return $this->render('updatechild', $assign);
     }
 
-    public function actionReset () {
+    public function actionReset()
+    {
         $auth = Yii::$app->authManager;
         $auth->clearAll();
 

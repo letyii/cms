@@ -37,4 +37,12 @@ class LetAuthItem extends base\LetAuthItemBase {
         return $listItems;
     }
 
+    /**
+     * @param
+     * @return array $roles
+     */
+    public static function getItems($type = null)
+    {
+        return self::find()->select(['name','type'])->where(['type' => $type])->asArray()->all();
+    }
 }
