@@ -10,9 +10,11 @@ namespace app\modules\member\controllers\backend;
 
 use Yii;
 use app\components\BackendController;
+use app\modules\member\models\LetUser;
 use app\modules\member\models\LetAuthItemChild;
 use app\modules\member\models\LetAuthItem;
 use app\modules\member\models\search\LetAuthItemSearch;
+use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 
 class RbacController extends BackendController
@@ -113,5 +115,45 @@ class RbacController extends BackendController
         $auth->addChild($user2, $user12);
 
         $auth->assign($god, 1);
+    }
+
+    /**
+     * Assign roles to id.
+     * @param string
+     * @return mixed
+     */
+    public function actionAssign()
+    {
+        $id = Yii::$app->request->get('id');
+        if (empty($id))
+            return $this->redirect(['backend/default/index']);
+
+        $model = $this->findModel($id);
+        if (Yii::$app->request->post()) {
+            $model->role = Json::encode(Yii::$app->request->post('role'));
+            $model->save();
+        }
+
+        $assign['itemsRole'] = ArrayHelper::map(LetAuthItem::getItems(LetAuthItem::TYPE_ROLE),'name','name');
+        $assign['checked'] = Json::decode($model->role);
+        $assign['username'] = $model->username;
+
+        return $this->render('assign', $assign);
+    }
+
+    /**
+     * Finds the model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param string $id
+     * @return the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = LetUser::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
     }
 }

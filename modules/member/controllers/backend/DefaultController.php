@@ -7,7 +7,6 @@ use app\components\BackendController;
 use app\modules\member\models\LetUser;
 use app\modules\member\models\LetAuthItem;
 use yii\helpers\ArrayHelper;
-use yii\helpers\Json;
 use yii\web\NotFoundHttpException;
 
 class DefaultController extends BackendController
@@ -75,28 +74,6 @@ class DefaultController extends BackendController
     {
         $this->findModel($id)->delete();
         return $this->redirect(['index']);
-    }
-
-    /**
-     * Assign roles to id.
-     * @param string
-     * @return mixed
-     */
-    public function actionAssignroles()
-    {
-        $id = Yii::$app->request->get('id');
-        if (empty($id))
-            return $this->redirect(['backend/defaut/index']);
-
-        $model = $this->findModel($id);
-        if (Yii::$app->request->post()) {
-            $model->role = Json::encode(Yii::$app->request->post('role'));
-            $model->save();
-        }
-
-        $assign['itemsRole'] = ArrayHelper::map(LetAuthItem::getItems(LetAuthItem::TYPE_ROLE),'name','name');
-        $assign['checked'] = Json::decode($model->role);
-        return $this->render('assignroles', $assign);
     }
 
     /**
