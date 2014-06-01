@@ -14,7 +14,6 @@ use app\modules\member\models\LetUser;
 use app\modules\member\models\LetAuthItemChild;
 use app\modules\member\models\LetAuthItem;
 use app\modules\member\models\search\LetAuthItemSearch;
-use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 
 class RbacController extends BackendController
@@ -124,19 +123,25 @@ class RbacController extends BackendController
      */
     public function actionAssign()
     {
+        $auth = Yii::$app->authManager;
         $id = Yii::$app->request->get('id');
         if (empty($id))
             return $this->redirect(['backend/default/index']);
 
-        $model = $this->findModel($id);
         if (Yii::$app->request->post()) {
-            $model->role = Json::encode(Yii::$app->request->post('role'));
-            $model->save();
+            //delete all roles of id
+            $auth->revokeAll($id);
+
+            $roles = Yii::$app->request->post('role');
+            foreach ($roles as $role) {
+                $adminRole = $auth->getRole($role);
+                $auth->assign($adminRole, $id);
+            }
         }
 
         $assign['itemsRole'] = ArrayHelper::map(LetAuthItem::getItems(LetAuthItem::TYPE_ROLE),'name','name');
-        $assign['checked'] = Json::decode($model->role);
-        $assign['username'] = $model->username;
+        $assign['checked'] = ArrayHelper::map($auth->getRolesByUser($id),'name','name');
+        $assign['username'] = $id;
 
         return $this->render('assign', $assign);
     }
