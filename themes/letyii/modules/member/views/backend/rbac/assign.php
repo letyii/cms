@@ -1,9 +1,11 @@
 <?php
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
+use app\modules\member\models\LetUser;
 
+$this->title = 'Quản lý vai trò cho "' . LetUser::findOne($user_id)->getAttribute('username') . '"';
 $this->params['breadcrumbs'][] = ['label' => Yii::t(Yii::$app->controller->module->id, 'Member'), 'url' => ['backend/default/index']];
-$this->params['breadcrumbs'][] = 'Quản lý vai trò cho "' . $username . '"';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="margin-bottom">
@@ -23,7 +25,7 @@ $this->params['breadcrumbs'][] = 'Quản lý vai trò cho "' . $username . '"';
 </div>
 <?php echo Html::beginForm('', 'POST', ['id' => 'formDefault', 'role' => 'form', 'class' => 'form-horizontal']); ?>
 <div class="panel panel-default" id="">
-    <div class="panel-heading">Thiết lập vai trò</div>
+    <div class="panel-heading"><?php echo $this->title; ?></div>
     <div class="panel-body">
         <?php
         echo Html::checkboxList('role', $checked, $itemsRole, [

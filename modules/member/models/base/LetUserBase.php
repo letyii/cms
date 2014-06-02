@@ -62,4 +62,5 @@ class LetUserBase extends \app\components\ActiveRecord
             'update_time' => Yii::t('member', 'Update Time'),
         ];
     }
+
 }

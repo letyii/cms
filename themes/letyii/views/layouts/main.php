@@ -1,8 +1,5 @@
 <?php
-use yii\helpers\Url;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assetbundle\BackendAsset;
 
@@ -28,41 +25,7 @@ BackendAsset::register($this);
     <body>
         <?php $this->beginBody() ?>
         <div class="wrap">
-            <?php
-            $modules = [];
-            foreach (array_keys(Yii::$app->modules) as $module){
-                if (in_array($module, ['cms', 'debug', 'gridview']))
-                    continue;
-
-                if ($module == 'gii')
-                    $modules[] = ['label' => 'Gii', 'url' => ['/' . $module]];
-                else
-                    $modules[] = ['label' => Yii::t($module, ucfirst($module)), 'url' => ['/' . $module . '/backend/default/index']];
-
-            }
-            if (!empty($modules))  {
-                $modules = ['label' => 'Modules', 'items' => $modules];
-            }
-            NavBar::begin([
-                'brandLabel' => 'LetYii CMS 1.0 Alpha',
-                'brandUrl' => Yii::$app->homeUrl,
-                'options' => [
-                    'class' => 'navbar-default navbar-static-top',
-                ],
-            ]);
-            echo Nav::widget([
-                'options' => ['class' => 'navbar-nav navbar-left'],
-                'items' => [
-                    ['label' => 'Home', 'url' => Url::home()],
-                    $modules,
-                    ['label' => Yii::t('yii', 'Logout') . ' (' . Yii::$app->user->identity->username . ')',
-                        'url' => ['/member/backend/auth/logout'],
-                        'linkOptions' => ['data-method' => 'post']],
-                ],
-            ]);
-            NavBar::end();
-            ?>
-
+            <?php echo $this->render('//block/_box_menu'); ?>
             <div class="container">
                 <?php echo $this->render('//block/_box_breadcrumbs'); ?>
                 <?php echo

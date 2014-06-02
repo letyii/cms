@@ -1,55 +1,47 @@
-                <!-- Sidebar starts -->
-                <div class="sidebar">
-                    <!-- Logo starts -->
-                    <div class="logo">
-                        <h1><a href="<?php echo \yii\helpers\Url::home(); ?>">LetYii 1.0</a></h1>
-                    </div>
-                    <!-- Logo ends -->
+<?php
+use yii\helpers\Url;
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
 
-                    <!-- Sidebar buttons starts -->
-                    <div class="sidebar-buttons text-center">
-                        <!-- User button -->
-                        <div class="btn-group">
-                            <a href="<?php echo \Yii::$app->urlManager->createUrl(['user/index']); ?>" class="btn btn-black btn-xs"><i class="glyphicon glyphicon-user"></i></a>
-                            <a href="<?php echo \Yii::$app->urlManager->createUrl(['user/index']); ?>" class="btn btn-danger btn-xs">Hồ sơ người dùng</a>
-                        </div>
-                        <!-- Logout button -->
-                        <div class="btn-group">
-                            <a href="login.html" class="btn btn-black btn-xs"><i class="glyphicon glyphicon-power-off"></i></a>
-                            <a href="<?php echo \Yii::$app->urlManager->createUrl(['member/backend/auth/logout']); ?>" class="btn btn-danger btn-xs">Thoát</a>
-                        </div>
-                    </div>
-                    <!-- Sidebar buttons ends -->
+$modules = [];
+foreach (array_keys(Yii::$app->modules) as $module){
+    if (in_array($module, ['cms', 'debug', 'gridview']))
+        continue;
 
-                    <!-- Sidebar search -->
-                    <div class="sidebar-search">
-                        <form class="form-inline" role="form">
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="s" placeholder="Nhập từ khóa tìm kiếm...">
-                                <!-- Search button -->
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                                </span>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- Sidebar search -->
+    if ($module == 'gii')
+        $modules[] = ['label' => 'Gii', 'url' => ['/' . $module]];
+    else {
+        $thisModule = ['label' => Yii::t($module, ucfirst($module)), 'url' => ['/' . $module . '/backend/default']];
+        if (Yii::$app->controller->module->id == $module)
+            $thisModule['active'] = TRUE;
+        $modules[] = $thisModule;
+    }
+}
+if (!empty($modules))  {
+    $modules = ['label' => 'Modules', 'items' => $modules];
+}
 
-                    <!-- Sidebar navigation starts -->
-                    <div class="sidebar-dropdown"><a href="#">Navigation</a></div>
-                    <div class="sidey">
-                        <ul class="nav">
-                            <li><a href="<?php echo \yii\helpers\Url::home(); ?>"><i class="glyphicon glyphicon-desktop"></i> Tổng quan</a></li>
-                            <?php foreach (array_keys(Yii::$app->modules) as $module): ?>
-                            <?php
-                            if ($module == 'debug')
-                                continue;
-                            $moduleUrl = ($module == 'gii') ? \Yii::$app->urlManager->createUrl([$module]) : \Yii::$app->urlManager->createUrl([$module . '/backend/default/index']);
-                            ?>
-                            <li<?php if ($module == Yii::$app->controller->module->id): ?> class="current"<?php endif; ?>><a href="<?php echo $moduleUrl; ?>"><i class="glyphicon glyphicon-folder<?php if ($module == Yii::$app->controller->module->id): ?>-open<?php endif; ?>"></i> <?php echo $module; ?></a></li>
-                            <?php endforeach; ?>
-                        </ul>               
-                    </div>
-                    <!-- Sidebar navigation ends -->
-                </div>
-                <!-- Sidebar ends -->
+$home = ['label' => 'Home', 'url' => Url::home()];
+    if (Yii::$app->controller->module->id == 'cms')
+        $home['active'] = TRUE;
+
+$items[] = $home;
+$items[] = $modules;
+$items[] = ['label' => Yii::t('yii', 'Logout') . ' (' . Yii::$app->user->identity->username . ')',
+            'url' => ['/member/backend/auth/logout'],
+            'linkOptions' => ['data-method' => 'post']];
+
+NavBar::begin([
+    'brandLabel' => 'LetYii CMS 1.0 Alpha',
+    'brandUrl' => Yii::$app->homeUrl,
+    'options' => [
+        'class' => 'navbar-default navbar-static-top',
+    ],
+]);
+echo Nav::widget([
+    'options' => ['class' => 'navbar-nav navbar-left'],
+    'activateParents' => TRUE,
+    'items' => $items,
+]);
+NavBar::end();
+?>

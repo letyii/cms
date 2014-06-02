@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
     echo GridView::widget([
         'panel' => [
             'heading' => Yii::t(Yii::$app->controller->module->id, 'Article'),
-            'after' => '{export}',
+//            'after' => '{export}',
             'tableOptions' => [
                 'id' => 'listDefault',
             ],

@@ -124,24 +124,24 @@ class RbacController extends BackendController
     public function actionAssign()
     {
         $auth = Yii::$app->authManager;
-        $id = Yii::$app->request->get('id');
-        if (empty($id))
+        $user_id = Yii::$app->request->get('user_id');
+        if (empty($user_id))
             return $this->redirect(['backend/default/index']);
 
         if (Yii::$app->request->post()) {
             //delete all roles of id
-            $auth->revokeAll($id);
+            $auth->revokeAll($user_id);
 
             $roles = Yii::$app->request->post('role');
             foreach ($roles as $role) {
                 $adminRole = $auth->getRole($role);
-                $auth->assign($adminRole, $id);
+                $auth->assign($adminRole, $user_id);
             }
         }
 
         $assign['itemsRole'] = ArrayHelper::map(LetAuthItem::getItems(LetAuthItem::TYPE_ROLE),'name','name');
-        $assign['checked'] = ArrayHelper::map($auth->getRolesByUser($id),'name','name');
-        $assign['username'] = $id;
+        $assign['checked'] = ArrayHelper::map($auth->getRolesByUser($user_id),'name','name');
+        $assign['user_id'] = $user_id;
 
         return $this->render('assign', $assign);
     }

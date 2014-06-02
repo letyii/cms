@@ -5,6 +5,7 @@ $config = [
     'basePath' => dirname(__DIR__),
     'language' => 'vi',
     'bootstrap' => ['log'],
+    'defaultRoute' => 'cms/backend/default',
     'extensions' => require(__DIR__ . '/../vendor/yiisoft/extensions.php'),
     'components' => [
         'cache' => [
@@ -31,7 +32,7 @@ $config = [
             ],
         ],
         'urlManager' => [
-            'showScriptName' => true,
+            'showScriptName' => TRUE,
         ],
 
         'view' => [

@@ -16,18 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]);
         echo Html::a('Nhóm vai trò và phân quyền', ['backend/rbac/index'], [
             'class' => 'btn btn-primary',
-        ]); ?>
-        <div class="btn-group">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                <?php echo Yii::t('yii', 'Status'); ?>
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                <li><a href="#">Active</a></li>
-                <li><a href="#">Inactive</a></li>
-            </ul>
-        </div>
-        <?php
+        ]);
         echo Html::a(Yii::t('yii', 'Delete'), ['backend/default/create'], [
             'class' => 'btn btn-danger',
             'onclick' => '$("#formDefault").submit();',
@@ -53,6 +42,18 @@ echo GridView::widget([
         ],
         'username',
         'email',
+        [
+            'header' => 'Vai trò',
+            'mergeHeader' => true,
+            'hAlign' => 'center',
+            'vAlign' => 'middle',
+            'value' => function ($model, $index, $widget) {
+                return Html::a('Quản lý vai trò', ['backend/rbac/assign', 'user_id' => $model->id], [
+                    'class' => 'btn btn-xs btn-primary'
+                ]);
+            },
+            'format'=>'raw',
+        ],
         [
             'class' => '\app\components\ActionColumn',
         ],

@@ -1,10 +1,12 @@
 <?php
 use yii\helpers\Html;
 use yii\helpers\Url;
+use app\components\GridView;
 $this->registerJsFile(\yii\helpers\Url::base() . '/modules/member/assets/js/member.js', [\yii\web\JqueryAsset::className()]);
 
+$this->title = Yii::t(Yii::$app->controller->module->id, 'Role and Permission');
 $this->params['breadcrumbs'][] = ['label' => Yii::t(Yii::$app->controller->module->id, 'Member'), 'url' => ['backend/default/index']];
-$this->params['breadcrumbs'][] = Yii::t(Yii::$app->controller->module->id, 'Role and Permission');
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <!-- Nav tabs -->
@@ -20,11 +22,11 @@ $this->params['breadcrumbs'][] = Yii::t(Yii::$app->controller->module->id, 'Role
                 <?php
                 echo Html::button('Tạo vai trò', [
                     'class' => 'btn btn-success',
-                    'onclick' => '$("#roleForm").slideToggle()',
+                    'onclick' => '$("#roleForm,#permissionForm").hide(); $("#roleForm").show();',
                 ]);
                 echo Html::button('Tạo phân quyền', [
                     'class' => 'btn btn-success',
-                    'onclick' => '$("#permissionForm").slideToggle()',
+                    'onclick' => '$("#roleForm,#permissionForm").hide(); $("#permissionForm").show();',
                 ]);
                 ?>
             </div>
@@ -42,16 +44,27 @@ $this->params['breadcrumbs'][] = Yii::t(Yii::$app->controller->module->id, 'Role
                     ]); ?>
                 </div>
                 <div class="form-group">
-                    <label for="roleDescription">Description</label>
+                    <label for="roleDescription">Mô tả</label>
                     <?php echo Html::textInput('roleDescription', '', [
                         'id' => 'roleDescription',
                         'class' => 'form-control',
                     ]); ?>
                 </div>
-                <?php echo Html::button('Tạo mới', [
-                    'class' => 'btn btn-success',
-                    'onclick' => 'createItem("'.yii\helpers\Url::toRoute(['backend/ajax/createitem']).'", "1");',
-                ]); ?>
+            </div>
+            <div class="panel-footer">
+                <div class="pull-right">
+                    <?php
+                    echo Html::button(Yii::t('yii', 'Cancel'), [
+                        'class' => 'btn',
+                        'onclick' => '$("#roleForm").hide();',
+                    ]);
+                    echo Html::button(Yii::t('yii', 'Save'), [
+                        'class' => 'btn btn-success',
+                        'onclick' => 'createItem("'.yii\helpers\Url::toRoute(['backend/ajax/createitem']).'", "1");',
+                    ]);
+                    ?>
+                </div>
+                <div class="clearfix"></div>
             </div>
         </div>
 
@@ -77,21 +90,41 @@ $this->params['breadcrumbs'][] = Yii::t(Yii::$app->controller->module->id, 'Role
                     ]); ?>
                 </div>
                 <div class="form-group">
-                    <label for="permissionDescription">Description</label>
+                    <label for="permissionDescription">Mô tả</label>
                     <?php echo Html::textInput('permissionDescription', '', [
                         'id' => 'permissionDescription',
                         'class' => 'form-control',
                     ]); ?>
                 </div>
-                <?php echo Html::button('Tạo mới', [
-                    'class' => 'btn btn-success',
-                    'onclick' => 'createItem("'.yii\helpers\Url::toRoute(['backend/ajax/createitem']).'", "2");',
-                ]); ?>
             </div>
+            <div class="panel-footer">
+                <div class="pull-right">
+                    <?php
+                    echo Html::button(Yii::t('yii', 'Cancel'), [
+                        'class' => 'btn',
+                        'onclick' => '$("#permissionForm").hide();',
+                    ]);
+                    echo Html::button(Yii::t('yii', 'Save'), [
+                        'class' => 'btn btn-success',
+                        'onclick' => 'createItem("'.yii\helpers\Url::toRoute(['backend/ajax/createitem']).'", "2");',
+                    ]);
+                    ?>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
         </div>
 
         <div>
-            <?php echo app\components\GridView::widget([
+            <?php
+            echo GridView::widget([
+                'panel' => [
+                    'heading' => $this->title,
+                    'after' => '{export}',
+                    'tableOptions' => [
+                        'id' => 'listDefault',
+                    ],
+                ],
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
                 'columns' => [
@@ -131,7 +164,7 @@ $this->params['breadcrumbs'][] = Yii::t(Yii::$app->controller->module->id, 'Role
                         'template' => '{delete}',
                         'buttons' => [
                             'delete' => function ($url, $model) {
-                                $url = yii\helpers\Url::toRoute(['backend/ajax/deleteitem']);
+                                $url = Url::to(['backend/ajax/deleteitem']);
                                 return Html::a('<i class="glyphicon glyphicon-trash"></i>', NULL, [
                                     'href' => 'javascript:void(0);',
                                     'title' => Yii::t('yii', 'Delete'),
@@ -141,6 +174,8 @@ $this->params['breadcrumbs'][] = Yii::t(Yii::$app->controller->module->id, 'Role
                         ]
                     ],
                 ],
+                'responsive' => true,
+                'hover' => true,
             ]);
             ?>
         </div>
