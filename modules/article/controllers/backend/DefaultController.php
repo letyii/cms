@@ -8,9 +8,6 @@ use app\components\BackendController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-/**
- * DefaultController implements the CRUD actions for LetArticleBase model.
- */
 class DefaultController extends BackendController
 {
     public function behaviors()
@@ -26,13 +23,16 @@ class DefaultController extends BackendController
     }
 
     /**
-     * Lists all LetArticleBase models.
+     * Lists all models.
      * @return mixed
      */
     public function actionIndex()
     {
+        $queryParams = Yii::$app->request->getQueryParams();
+        if (!Yii::$app->user->can('article.view'))
+            $queryParams['LetArticle']['creator'] = Yii::$app->user->id;
         $searchModel = new LetArticle;
-        $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
+        $dataProvider = $searchModel->search($queryParams);
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
@@ -41,7 +41,7 @@ class DefaultController extends BackendController
     }
 
     /**
-     * Displays a single LetArticleBase model.
+     * Displays a single model.
      * @param string $id
      * @return mixed
      */
@@ -53,15 +53,20 @@ class DefaultController extends BackendController
     }
 
     /**
-     * Creates a new LetArticleBase model.
+     * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
+        if (!Yii::$app->user->can('article.create'))
+            return $this->render('//message', ['messages' => ['danger' => Yii::t('yii', 'You are not allowed to perform this action.')]]);
+
         $model = new LetArticle;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) AND $model->save()) {
+            if (Yii::$app->request->post('save_type') == 'apply')
+                return $this->redirect(['update', 'id' => $model->id]);
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -71,7 +76,7 @@ class DefaultController extends BackendController
     }
 
     /**
-     * Updates an existing LetArticleBase model.
+     * Updates an existing model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
      * @return mixed
@@ -79,8 +84,12 @@ class DefaultController extends BackendController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        if (!Yii::$app->user->can('article.update', ['post' => $model]))
+            return $this->render('//message', ['messages' => ['danger' => Yii::t('yii', 'You are not allowed to perform this action.')]]);
 
         if ($model->load(Yii::$app->request->post()) AND $model->save()) {
+            if (Yii::$app->request->post('save_type') == 'apply')
+                return $this->redirect(['update', 'id' => $model->id]);
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -90,15 +99,17 @@ class DefaultController extends BackendController
     }
 
     /**
-     * Deletes an existing LetArticleBase model.
+     * Deletes an existing model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
      * @return mixed
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        if (!Yii::$app->user->can('article.delete'))
+            return $this->render('//message', ['messages' => ['danger' => Yii::t('yii', 'You are not allowed to perform this action.')]]);
 
+        $this->findModel($id)->delete();
         return $this->redirect(['index']);
     }
 

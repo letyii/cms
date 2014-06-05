@@ -12,10 +12,11 @@
 	"minimum-stability": "alpha",
 	"require": {
 		"php": ">=5.4.0",
-		"yiisoft/yii2": "*",
-		"yiisoft/yii2-bootstrap": "*",
-		"yiisoft/yii2-swiftmailer": "*",
-		"yiisoft/yii2-jui": "*",
+		"yiisoft/yii2": "dev-master",
+		"yiisoft/yii2-bootstrap": "dev-master",
+		"yiisoft/yii2-swiftmailer": "dev-master",
+		"yiisoft/yii2-jui": "dev-master",
+        "letyii/yii2-gii": "dev-master",
         "letyii/yii2-tinymce": "dev-master",
         "letyii/yii2-chart": "dev-master",
         "creocoder/yii2-nested-set-behavior": "dev-master",
@@ -23,8 +24,8 @@
         "kartik-v/dependent-dropdown": "dev-master",
         "kartik-v/yii2-widgets": "*",
         "kartik-v/yii2-grid": "dev-master",
-        "kartik-v/yii2-widgets": "*",
         "kartik-v/yii2-social": "dev-master",
+        "kartik-v/yii2-field-range": "dev-master",
         "marciocamello/yii2-x-editable": "dev-master"
 	},
 	"require-dev": {

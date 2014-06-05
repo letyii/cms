@@ -29,6 +29,10 @@ use Yii;
  */
 class LetArticleBase extends \app\components\ActiveRecord
 {
+    public static function getModule() {
+        return 'article';
+    }
+
     /**
      * @inheritdoc
      */

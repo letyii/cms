@@ -13,12 +13,16 @@ use Yii;
  */
 class LetConfigBase extends \app\components\ActiveRecord
 {
+    public static function getModule() {
+        return 'config';
+    }
+
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'letyii_config';
+        return '{{%config}}';
     }
 
     /**

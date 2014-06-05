@@ -21,7 +21,7 @@ if (!empty($modules))  {
     $modules = ['label' => 'Modules', 'items' => $modules];
 }
 
-$home = ['label' => 'Home', 'url' => Url::home()];
+$home = ['label' => Yii::t('yii', 'Home'), 'url' => Url::home()];
     if (Yii::$app->controller->module->id == 'cms')
         $home['active'] = TRUE;
 

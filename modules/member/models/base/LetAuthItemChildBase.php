@@ -15,6 +15,10 @@ use Yii;
  */
 class LetAuthItemChildBase extends \yii\db\ActiveRecord
 {
+    public static function getModule() {
+        return 'member';
+    }
+
     /**
      * @inheritdoc
      */

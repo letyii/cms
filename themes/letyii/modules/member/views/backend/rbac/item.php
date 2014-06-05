@@ -138,6 +138,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                 return 'Phân quyền';
                             }
                         },
+                        'filterType' => GridView::FILTER_SELECT2,
+                        'filter' => [
+                            '1' => 'Vai trò',
+                            '2' => 'Phân quyền',
+                        ],
+                        'filterWidgetOptions' => [
+                            'pluginOptions' => ['allowClear' => true],
+                        ],
+                        'filterInputOptions' => ['placeholder' => 'Chọn loại'],
                     ],
                     'description:ntext',
                     [

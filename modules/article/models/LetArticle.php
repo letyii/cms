@@ -15,8 +15,15 @@ class LetArticle extends LetArticleBase
     public function rules()
     {
         return [
-            [['id', 'creator', 'editor', 'promotion', 'status'], 'integer'],
-            [['title', 'image', 'intro', 'content', 'author', 'source', 'tags', 'from_time', 'to_time', 'seo_title', 'seo_url', 'seo_desc', 'create_time', 'update_time'], 'safe'],
+//            [['title'], 'required'],
+            [['content'], 'string'],
+            [['from_time', 'to_time', 'create_time', 'update_time'], 'safe'],
+            [['creator', 'editor', 'promotion', 'status'], 'integer'],
+            [['title', 'image', 'author', 'source', 'seo_url'], 'string', 'max' => 255],
+            [['intro', 'tags'], 'string', 'max' => 500],
+            [['seo_title'], 'string', 'max' => 70],
+            [['seo_desc'], 'string', 'max' => 160],
+//            [['title', 'image', 'intro', 'content', 'author', 'source', 'tags', 'from_time', 'to_time', 'seo_title', 'seo_url', 'seo_desc', 'create_time', 'update_time'], 'safe'],
         ];
     }
 
@@ -70,7 +77,6 @@ class LetArticle extends LetArticleBase
     public function getCreatorBy()
     {
         $data = $this->hasOne(LetUser::className(), ['id' => 'creator']);
-//        var_dump($data); die;
         return $data;
     }
 }
