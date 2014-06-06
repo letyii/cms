@@ -32,6 +32,7 @@ class DefaultController extends BackendController
         if (!Yii::$app->user->can('article.view'))
             $queryParams['LetArticle']['creator'] = Yii::$app->user->id;
         $searchModel = new LetArticle;
+        $searchModel->scenario = 'search';
         $dataProvider = $searchModel->search($queryParams);
 
         return $this->render('index', [
@@ -47,8 +48,9 @@ class DefaultController extends BackendController
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 

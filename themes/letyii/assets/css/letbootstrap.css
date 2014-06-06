@@ -1,2 +1,3 @@
 .btn, .form-control, .panel, .dropdown-menu, .pagination, .container .jumbotron {border-radius: 0; -moz-border-radius:0; -webkit-border-radius: 0}
 .form-control {-webkit-box-shadow: none; box-shadow: none;}
+.grid-view .img-rounded, .grid-view .img-circle, .grid-view .img-thumbnail {width: 100px;}

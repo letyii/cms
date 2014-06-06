@@ -34,17 +34,17 @@ echo GridView::widget([
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
     'columns' => [
+        ['class' => 'kartik\grid\CheckboxColumn'],
         [
             'attribute' => 'id',
-            'options' => [
-                'width' => '60px',
-            ],
+            'mergeHeader' => TRUE,
+            'hAlign' => 'center',
         ],
         'username',
         'email',
         [
             'header' => 'Vai trò',
-            'mergeHeader' => true,
+            'mergeHeader' => TRUE,
             'hAlign' => 'center',
             'vAlign' => 'middle',
             'value' => function ($model, $index, $widget) {

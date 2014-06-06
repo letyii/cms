@@ -17,6 +17,7 @@ use kartik\widgets\FileInput;
 $form = ActiveForm::begin([
     'id' => 'formDefault',
     'layout' => 'horizontal',
+    'options' => ['enctype'=>'multipart/form-data'],
 ]);
 
 echo Html::hiddenInput('save_type', 'save');
@@ -73,9 +74,10 @@ echo $form->field($model, 'image')->widget(FileInput::classname(), [
     'options' => ['accept' => 'uploads/*'],
     'pluginOptions' => [
         'previewFileType' => 'image',
-        'showCaption' => false,
-        'showRemove' => false,
-        'showUpload' => false,
+        'showPreview' => true,
+        'showCaption' => FALSE,
+        'showRemove' => FALSE,
+        'showUpload' => FALSE,
         'browseClass' => 'btn btn-primary btn-block',
         'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
         'browseLabel' =>  'Select Photo'

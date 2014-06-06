@@ -18,7 +18,7 @@ class BackendController extends Controller
     {
         // Check access
         if (!Yii::$app->user->can('member.backendLogin') AND !($action->controller->module->id == 'member' AND $action->controller->id == 'backend/auth' AND $action->id == 'login')) {
-//            \yii\web\User::setReturnUrl(\Yii::$app->request->getAbsoluteUrl());
+            Yii::$app->user->setReturnUrl(Yii::$app->request->getUrl());
             return $this->redirect(['/member/backend/auth/login']);
         }
 

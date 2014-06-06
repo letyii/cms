@@ -15,7 +15,7 @@ class LetArticle extends LetArticleBase
     public function rules()
     {
         return [
-//            [['title'], 'required'],
+            [['title'], 'required', 'on' => self::SCENARIO_DEFAULT],
             [['content'], 'string'],
             [['from_time', 'to_time', 'create_time', 'update_time'], 'safe'],
             [['creator', 'editor', 'promotion', 'status'], 'integer'],
@@ -29,8 +29,10 @@ class LetArticle extends LetArticleBase
 
     public function scenarios()
     {
-        // bypass scenarios() implementation in the parent class
-        return Model::scenarios();
+        $myScenarios = [
+            'search' => ['title', 'creator', 'status'],
+        ];
+        return array_replace_recursive($myScenarios, Model::scenarios());
     }
 
     public function search($params)
@@ -41,7 +43,7 @@ class LetArticle extends LetArticleBase
             'query' => $query,
         ]);
 
-        if (!($this->load($params) && $this->validate())) {
+        if (!($this->load($params) AND $this->validate())) {
             return $dataProvider;
         }
 

@@ -1,5 +1,6 @@
 <?php
 
+use app\components\LetHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use app\components\GridView;
@@ -14,8 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="margin-bottom">
     <div class="btn-group pull-left">
         <?php
-        if (Yii::$app->user->can(Yii::$app->controller->module->id . '.create')) {
-            echo Html::a(Yii::t('yii', 'Create'), ['backend/default/create'], [
+        if (Yii::$app->user->can(Yii::$app->controller->module->id . '.create')) {            echo Html::a(Yii::t('yii', 'Create'), ['backend/default/create'], [
                 'class' => 'btn btn-success',
                 'onclick' => '$("#formDefault").submit();',
             ]);
@@ -48,13 +48,22 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'kartik\grid\CheckboxColumn'],
             [
                 'attribute' => 'id',
-                'options' => [
-                    'width' => '60px',
-                ],
+                'mergeHeader' => TRUE,
+                'hAlign' => 'center',
             ],
             'title',
-            'image',
-            'intro',
+            [
+                'attribute' => 'image',
+                'mergeHeader' => TRUE,
+                'hAlign' => 'center',
+                'value' => function ($model, $index, $widget) {
+                    if (!empty($model->image))
+                        return Html::img(LetHelper::getFileUploaded($model->image), [
+                            'class' => 'img-thumbnail',
+                        ]);
+                },
+                'format' => 'raw',
+            ],
             [
                 'attribute' => 'creator',
                 'vAlign' => 'middle',
@@ -76,9 +85,9 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'status',
-                'class' => '\kartik\grid\BooleanColumn',
-                'trueLabel' => 'Yes',
-                'falseLabel' => 'No'
+                'class' => '\app\components\BooleanColumn',
+//                'trueLabel' => 'Yes',
+//                'falseLabel' => 'No'
             ],
             [
                 'class' => '\app\components\ActionColumn',
