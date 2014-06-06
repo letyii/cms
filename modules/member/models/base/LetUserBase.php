@@ -20,6 +20,10 @@ use Yii;
  */
 class LetUserBase extends \app\components\ActiveRecord
 {
+    public static function getModule() {
+        return 'member';
+    }
+
     /**
      * @inheritdoc
      */

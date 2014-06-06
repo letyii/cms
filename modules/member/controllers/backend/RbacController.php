@@ -80,7 +80,7 @@ class RbacController extends BackendController
     public function actionReset()
     {
         $auth = Yii::$app->authManager;
-        $auth->clearAll();
+        $auth->removeAll();
 
         $backendLogin = $auth->createPermission('member.backendLogin');
         $backendLogin->description = 'Login Backend';
@@ -94,24 +94,24 @@ class RbacController extends BackendController
         $auth->addChild($admin, $backendLogin);
         $auth->addChild($god, $admin);
 
-        $user = $auth->createRole('user');
-        $auth->add($user);
-        $auth->addChild($admin, $user);
-        $auth->addChild($user, $backendLogin);
+        $member = $auth->createRole('member');
+        $auth->add($member);
+        $auth->addChild($admin, $member);
+        $auth->addChild($member, $backendLogin);
 
-        $user2 = $auth->createRole('user2');
-        $auth->add($user2);
-        $auth->addChild($admin, $user2);
-
-        $user11 = $auth->createRole('user11');
-        $auth->add($user11);
-        $auth->addChild($user, $user11);
-
-        $user12 = $auth->createRole('user12');
-        $auth->add($user12);
-        $auth->addChild($user, $user12);
-
-        $auth->addChild($user2, $user12);
+//        $user2 = $auth->createRole('user2');
+//        $auth->add($user2);
+//        $auth->addChild($admin, $user2);
+//
+//        $user11 = $auth->createRole('user11');
+//        $auth->add($user11);
+//        $auth->addChild($user, $user11);
+//
+//        $user12 = $auth->createRole('user12');
+//        $auth->add($user12);
+//        $auth->addChild($user, $user12);
+//
+//        $auth->addChild($user2, $user12);
 
         $auth->assign($god, 1);
     }
@@ -144,21 +144,5 @@ class RbacController extends BackendController
         $assign['user_id'] = $user_id;
 
         return $this->render('assign', $assign);
-    }
-
-    /**
-     * Finds the model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param string $id
-     * @return the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = LetUser::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
     }
 }

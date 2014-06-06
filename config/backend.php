@@ -64,7 +64,18 @@ if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
     $configs['bootstrap'][] = 'debug';
     $configs['modules']['debug'] = 'yii\debug\Module';
-    $configs['modules']['gii'] = 'yii\gii\Module';
+    $configs['modules']['gii'] = [
+        'class' => 'yii\gii\Module',
+        'allowedIPs' => ['127.0.0.1', '::1', '192.168.0.*', '192.168.178.20'],
+        'generators' => [ //here
+            'letyiicrud' => [ //name generator
+                'class' => 'letyii\gii\generators\letyiicrud\Generator', //class generator
+                'templates' => [ //setting for out templates
+                    'default' => 'letyii\gii\generators\letyiicrud\default', //name template => path to template
+                ]
+            ]
+        ],
+    ];
 }
 
 return $configs;

@@ -134,7 +134,7 @@ class LetUser extends base\LetUserBase implements IdentityInterface
      * @param string $token the token to be looked for
      * @return IdentityInterface|null the identity object that matches the given token.
      */
-    public static function findIdentityByAccessToken($token)
+    public static function findIdentityByAccessToken($token, $type = NULL)
     {
         return static::findOne(['access_token' => $token]);
     }

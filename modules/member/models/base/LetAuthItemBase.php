@@ -21,6 +21,10 @@ use Yii;
  */
 class LetAuthItemBase extends \app\components\ActiveRecord
 {
+    public static function getModule() {
+        return 'member';
+    }
+
     /**
      * @inheritdoc
      */

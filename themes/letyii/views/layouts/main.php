@@ -28,8 +28,7 @@ BackendAsset::register($this);
             <?php echo $this->render('//block/_box_menu'); ?>
             <div class="container">
                 <?php echo $this->render('//block/_box_breadcrumbs'); ?>
-                <?php echo
-                Breadcrumbs::widget([
+                <?php echo Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                 ]); ?>
                 <?php echo $this->render('//block/_box_message'); ?>

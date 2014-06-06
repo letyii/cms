@@ -7,33 +7,26 @@ use yii\helpers\ArrayHelper;
 use app\modules\member\models\LetUser;
 use app\modules\article\models\LetArticle;
 
-$this->title = Yii::t(Yii::$app->controller->module->id, 'Article');
+$this->title = Yii::t(Yii::$app->controller->module->id, ucfirst(Yii::$app->controller->module->id));
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="margin-bottom">
     <div class="btn-group pull-left">
         <?php
-        echo Html::button(Yii::t('yii', 'Delete'), [
-            'class' => 'btn btn-danger',
-            'onclick' => "deleteSelectedRows('" . Url::to(['/cms/backend/crud/deleteselectedrows']) . "', '" . LetArticle::tableName() . "')",
-        ]);
-        ?>
-        <div class="btn-group">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-<?php echo Yii::t('yii', 'Status'); ?>
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                <li><a href="#">Active</a></li>
-                <li><a href="#">Inactive</a></li>
-            </ul>
-        </div>
-        <?php
-        echo Html::a(Yii::t('yii', 'Create'), ['backend/default/create'], [
-            'class' => 'btn btn-success',
-            'onclick' => '$("#formDefault").submit();',
-        ]);
+        if (Yii::$app->user->can(Yii::$app->controller->module->id . '.create')) {
+            echo Html::a(Yii::t('yii', 'Create'), ['backend/default/create'], [
+                'class' => 'btn btn-success',
+                'onclick' => '$("#formDefault").submit();',
+            ]);
+        }
+
+        if (Yii::$app->user->can(Yii::$app->controller->module->id . '.delete')) {
+            echo Html::button(Yii::t('yii', 'Delete'), [
+                'class' => 'btn btn-danger',
+                'onclick' => "deleteSelectedRows('" . Url::to(['/cms/backend/crud/deleteselectedrows']) . "', '" . LetArticle::tableName() . "')",
+            ]);
+        }
         ?>
     </div>
     <div class="clearfix"></div>

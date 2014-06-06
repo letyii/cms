@@ -26,12 +26,13 @@ $form = ActiveForm::begin([
 
 <?php $add_option = preg_replace('/\r|\n/m','',$form->field($model, "value[]")->textInput(["class" => "form-control", "placeholder" => "Nhập value"])); ?>
 <script type="text/javascript">
-function add() {
+function addOption() {
 	var add_option = '<?php echo $add_option; ?>';
+
 	$("#option_list").append(add_option);
 }
 </script>
 
-<div class="pull-right"><button type="button" class="btn btn-default" onclick='add()'>Thêm lựa chọn</button></div>
+<div class="pull-right"><button type="button" class="btn btn-default" onclick='addOption();'>Thêm lựa chọn</button></div>
 <div class="clearfix"></div>
 <?php ActiveForm::end(); ?>
