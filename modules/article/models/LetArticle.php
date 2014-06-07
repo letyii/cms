@@ -78,7 +78,6 @@ class LetArticle extends LetArticleBase
      */
     public function getCreatorBy()
     {
-        $data = $this->hasOne(LetUser::className(), ['id' => 'creator']);
-        return $data;
+        return $this->hasOne(LetUser::className(), ['id' => 'creator']);
     }
 }

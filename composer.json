@@ -18,6 +18,7 @@
 		"yiisoft/yii2-swiftmailer": "dev-master",
 		"yiisoft/yii2-jui": "dev-master",
         "letyii/yii2-gii": "dev-master",
+        "letyii/yii2-rbac-cached": "dev-master",
         "letyii/yii2-tinymce": "dev-master",
         "letyii/yii2-chart": "dev-master",
         "creocoder/yii2-nested-set-behavior": "dev-master",

@@ -8,15 +8,13 @@
 
 namespace app\components;
 
-//use Yii;
-use yii\rbac\DbManager;
 use yii\db\Query;
 use yii\helpers\Html;
 
-class LetRbac extends DbManager
+class LetRbac extends \letyii\rbaccached\RbacCached
 {
     const IS_GOD = 'god';
-    
+
     /**
      * @inheritdoc
      */
@@ -45,7 +43,7 @@ class LetRbac extends DbManager
      */
     public function buildTree($item = self::IS_GOD, $level = 1) {
             $tree = [];
-        // Get 
+        // Get
         $childs = (new Query)->select(['child'])
             ->from($this->itemChildTable)
             ->where(['parent' => $item])
@@ -69,13 +67,13 @@ class LetRbac extends DbManager
         foreach ($tree as $role => $child) {
             $result .= Html::beginTag('li');
             $result .= '<div><span><i class="fa fa-arrows"></i> ' . $role . '</span></div>';
-            if (isset($child) AND !empty($child)) 
+            if (isset($child) AND !empty($child))
                 $this->createTreeHtml($child, $result);
             $result .= Html::endTag('li');
         }
         $result .= Html::endTag('ul');
     }
-    
+
     private function filterRole($items, $roles) {
         foreach ($items as $item => $child) {
             if (!in_array($item, $roles))

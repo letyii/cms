@@ -16,6 +16,7 @@ return [
             'password' => '',
             'charset' => 'utf8',
             'tablePrefix' => 'letyii_',
+            'enableSchemaCache' => TRUE,
             'schemaCacheDuration' => 3600,
         ],
     ],

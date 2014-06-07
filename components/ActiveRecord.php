@@ -4,8 +4,27 @@ namespace app\components;
 use Yii;
 use app\components\LetHelper;
 use app\helpers\FileHelper;
+use yii\helpers\ArrayHelper;
 
 class ActiveRecord extends \yii\db\ActiveRecord {
+
+    /**
+     * @inheritdoc
+     */
+    public static function findOne($condition)
+    {
+        if (ArrayHelper::isAssociative($condition)) {
+            return self::findOne($condition);
+        } else {
+            $cacheKey = 'ActiveRecord:findOne:' . $condition;
+            $cached = Yii::$app->cache->get($cacheKey);
+            if ($cached === FALSE) {
+                $cached = parent::findOne($condition);
+                Yii::$app->cache->set($cacheKey, $cached);
+            }
+            return $cached;
+        }
+    }
 
     /**
      * @inheritdoc
@@ -42,4 +61,15 @@ class ActiveRecord extends \yii\db\ActiveRecord {
 
         return parent::beforeSave($insert);
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function afterSave($insert) {
+        $cacheKey = 'ActiveRecord:findOne:' . $this->primaryKey;
+        Yii::$app->cache->delete($cacheKey);
+
+        parent::afterSave($insert);
+    }
+
 }
