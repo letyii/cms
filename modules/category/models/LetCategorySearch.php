@@ -1,16 +1,15 @@
 <?php
 
-namespace app\modules\category\models\base;
+namespace app\modules\category\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\category\models\letCategory;
 
 /**
- * letCategorySearch represents the model behind the search form about `app\modules\category\models\letCategory`.
+ * LetCategorySearch represents the model behind the search form about `app\modules\category\models\LetCategory`.
  */
-class letCategorySearch extends letCategory
+class LetCategorySearch extends LetCategory
 {
     public function rules()
     {
@@ -28,7 +27,7 @@ class letCategorySearch extends letCategory
 
     public function search($params)
     {
-        $query = letCategory::find();
+        $query = LetCategory::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

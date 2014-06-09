@@ -12,9 +12,21 @@ use app\modules\member\models\LetUser;
  */
 class LetArticle extends LetArticleBase
 {
-    public function rules()
+
+    public $category_id = [];
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
     {
-        return [
+        $data = parent::attributeLabels();
+        $data['category_id'] = Yii::t('category', 'Category');
+        return $data;
+    }
+
+    public function rules() {
+        $data = [
             [['title'], 'required', 'on' => self::SCENARIO_DEFAULT],
             [['content'], 'string'],
             [['from_time', 'to_time', 'create_time', 'update_time'], 'safe'],
@@ -23,16 +35,16 @@ class LetArticle extends LetArticleBase
             [['intro', 'tags'], 'string', 'max' => 500],
             [['seo_title'], 'string', 'max' => 70],
             [['seo_desc'], 'string', 'max' => 160],
-//            [['title', 'image', 'intro', 'content', 'author', 'source', 'tags', 'from_time', 'to_time', 'seo_title', 'seo_url', 'seo_desc', 'create_time', 'update_time'], 'safe'],
+            [['category_id'], 'safe'],
         ];
+        return array_merge(parent::rules(), $data);
     }
 
     public function scenarios()
     {
-        $myScenarios = [
+        return array_replace_recursive(Model::scenarios(), [
             'search' => ['title', 'creator', 'status'],
-        ];
-        return array_replace_recursive($myScenarios, Model::scenarios());
+        ]);
     }
 
     public function search($params)

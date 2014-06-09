@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\category\models\base;
+namespace app\modules\category\models;
 
 use Yii;
 
@@ -15,7 +15,7 @@ use Yii;
  * @property string $title
  * @property string $module
  */
-class letCategoryBase extends \app\components\ActiveRecord
+class BaseLetCategory extends \app\components\ActiveRecord
 {
     /**
      * @inheritdoc

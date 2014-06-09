@@ -9,14 +9,14 @@
 namespace app\modules\category\controllers\backend;
 
 use Yii;
-use app\modules\category\models\letCategory;
+use app\modules\category\models\LetCategory;
 use app\components\BackendController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 
 /**
- * DefaultController implements the CRUD actions for letCategory model.
+ * DefaultController implements the CRUD actions for LetCategory model.
  */
 class DefaultController extends BackendController
 {
@@ -33,27 +33,27 @@ class DefaultController extends BackendController
     }
 
     /**
-     * Lists all letCategory models.
+     * Lists all LetCategory models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $data = letCategory::find()->addOrderBy('lft')->all();
+        $data = LetCategory::find()->addOrderBy('lft')->all();
         return $this->render('index', [
             'data' => $data,
         ]);
     }
 
     /**
-     * Finds the letCategory model based on its primary key value.
+     * Finds the LetCategory model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return letCategory the loaded model
+     * @return LetCategory the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = letCategory::findOne($id)) !== null) {
+        if (($model = LetCategory::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

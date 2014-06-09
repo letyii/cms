@@ -29,6 +29,10 @@ use Yii;
  */
 class LetArticleBase extends \app\components\ActiveRecord
 {
+    /**
+     * Get Module Name
+     * @return string
+     */
     public static function getModule() {
         return 'article';
     }
@@ -85,4 +89,8 @@ class LetArticleBase extends \app\components\ActiveRecord
             'status' => Yii::t('article', 'Status'),
         ];
     }
+
+//    public function deleteItemCategory($item_id) {
+//        \app\modules\article\models\LetArticleCategory::deleteAll(['item_id' => $item_id]);
+//    }
 }

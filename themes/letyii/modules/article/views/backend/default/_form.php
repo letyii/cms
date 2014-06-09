@@ -1,5 +1,6 @@
 <?php
 
+use app\components\LetHelper;
 use yii\helpers\Html;
 use app\components\ActiveForm;
 use kartik\widgets\SwitchInput;
@@ -21,6 +22,9 @@ $form = ActiveForm::begin([
 ]);
 
 echo Html::hiddenInput('save_type', 'save');
+
+//echo $form->field($model, 'category_id')->textInput(['maxlength' => 255]);
+echo $form->field($model, 'category_id')->widget(\app\components\FieldCategory::className());
 
 echo $form->field($model, 'title')->textInput(['maxlength' => 255]);
 
@@ -70,11 +74,10 @@ echo $form->field($model, 'status')->widget(SwitchInput::className([
     'type' => SwitchInput::RADIO,
 ]));
 
-echo $form->field($model, 'image')->widget(FileInput::classname(), [
+$imageConfig = [
     'options' => ['accept' => 'uploads/*'],
     'pluginOptions' => [
         'previewFileType' => 'image',
-        'showPreview' => true,
         'showCaption' => FALSE,
         'showRemove' => FALSE,
         'showUpload' => FALSE,
@@ -82,7 +85,10 @@ echo $form->field($model, 'image')->widget(FileInput::classname(), [
         'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
         'browseLabel' =>  'Select Photo'
     ],
-]);
+];
+if (!empty($model->image))
+    $imageConfig['pluginOptions']['initialPreview'] = Html::img(LetHelper::getFileUploaded($model->image), ['class'=>'file-preview-image']);
+echo $form->field($model, 'image')->widget(FileInput::classname(), $imageConfig);
 
 echo $form->field($model, 'author')->textInput(['maxlength' => 255]);
 

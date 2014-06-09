@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Tạo danh mục <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-            <?php foreach (\app\modules\category\models\letCategory::getModules() as $module): ?>
+            <?php foreach (\app\modules\category\models\LetCategory::getModules() as $module): ?>
                 <li><a href="<?php echo Url::toRoute(['backend/default/create', 'module' => $module]); ?>"><?php echo ucfirst($module); ?></a></li>
 <?php endforeach; ?>
         </ul>
@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <input type="hidden" id="categoryChangedListJson" value="" />
         <div class="tree">
             <?php
-            $categories = \app\modules\category\models\letCategory::find()->addOrderBy('lft')->all();
+            $categories = \app\modules\category\models\LetCategory::find()->addOrderBy('lft')->all();
             $level = 0;
 
             foreach ($categories as $n => $category) {

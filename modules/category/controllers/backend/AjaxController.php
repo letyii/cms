@@ -9,8 +9,8 @@
 namespace app\modules\category\controllers\backend;
 
 use Yii;
-use app\modules\category\models\letCategory;
-//use app\modules\category\models\base\letCategorySearch;
+use app\modules\category\models\LetCategory;
+//use app\modules\category\models\base\LetCategorySearch;
 use app\components\BackendController;
 use yii\helpers\ArrayHelper;
 
@@ -31,16 +31,16 @@ class AjaxController extends BackendController {
             // Xử lý từng hành động của mảng biến
             if (!empty($data)) { // Kiem tra su ton tai cua data
                 foreach ($data as $action) {
-                    $model = letCategory::findOne($action['itemId']);
+                    $model = LetCategory::findOne($action['itemId']);
                     if ($model === null)
                         continue;
 
                     if (!empty($action['beforeId'])) { // Truong hop doi tuong dung sau 1 doi tuong 'beforeId'
-                        $model->moveAfter(letCategory::findOne($action['beforeId']));
+                        $model->moveAfter(LetCategory::findOne($action['beforeId']));
                     } elseif (!empty($action['afterId'])) { // Truong hop doi tuong dung truoc 1 doi tuong 'afterId'
-                        $model->moveBefore(letCategory::findOne($action['afterId']));
+                        $model->moveBefore(LetCategory::findOne($action['afterId']));
                     } elseif (!empty($action['parentId'])) { // Truong hop doi tuong nam trong 1 doi tuong 'parentId'
-                        $model->moveAsFirst(letCategory::findOne($action['parentId']));
+                        $model->moveAsFirst(LetCategory::findOne($action['parentId']));
                     }
                 }
             }
@@ -60,8 +60,8 @@ class AjaxController extends BackendController {
             $title = ArrayHelper::getValue($_POST, 'title', '');
             
             if (!empty($module)) {
-                $modelParent = letCategory::findOne($parent_id);
-                $model = new letCategory;
+                $modelParent = LetCategory::findOne($parent_id);
+                $model = new LetCategory;
                 $model->title = $title;
                 $model->appendTo($modelParent);
                 echo $model->id;
@@ -81,7 +81,7 @@ class AjaxController extends BackendController {
             $id = (int) ArrayHelper::getValue($_POST, 'id', 0);
             $title = ArrayHelper::getValue($_POST, 'title', '');
             
-            $model = letCategory::findOne($id);
+            $model = LetCategory::findOne($id);
             $model->title = $title;
             $model->saveNode(true);
             echo $model->id;
@@ -96,7 +96,7 @@ class AjaxController extends BackendController {
     public function actionDelete() {
         try {
             $id = (int) ArrayHelper::getValue($_POST, 'id', 0);
-            $model = letCategory::findOne($id);
+            $model = LetCategory::findOne($id);
             if ($model->deleteNode())
                 echo 1;
             else

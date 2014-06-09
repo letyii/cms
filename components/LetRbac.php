@@ -20,6 +20,7 @@ class LetRbac extends \letyii\rbaccached\RbacCached
      */
     public function init()
     {
+//        $this->deleteAllCache();
         parent::init();
     }
 

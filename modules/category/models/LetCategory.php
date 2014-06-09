@@ -9,7 +9,7 @@
 namespace app\modules\category\models;
 
 use Yii;
-use app\modules\category\models\letCategoryQuery;
+use app\modules\category\models\LetCategoryQuery;
 
 /**
  * This is the model class for table "letyii_category".
@@ -20,8 +20,8 @@ use app\modules\category\models\letCategoryQuery;
  * @property string $rgt
  * @property integer $level
  */
-class letCategory extends base\letCategoryBase {
-    
+class LetCategory extends BaseLetCategory {
+
     public $position; // children | before | after
     public $relationId; // ID of category
 
@@ -31,7 +31,7 @@ class letCategory extends base\letCategoryBase {
     public static function tableName() {
         return 'letyii_category';
     }
-    
+
     public function rules()
     {
         return [
@@ -54,12 +54,12 @@ class letCategory extends base\letCategoryBase {
     }
 
     public static function find() {
-        return new letCategoryQuery(get_called_class());
+        return new LetCategoryQuery(get_called_class());
     }
-    
+
     public static function saveItem($data, $id = 0) {
         // Get relation model
-        $relation = self::findOne($data['letCategory']['relationId']);
+        $relation = self::findOne($data['LetCategory']['relationId']);
         if ($relation === null)
             return false;
 
@@ -69,17 +69,17 @@ class letCategory extends base\letCategoryBase {
             if ($model === null)
                 return false;
         } else { // truong hop create
-            $model = new letCategory;
+            $model = new LetCategory;
         }
-        
+
         // Save Node
-        $model->title = $data['letCategory']['title'];
+        $model->title = $data['LetCategory']['title'];
         $model->module = $relation->module; // Module trung voi module cua doi tuong can quan he
 //        $model->saveNode();
 
         // Category position
         if ($id > 0) { // truong hop update
-            switch ($data['letCategory']['position']) {
+            switch ($data['LetCategory']['position']) {
                 case 'children':
                     $model->moveAsFirst($relation);
                     break;
@@ -91,7 +91,7 @@ class letCategory extends base\letCategoryBase {
                     break;
             }
         } else { // truong hop create
-            switch ($data['letCategory']['position']) {
+            switch ($data['LetCategory']['position']) {
                 case 'children':
                     $model->appendTo($relation);
                     break;
@@ -118,7 +118,7 @@ class letCategory extends base\letCategoryBase {
         };
         return $modules;
     }
-    
+
     /**
      * Get category cua tat ca cac module hoac cho tung module. Trong truong hop module do chua co danh muc root thi se tao danh muc root
      * @param string $module
@@ -128,7 +128,7 @@ class letCategory extends base\letCategoryBase {
     public static function getCategory($module = '', $prefix = '') {
         $level = NULL;
         $categorys = array();
-        
+
         if (empty($module) OR !in_array($module, self::getModules()))
             $data = self::find()->addOrderBy('lft')->all();
         else {
@@ -138,7 +138,7 @@ class letCategory extends base\letCategoryBase {
             ->addOrderBy('lft')->one();
             if ($root === null) {
                 // Create root for module
-                $root = new letCategory;
+                $root = new LetCategory;
                 $root->title = $module;
                 $root->module = $module;
                 $root->saveNode();
@@ -147,14 +147,14 @@ class letCategory extends base\letCategoryBase {
                 ->where('module = :module', [':module' => $module])
                 ->andWhere('lft != 1')
                 ->addOrderBy('lft')->all();
-            
+
             $categorys[$root->id] = 'Danh mục gốc của module: ' . $root->module;
         }
         foreach ($data as $category) {
             if ($level == NULL)
                 $level = $category->level - 1;
             $categorys[$category->id] = str_repeat($prefix, ($category->level - $level)) . $category->title;
-        };
+        }
         return $categorys;
     }
 }

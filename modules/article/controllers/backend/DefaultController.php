@@ -90,14 +90,12 @@ class DefaultController extends BackendController
             return $this->render('//message', ['messages' => ['danger' => Yii::t('yii', 'You are not allowed to perform this action.')]]);
 
         if ($model->load(Yii::$app->request->post()) AND $model->save()) {
-            if (Yii::$app->request->post('save_type') == 'apply')
-                return $this->redirect(['update', 'id' => $model->id]);
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+            if (Yii::$app->request->post('save_type') !== 'apply')
+                return $this->redirect(['view', 'id' => $model->id]);
         }
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     /**

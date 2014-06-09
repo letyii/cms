@@ -8,7 +8,7 @@
 
 namespace app\modules\category\models;
 
-class letCategoryQuery extends \yii\db\ActiveQuery
+class LetCategoryQuery extends \yii\db\ActiveQuery
 {
     public function behaviors() {
         return [

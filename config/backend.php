@@ -68,11 +68,11 @@ if (YII_ENV_DEV) {
         'class' => 'yii\gii\Module',
         'allowedIPs' => ['127.0.0.1', '::1', '192.168.0.*', '192.168.178.20'],
         'generators' => [ //here
-            'letyiicrud' => [ //name generator
-                'class' => 'letyii\gii\generators\letyiicrud\Generator', //class generator
-                'templates' => [ //setting for out templates
-                    'default' => 'letyii\gii\generators\letyiicrud\default', //name template => path to template
-                ]
+            'letyiimodel' => [ //name generator
+                'class' => 'letyii\gii\generators\letyiimodel\Generator', //class generator
+//                'templates' => [ //setting for out templates
+//                    'default' => '@app\vendor\letyii\yii2-gii\generators\letyiimodel\default', //name template => path to template
+//                ]
             ]
         ],
     ];
