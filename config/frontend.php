@@ -3,8 +3,9 @@
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
-    'language' => 'vi-VN',
+    'language' => 'vi',
     'bootstrap' => ['log'],
+    'defaultRoute' => 'cms/frontend/default',
     'extensions' => require(__DIR__ . '/../vendor/yiisoft/extensions.php'),
     'components' => [
         'cache' => [
@@ -15,7 +16,7 @@ $config = [
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
-            'errorAction' => 'cms/backend/error',
+            'errorAction' => 'cms/frontend/error',
         ],
         'mail' => [
             'class' => 'yii\swiftmailer\Mailer',
@@ -30,15 +31,19 @@ $config = [
                 ],
             ],
         ],
+        'urlManager' => [
+            'showScriptName' => TRUE,
+        ],
+
         'view' => [
             'theme' => [
                 'pathMap' => [
-                    '@app/views' => '@app/themes/letyii/views',
-                    '@app/modules' => '@app/themes/letyii/modules',
-                    '@app/widgets' => '@app/themes/letyii/widgets',
+                    '@app/views' => '@app/themes/default/views',
+                    '@app/modules' => '@app/themes/default/modules',
+                    '@app/widgets' => '@app/themes/default/widgets',
                 ],
-                'basePath' => '@app/themes/letyii',
-                'baseUrl' => '@web/themes/letyii',
+                'basePath' => '@app/themes/default',
+                'baseUrl' => '@web/themes/default',
             ],
         ],
     ],
@@ -47,14 +52,18 @@ $config = [
 
 // Merge data config
 $configs = array_replace_recursive(
-        require(__DIR__ . '/common.php'), require(__DIR__ . '/modules.php'), require(__DIR__ . '/db.php'), require(__DIR__ . '/params.php'), $config, require(__DIR__ . '/local.php')
+    require(__DIR__ . '/common.php'),
+    require(__DIR__ . '/modules.php'),
+    require(__DIR__ . '/db.php'),
+    require(__DIR__ . '/params.php'),
+    $config,
+    require(__DIR__ . '/local.php')
 );
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
     $configs['bootstrap'][] = 'debug';
     $configs['modules']['debug'] = 'yii\debug\Module';
-    $configs['modules']['gii'] = 'yii\gii\Module';
 }
 
 return $configs;
