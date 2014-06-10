@@ -18,7 +18,7 @@ BackendAsset::register($this);
         $this->registerCssFile($this->theme->baseUrl . '/assets/css/let.css', [\yii\bootstrap\BootstrapAsset::className()]);
 
         // Javascript
-        $this->registerJsFile($this->theme->baseUrl . '/assets/js/let.js', [\yii\web\JqueryAsset::className()]);
+//        $this->registerJsFile($this->theme->baseUrl . '/assets/js/let.js', [\yii\web\JqueryAsset::className()]);
         ?>
         <?php $this->head() ?>
     </head>
@@ -26,7 +26,13 @@ BackendAsset::register($this);
         <?php $this->beginBody() ?>
         <div class="wrap">
             <?php echo $this->render('//block/_box_menu'); ?>
+                <div class="logo">
+                    <div class="container">
+                        <img src="http://wbpreview.com/previews/WB00C40H4/images/logo.png" alt="Letyii CMS" />
+                    </div>
+                </div>
             <div class="container">
+
                 <?php echo $this->render('//block/_box_breadcrumbs'); ?>
                 <?php echo Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
