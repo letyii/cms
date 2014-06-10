@@ -15,10 +15,10 @@ class ActiveRecord extends \yii\db\ActiveRecord {
     public function afterFind() {
         if (property_exists($this, 'category_id')) {
             $this->category_id = (new \yii\db\Query())
-                    ->select('category_id')
-                    ->from('{{%' . $this->getModule() . '_category}}')
-                    ->where('item_id = :item_id', [':item_id' => $this->primaryKey])
-                    ->all();
+                ->select('category_id')
+                ->from('{{%' . $this->getModule() . '_category}}')
+                ->where('item_id = :item_id', [':item_id' => $this->primaryKey])
+                ->all();
             $this->category_id = ArrayHelper::map($this->category_id, 'category_id', 'category_id');
             $this->category_id = array_values($this->category_id);
             parent::afterFind();

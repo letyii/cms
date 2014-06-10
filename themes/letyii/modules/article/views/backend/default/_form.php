@@ -23,7 +23,6 @@ $form = ActiveForm::begin([
 
 echo Html::hiddenInput('save_type', 'save');
 
-//echo $form->field($model, 'category_id')->textInput(['maxlength' => 255]);
 echo $form->field($model, 'category_id')->widget(\app\components\FieldCategory::className());
 
 echo $form->field($model, 'title')->textInput(['maxlength' => 255]);
@@ -83,7 +82,7 @@ $imageConfig = [
         'showUpload' => FALSE,
         'browseClass' => 'btn btn-primary btn-block',
         'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
-        'browseLabel' =>  'Select Photo'
+        'browseLabel' => 'Select Photo'
     ],
 ];
 if (!empty($model->image))
