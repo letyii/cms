@@ -46,10 +46,36 @@ use yii\widgets\ActiveForm;
             </div>
         </div>
 
-                <ul>
-                    <?php for ($i = 0; $i < 10; $i++): ?>
-                        <li><a href="#">Trung Quốc tiếp tục dịch chuyển Hải Dương 981</a></li>
+        <div class="thumbnail">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#">Popular</a></li>
+                <li><a href="#">Archive</a></li>
+                <li><a href="#">Recent</a></li>
+            </ul>
+            <div class="tab-content table">
+                <ul class="list-group">
+                    <?php for ($i=1; $i<=5; $i++): ?>
+                    <li class="list-group-item"><a href="#">Tin pho bien </a></li>
                     <?php endfor; ?>
                 </ul>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading"><h3 class="panel-title"><strong>Promotion Article</strong></h3></div>
+            <div class="panel-body">
+                <?php for ($i=1; $i<=5; $i++): ?>
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZWVlIi8+PHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMzIiIHk9IjMyIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9zdmc+" alt="Buc anh gay bao">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">Bức ảnh gây sốt trên facebook</h4>
+                            Chỉ sau 18 giờ được đưa lên Facebook, bức ảnh tạm gọi là 'mẹ chở con' của tác giả Cyrille, một thành viên của Vietnam Streetlife Photography, người Pháp
+                        </div>
+                    </div>
+                <?php endfor; ?>
+            </div>
+        </div>
     </div>
 </div>
