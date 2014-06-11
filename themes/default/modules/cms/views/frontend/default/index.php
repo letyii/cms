@@ -46,19 +46,33 @@ use yii\widgets\ActiveForm;
             </div>
         </div>
 
+        <div class="panel panel-default">
+            <div class="panel-heading"><h3 class="panel-title"><strong>List Categories</strong></h3></div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+                    <?php for ($i=1; $i<=5; $i++): ?>
+                        <li>
+                            <a href="#">
+                                <span class="badge pull-right">42</span>
+                                Category
+                            </a>
+                        </li>
+                    <?php endfor; ?>
+                </ul>
+            </div>
+        </div>
+
         <div class="thumbnail">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#">Popular</a></li>
                 <li><a href="#">Archive</a></li>
                 <li><a href="#">Recent</a></li>
             </ul>
-            <div class="tab-content table">
-                <ul class="list-group">
-                    <?php for ($i=1; $i<=5; $i++): ?>
+            <ul class="list-group">
+                <?php for ($i=1; $i<=5; $i++): ?>
                     <li class="list-group-item"><a href="#">Tin pho bien </a></li>
-                    <?php endfor; ?>
-                </ul>
-            </div>
+                <?php endfor; ?>
+            </ul>
         </div>
 
         <div class="panel panel-default">
@@ -77,5 +91,6 @@ use yii\widgets\ActiveForm;
                 <?php endfor; ?>
             </div>
         </div>
+
     </div>
 </div>
