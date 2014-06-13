@@ -53,6 +53,26 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'title',
             [
+                'attribute' => 'category_id',
+                'vAlign' => 'middle',
+                'hAlign' => 'center',
+                'value' => function ($model, $index, $widget) {
+                    if (!empty($model->category_id) AND is_array($model->category_id)) {
+                        return implode(',', $model->category_id);
+//                        foreach ($model->category_id as $category) {
+//                            $result .= $category;
+//                        }
+                    }
+                },
+                'filterType' => GridView::FILTER_SELECT2,
+                'filter' => app\modules\category\models\LetCategory::getCategory('article', '- '),
+                'filterWidgetOptions' => [
+                    'pluginOptions' => ['allowClear' => true],
+                ],
+                'filterInputOptions' => ['placeholder' => 'Tìm theo danh mục'],
+                'format' => 'raw',
+            ],
+            [
                 'attribute' => 'image',
                 'mergeHeader' => TRUE,
                 'hAlign' => 'center',

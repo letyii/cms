@@ -12,19 +12,6 @@ class ActiveRecord extends \yii\db\ActiveRecord {
     /**
      * @inheritdoc
      */
-    public function afterFind() {
-        if (property_exists($this, 'category_id')) {
-            $this->category_id = (new \yii\db\Query())
-                ->select('category_id')
-                ->from('{{%' . $this->getModule() . '_category}}')
-                ->where('item_id = :item_id', [':item_id' => $this->primaryKey])
-                ->all();
-            $this->category_id = ArrayHelper::map($this->category_id, 'category_id', 'category_id');
-            $this->category_id = array_values($this->category_id);
-            parent::afterFind();
-        }
-    }
-
     public function init() {
         parent::init();
     }
@@ -32,19 +19,29 @@ class ActiveRecord extends \yii\db\ActiveRecord {
     /**
      * @inheritdoc
      */
-//    public static function findOne($condition) {
-//        if (ArrayHelper::isAssociative($condition)) {
-//            return parent::findOne($condition);
-//        } else {
-//            $cacheKey = self::tableName() . ':findOne:' . $condition;
-//            $cached = Yii::$app->cache->get($cacheKey);
-//            if ($cached === FALSE) {
-//                $cached = parent::findOne($condition);
-//                Yii::$app->cache->set($cacheKey, $cached);
-//            }
-//            return $cached;
-//        }
-//    }
+    public function afterFind() {
+        $cacheKey = self::tableName() . ':findOne:' . $this->primaryKey;
+        $cached = Yii::$app->cache->get($cacheKey);
+        if ($cached === FALSE) {
+            // Category
+            if (property_exists($this, 'category_id')) {
+                $this->category_id = (new \yii\db\Query())
+                        ->select('category_id')
+                        ->from('{{%' . $this->getModule() . '_category}}')
+                        ->where('item_id = :item_id', [':item_id' => $this->primaryKey])
+                        ->all();
+                $this->category_id = ArrayHelper::map($this->category_id, 'category_id', 'category_id');
+                $this->category_id = array_values($this->category_id);
+            }
+
+            Yii::$app->cache->set($cacheKey, $this);
+        } else {
+            if (property_exists($this, 'category_id')) {
+                $this->category_id = $cached->category_id;
+            }
+        }
+        parent::afterFind();
+    }
 
     /**
      * @inheritdoc
@@ -90,7 +87,7 @@ class ActiveRecord extends \yii\db\ActiveRecord {
      * @inheritdoc
      */
     public function afterSave($insert) {
-        $cacheKey = 'ActiveRecord:findOne:' . $this->primaryKey;
+        $cacheKey = self::tableName() . ':findOne:' . $this->primaryKey;
         Yii::$app->cache->delete($cacheKey);
 
         parent::afterSave($insert);

@@ -51,7 +51,6 @@ class LetArticleBase extends \app\components\ActiveRecord
     public function rules()
     {
         return [
-            [['title'], 'required'],
             [['content'], 'string'],
             [['from_time', 'to_time', 'create_time', 'update_time'], 'safe'],
             [['creator', 'editor', 'promotion', 'status'], 'integer'],

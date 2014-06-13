@@ -42,14 +42,14 @@ class LetArticle extends LetArticleBase
 
     public function scenarios()
     {
-        return array_replace_recursive(Model::scenarios(), [
-            'search' => ['title', 'creator', 'status'],
+        return array_merge(Model::scenarios(), [
+            'search' => ['title', 'creator', 'status', 'category_id'],
         ]);
     }
 
     public function search($params)
     {
-        $query = LetArticle::find();
+        $query = LetArticle::find()->with('creatorBy');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
