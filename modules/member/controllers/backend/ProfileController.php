@@ -13,18 +13,16 @@ class ProfileController extends BackendController
 {
     public function actionIndex()
     {
-        echo 123;
+        echo Yii::$app->user->id;
     }
 
     public function actionPassword()
     {
-        $id = Yii::$app->request->get('id');
-        if (empty($id))
-            return $this->redirect(['backend/profile/index']);
+        $currentUserId = Yii::$app->user->id;
 
-        $model = $this->findModel($id);
+        $model = $this->findModel($currentUserId);
         if ($model->load(Yii::$app->request->post()) AND $model->save()) {
-            return $this->redirect(['index', 'id' => $model->id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('password', [
                 'model' => $model,
