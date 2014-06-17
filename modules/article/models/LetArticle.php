@@ -43,13 +43,17 @@ class LetArticle extends LetArticleBase
     public function scenarios()
     {
         return array_merge(Model::scenarios(), [
-            'search' => ['title', 'creator', 'status', 'category_id'],
+            'search' => ['title', 'creator', 'editor', 'status', 'category_id'],
         ]);
     }
 
-    public function search($params)
+    public function search($params, $with = [])
     {
-        $query = LetArticle::find()->with('creatorBy');
+        $query = LetArticle::find();
+
+        foreach ($with as $row) {
+            $query->with($row);
+        }
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -88,8 +92,21 @@ class LetArticle extends LetArticleBase
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCreatorBy()
-    {
+    public function getCreatorBy() {
         return $this->hasOne(LetUser::className(), ['id' => 'creator']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEditorBy() {
+        return $this->hasOne(LetUser::className(), ['id' => 'editor']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCategory() {
+//        return $this->hasOne(LetUser::className(), ['id' => 'creator']);
     }
 }
