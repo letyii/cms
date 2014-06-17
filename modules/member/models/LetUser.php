@@ -70,7 +70,7 @@ class LetUser extends base\LetUserBase implements IdentityInterface
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
-            if (($this->isNewRecord || $this->getScenario() === 'resetPassword') && !empty($this->password)) {
+            if (!empty($this->password)) {
                 $this->password_hash = Security::generatePasswordHash($this->password);
             }
             if ($this->isNewRecord) {
