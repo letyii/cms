@@ -28,6 +28,8 @@
         "kartik-v/yii2-slider": "dev-master",
         "kartik-v/yii2-money": "dev-master",
         "kartik-v/yii2-grid": "dev-master",
+        "kartik-v/yii2-checkbox-x": "dev-master",
+        "kartik-v/bootstrap-checkbox-x": "dev-master",
         "kartik-v/yii2-social": "dev-master",
         "kartik-v/yii2-field-range": "dev-master",
         "marciocamello/yii2-x-editable": "dev-master"
