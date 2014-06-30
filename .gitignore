@@ -28,6 +28,6 @@ phpunit.phar
 # local phpunit config
 /phpunit.xml
 
-/assets
-/runtime
+#/assets
+#/runtime
 /uploads

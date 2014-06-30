@@ -13,7 +13,7 @@ use Yii;
  */
 class LetConfigBase extends \app\components\ActiveRecord
 {
-    public static function getModule() {
+    public static function moduleName() {
         return 'config';
     }
 

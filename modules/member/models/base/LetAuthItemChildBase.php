@@ -15,7 +15,7 @@ use Yii;
  */
 class LetAuthItemChildBase extends \yii\db\ActiveRecord
 {
-    public static function getModule() {
+    public static function moduleName() {
         return 'member';
     }
 

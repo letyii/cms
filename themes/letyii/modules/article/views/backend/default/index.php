@@ -15,7 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="margin-bottom">
     <div class="btn-group pull-left">
         <?php
-        if (Yii::$app->user->can(Yii::$app->controller->module->id . '.create')) {            echo Html::a(Yii::t('yii', 'Create'), ['backend/default/create'], [
+        if (Yii::$app->user->can(Yii::$app->controller->module->id . '.create')) {
+            echo Html::a(Yii::t('yii', 'Create'), ['backend/default/create'], [
                 'class' => 'btn btn-success',
                 'onclick' => '$("#formDefault").submit();',
             ]);
@@ -58,7 +59,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'hAlign' => 'center',
                 'value' => function ($model, $index, $widget) {
                     if (!empty($model->category_id) AND is_array($model->category_id)) {
-                        return implode(',', $model->category_id);
+                        $result = '';
+                        foreach ($model->category as $key => $value) {
+                            $result .= Html::tag('div', Html::a($value->title, '#'));
+                        }
+                        return $result;
                     }
                 },
                 'filterType' => GridView::FILTER_SELECT2,
@@ -86,9 +91,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'vAlign' => 'middle',
                 'value' => function ($model, $index, $widget) {
                     if (isset($model->creatorBy->username)) {
-                        return Html::a($model->creatorBy->username, '#', [
+                        return Html::a($model->creatorBy->username, ['/member/backend/default/view', 'id' => $model->creatorBy->id], [
                             'title' => 'View author detail',
-                            'onclick' => 'alert("This will open the author page.\n\nDisabled for this demo!")'
                         ]);
                     }
                 },
@@ -105,9 +109,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'vAlign' => 'middle',
                 'value' => function ($model, $index, $widget) {
                     if (isset($model->editorBy->username)) {
-                        return Html::a($model->editorBy->username, '#', [
+                        return Html::a($model->editorBy->username, ['/member/backend/default/view', 'id' => $model->editorBy->id], [
                             'title' => 'View author detail',
-                            'onclick' => 'alert("This will open the author page.\n\nDisabled for this demo!")'
                         ]);
                     }
                 },

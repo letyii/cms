@@ -33,7 +33,7 @@ class DefaultController extends BackendController
             $queryParams['LetArticle']['creator'] = Yii::$app->user->id;
         $searchModel = new LetArticle;
         $searchModel->scenario = 'search';
-        $dataProvider = $searchModel->search($queryParams, ['creatorBy', 'editorBy']);
+        $dataProvider = $searchModel->search($queryParams, ['creatorBy', 'editorBy', 'category']);
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
