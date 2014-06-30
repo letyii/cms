@@ -10,8 +10,6 @@ namespace app\modules\member\models;
 
 use Yii;
 use yii\data\ActiveDataProvider;
-use yii\helpers\ArrayHelper;
-use yii\helpers\Security;
 use yii\web\IdentityInterface;
 
 class LetUser extends base\LetUserBase implements IdentityInterface
@@ -71,10 +69,10 @@ class LetUser extends base\LetUserBase implements IdentityInterface
     {
         if (parent::beforeSave($insert)) {
             if (!empty($this->password)) {
-                $this->password_hash = Security::generatePasswordHash($this->password);
+                $this->password_hash = Yii::$app->getSecurity()->generatePasswordHash($this->password);
             }
             if ($this->isNewRecord) {
-                $this->auth_key = Security::generateRandomKey();
+                $this->auth_key = Yii::$app->getSecurity()->generateRandomKey($this->password);
             }
             return true;
         }
@@ -170,7 +168,11 @@ class LetUser extends base\LetUserBase implements IdentityInterface
      */
     public function validatePassword($password)
     {
-        return Security::validatePassword($password, $this->password_hash);
+        if (Yii::$app->getSecurity()->validatePassword($password, $this->password_hash)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
