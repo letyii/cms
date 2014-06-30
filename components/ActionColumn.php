@@ -34,7 +34,7 @@ class ActionColumn extends \kartik\grid\ActionColumn {
         }
         if (!isset($this->buttons['update'])) {
             $this->buttons['update'] = function ($url, $model) {
-                if (Yii::$app->user->can($model->getModule() . '.update', ['post' => $model])) {
+                if (Yii::$app->user->can($model->moduleName() . '.update', ['post' => $model])) {
                     $options = $this->updateOptions;
                     $title = Yii::t('kvgrid', 'Update');
                     $icon = '<span class="glyphicon glyphicon-pencil"></span>';
@@ -52,7 +52,7 @@ class ActionColumn extends \kartik\grid\ActionColumn {
         }
         if (!isset($this->buttons['delete'])) {
             $this->buttons['delete'] = function ($url, $model) {
-                if (Yii::$app->user->can($model->getModule() . '.delete', ['post' => $model])) {
+                if (Yii::$app->user->can($model->moduleName() . '.delete', ['post' => $model])) {
                     $options = $this->deleteOptions;
                     $icon = '<span class="glyphicon glyphicon-trash"></span>';
                     $label = ArrayHelper::remove($options, 'label', ($this->_isDropdown ? $icon . ' ' . $title : $icon));

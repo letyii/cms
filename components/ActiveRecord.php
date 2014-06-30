@@ -27,7 +27,7 @@ class ActiveRecord extends \yii\db\ActiveRecord {
             if (property_exists($this, 'category_id')) {
                 $this->category_id = (new \yii\db\Query())
                         ->select('category_id')
-                        ->from('{{%' . $this->getModule() . '_category}}')
+                        ->from('{{%' . $this->moduleName() . '_category}}')
                         ->where('item_id = :item_id', [':item_id' => $this->primaryKey])
                         ->all();
                 $this->category_id = ArrayHelper::map($this->category_id, 'category_id', 'category_id');
@@ -97,11 +97,11 @@ class ActiveRecord extends \yii\db\ActiveRecord {
         if (empty($this->category_id) OR ! is_array($this->category_id))
             $this->category_id = [];
 
-        $sql = "DELETE FROM {{%" . $this->getModule() . "_category}} WHERE item_id = '" . $this->primaryKey . "'";
+        $sql = "DELETE FROM {{%" . $this->moduleName() . "_category}} WHERE item_id = '" . $this->primaryKey . "'";
         Yii::$app->db->createCommand($sql)->query();
 
         foreach ($this->category_id as $category_id) {
-            $sql = "INSERT INTO {{%" . $this->getModule() . "_category}} (item_id, category_id) VALUES('" . $this->primaryKey . "', '" . $category_id . "')";
+            $sql = "INSERT INTO {{%" . $this->moduleName() . "_category}} (item_id, category_id) VALUES('" . $this->primaryKey . "', '" . $category_id . "')";
             Yii::$app->db->createCommand($sql)->query();
         }
     }

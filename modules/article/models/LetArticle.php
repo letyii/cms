@@ -86,6 +86,8 @@ class LetArticle extends LetArticleBase
             ->andFilterWhere(['like', 'seo_url', $this->seo_url])
             ->andFilterWhere(['like', 'seo_desc', $this->seo_desc]);
 
+//        $this->category_id
+
         return $dataProvider;
     }
 
@@ -107,6 +109,7 @@ class LetArticle extends LetArticleBase
      * @return \yii\db\ActiveQuery
      */
     public function getCategory() {
-//        return $this->hasOne(LetUser::className(), ['id' => 'creator']);
+        return $this->hasMany(\app\modules\category\models\LetCategory::className(), ['id' => 'category_id'])
+            ->viaTable('{{%' . self::moduleName() . '_category}}', ['item_id' => 'id']);
     }
 }

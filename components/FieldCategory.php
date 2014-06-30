@@ -15,7 +15,7 @@ class FieldCategory extends \yii\widgets\InputWidget {
 	 * Renders the widget.
 	 */
 	public function run() {
-        $categories = LetCategory::getCategory($this->model->getModule(), '-- ');
+        $categories = LetCategory::getCategory($this->model->moduleName(), '-- ');
         echo Html::activeCheckboxList($this->model, $this->attribute, $categories, $this->options);
 	}
 }

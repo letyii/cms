@@ -20,7 +20,7 @@ class BaseLetArticleCategory extends \app\components\ActiveRecord
      * Get Module Name
      * @return string
      */
-    public static function getModule() {
+    public static function moduleName() {
         return 'article';
     }
 
