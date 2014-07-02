@@ -82,7 +82,7 @@ class RbacController extends BackendController
         $auth = Yii::$app->authManager;
         $auth->removeAll();
 
-        $backendLogin = $auth->createPermission('member.backendLogin');
+        $backendLogin = $auth->createPermission('member:backendLogin');
         $backendLogin->description = 'Login Backend';
         $auth->add($backendLogin);
 
