@@ -15,14 +15,14 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="margin-bottom">
     <div class="btn-group pull-left">
         <?php
-        if (Yii::$app->user->can(Yii::$app->controller->module->id . '.create')) {
+        if (Yii::$app->user->can(Yii::$app->controller->module->id . ':create')) {
             echo Html::a(Yii::t('yii', 'Create'), ['backend/default/create'], [
                 'class' => 'btn btn-success',
                 'onclick' => '$("#formDefault").submit();',
             ]);
         }
 
-        if (Yii::$app->user->can(Yii::$app->controller->module->id . '.delete')) {
+        if (Yii::$app->user->can(Yii::$app->controller->module->id . ':delete')) {
             echo Html::button(Yii::t('yii', 'Delete'), [
                 'class' => 'btn btn-danger',
                 'onclick' => "deleteSelectedRows('" . Url::to(['/cms/backend/crud/deleteselectedrows']) . "', '" . LetArticle::tableName() . "')",

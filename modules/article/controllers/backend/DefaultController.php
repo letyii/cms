@@ -29,7 +29,7 @@ class DefaultController extends BackendController
     public function actionIndex()
     {
         $queryParams = Yii::$app->request->getQueryParams();
-        if (!Yii::$app->user->can('article.view'))
+        if (!Yii::$app->user->can(LetArticle::moduleName() . ':view'))
             $queryParams['LetArticle']['creator'] = Yii::$app->user->id;
         $searchModel = new LetArticle;
         $searchModel->scenario = 'search';
@@ -61,7 +61,7 @@ class DefaultController extends BackendController
      */
     public function actionCreate()
     {
-        if (!Yii::$app->user->can('article.create'))
+        if (!Yii::$app->user->can(LetArticle::moduleName() . ':create'))
             return $this->render('//message', ['messages' => ['danger' => Yii::t('yii', 'You are not allowed to perform this action.')]]);
 
         $model = new LetArticle;
@@ -86,7 +86,7 @@ class DefaultController extends BackendController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        if (!Yii::$app->user->can('article.update', ['post' => $model]))
+        if (!Yii::$app->user->can(LetArticle::moduleName() . ':update', ['post' => $model]))
             return $this->render('//message', ['messages' => ['danger' => Yii::t('yii', 'You are not allowed to perform this action.')]]);
 
         if ($model->load(Yii::$app->request->post()) AND $model->save()) {
@@ -106,7 +106,7 @@ class DefaultController extends BackendController
      */
     public function actionDelete($id)
     {
-        if (!Yii::$app->user->can('article.delete'))
+        if (!Yii::$app->user->can(LetArticle::moduleName() . ':delete'))
             return $this->render('//message', ['messages' => ['danger' => Yii::t('yii', 'You are not allowed to perform this action.')]]);
 
         $this->findModel($id)->delete();

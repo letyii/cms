@@ -86,11 +86,11 @@ class ActiveRecord extends \yii\db\ActiveRecord {
     /**
      * @inheritdoc
      */
-    public function afterSave($insert) {
+    public function afterSave($insert, $changedAttributes) {
         $cacheKey = self::tableName() . ':findOne:' . $this->primaryKey;
         Yii::$app->cache->delete($cacheKey);
 
-        parent::afterSave($insert);
+        parent::afterSave($insert, $changedAttributes);
     }
 
     private function isCategory() {
