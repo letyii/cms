@@ -5,14 +5,14 @@ return [
         'cms' => [
             'class' => 'app\modules\cms\Module',
         ],
+        'config' => [
+            'class' => 'app\modules\config\Module',
+        ],
         'member' => [
             'class' => 'app\modules\member\Module',
         ],
         'category' => [
             'class' => 'app\modules\category\Module',
-        ],
-        'config' => [
-            'class' => 'app\modules\config\Module',
         ],
         'gridview' =>  [
             'class' => '\kartik\grid\Module'

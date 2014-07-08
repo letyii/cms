@@ -1,3 +1,5 @@
+.let-container {padding: 0 15px;}
+
 .fix_table_width td, .fix_table_width th {width: 1%; white-space: nowrap; text-align: center;}
 .fix_table_width .td_free {width: auto; white-space: normal; text-align: left;}
 

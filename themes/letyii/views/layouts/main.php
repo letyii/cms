@@ -25,19 +25,26 @@ BackendAsset::register($this);
     <body>
         <?php $this->beginBody() ?>
         <div class="wrap">
-            <?php echo $this->render('//block/_box_menu'); ?>
-            <div class="container">
-                <?php echo $this->render('//block/_box_breadcrumbs'); ?>
-                <?php echo Breadcrumbs::widget([
-                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                ]); ?>
-                <?php echo $this->render('//block/_box_message'); ?>
-                <?php echo $content ?>
+            <?php echo $this->render('//block/_box_menu_horizontal'); ?>
+            <div class="let-container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <?php echo $this->render('//block/_box_menu_vertical'); ?>
+                    </div>
+                    <div class="col-lg-9">
+                        <?php echo $this->render('//block/_box_breadcrumbs'); ?>
+                        <?php echo Breadcrumbs::widget([
+                            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                        ]); ?>
+                        <?php echo $this->render('//block/_box_message'); ?>
+                        <?php echo $content ?>
+                    </div>
+                </div>
             </div>
         </div>
 
         <footer class="footer">
-            <div class="container">
+            <div class="let-container">
                 <p class="pull-left">&copy; LetYii Team <?php echo date('Y') ?></p>
                 <p class="pull-right">Powered by LetYii</p>
             </div>

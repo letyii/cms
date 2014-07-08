@@ -38,9 +38,14 @@ class DefaultController extends BackendController
      */
     public function actionIndex()
     {
-        $data = LetCategory::find()->addOrderBy('lft')->all();
+        $module = Yii::$app->request->get('module');
+        if (empty($module))
+            throw new NotFoundHttpException('The requested page does not exist.');
+        $categories = LetCategory::find()
+                ->where(['module' => $module])
+                ->addOrderBy('lft')->all();
         return $this->render('index', [
-            'data' => $data,
+            'categories' => $categories,
         ]);
     }
 

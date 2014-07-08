@@ -2,7 +2,7 @@
 
 namespace app\modules\member;
 
-class Module extends \yii\base\Module
+class Module extends \app\components\BackendModule
 {
     public $controllerNamespace = 'app\modules\member\controllers';
 
