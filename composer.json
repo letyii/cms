@@ -32,7 +32,8 @@
         "kartik-v/bootstrap-checkbox-x": "dev-master",
         "kartik-v/yii2-social": "dev-master",
         "kartik-v/yii2-field-range": "dev-master",
-        "marciocamello/yii2-x-editable": "dev-master"
+        "marciocamello/yii2-x-editable": "dev-master",
+		"nodge/yii2-eauth": "~2.0"
 	},
 	"require-dev": {
 		"yiisoft/yii2-codeception": "*",

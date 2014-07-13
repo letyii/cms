@@ -171,4 +171,25 @@ class LetUser extends base\LetUserBase implements IdentityInterface
         return Yii::$app->getSecurity()->validatePassword($password, $this->password_hash);
     }
 
+    /**
+     * @param \nodge\eauth\ServiceBase $service
+     * @return User
+     * @throws ErrorException
+     */
+    public static function findByEAuth($service) {
+        if (!$service->getIsAuthenticated()) {
+            throw new ErrorException('EAuth user should be authenticated before creating identity.');
+        }
+
+        $id = $service->getServiceName().'-'.$service->getId();
+        $attributes = array(
+            'id' => $id,
+            'username' => $service->getAttribute('name'),
+            'auth_key' => md5($id),
+            'profile' => $service->getAttributes(),
+        );
+        $attributes['profile']['service'] = $service->getServiceName();
+        Yii::$app->getSession()->set('user-'.$id, $attributes);
+        return new self($attributes);
+    }
 }
