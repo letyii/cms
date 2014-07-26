@@ -46,6 +46,7 @@ class DefaultController extends BackendController
                 ->addOrderBy('lft')->all();
         return $this->render('index', [
             'categories' => $categories,
+            'module' => $module,
         ]);
     }
 

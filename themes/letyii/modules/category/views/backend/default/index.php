@@ -9,6 +9,7 @@ $this->registerJsFile(\yii\helpers\Url::base() . '/assetbundle/nestedset/js/jque
 $this->registerJsFile(\yii\helpers\Url::base() . '/assetbundle/nestedset/js/tree.js', [\yii\web\JqueryAsset::className()]);
 
 $this->title = Yii::t(Yii::$app->controller->module->id, 'Category');
+$this->params['breadcrumbs'][] = ['label' => Yii::t($module, ucfirst($module)), 'url' => ['/'.$module.'/backend/default']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <!-- Content starts -->
@@ -27,7 +28,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <input type="hidden" id="categoryChangedListJson" value="" />
         <div class="tree">
             <?php
-//            $categories = \app\modules\category\models\LetCategory::find()->addOrderBy('lft')->all();
             $level = 0;
 
             foreach ($categories as $n => $category) {
