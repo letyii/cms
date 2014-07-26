@@ -63,6 +63,7 @@ class AjaxController extends BackendController {
                 $modelParent = LetCategory::findOne($parent_id);
                 $model = new LetCategory;
                 $model->title = $title;
+                $model->module = $module;
                 $model->appendTo($modelParent);
                 echo $model->id;
             } else

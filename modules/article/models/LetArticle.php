@@ -4,13 +4,12 @@ namespace app\modules\article\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\article\models\base\LetArticleBase;
 use app\modules\member\models\LetUser;
 
 /**
  * LetArticle represents the model behind the search form about `app\modules\article\models\base\LetArticleBase`.
  */
-class LetArticle extends LetArticleBase
+class LetArticle extends BaseLetArticle
 {
 
     public $category_id = [];

@@ -74,7 +74,7 @@ class LetCategory extends BaseLetCategory {
 
         // Save Node
         $model->title = $data['LetCategory']['title'];
-        $model->module = $relation->module; // Module trung voi module cua doi tuong can quan he
+        echo $model->module = $relation->module; // Module trung voi module cua doi tuong can quan he
 //        $model->saveNode();
 
         // Category position

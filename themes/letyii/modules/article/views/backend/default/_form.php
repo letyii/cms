@@ -9,7 +9,7 @@ use kartik\widgets\FileInput;
 
 /**
  * @var yii\web\View $this
- * @var app\modules\article\models\base\LetArticleBase $model
+ * @var app\modules\article\models\LetArticle $model
  * @var yii\widgets\ActiveForm $form
  */
 ?>
@@ -17,7 +17,7 @@ use kartik\widgets\FileInput;
 <?php
 $form = ActiveForm::begin([
     'id' => 'formDefault',
-    'layout' => 'horizontal',
+    // 'layout' => 'horizontal',
     'options' => ['enctype'=>'multipart/form-data'],
 ]);
 

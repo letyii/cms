@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\article\models\base;
+namespace app\modules\article\models;
 
 use Yii;
 
@@ -27,7 +27,7 @@ use Yii;
  * @property integer $promotion
  * @property integer $status
  */
-class LetArticleBase extends \app\components\ActiveRecord
+class BaseLetArticle extends \app\components\ActiveRecord
 {
     /**
      * Get Module Name

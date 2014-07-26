@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="clearfix"></div>
 </div>
 
-<div id="">
+<div>
     <?php
     echo GridView::widget([
         'panel' => [

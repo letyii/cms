@@ -19,8 +19,11 @@ BackendAsset::register($this);
 
         // Javascript
         $this->registerJsFile($this->theme->baseUrl . '/assets/js/let.js', [\yii\web\JqueryAsset::className()]);
-        ?>
-        <?php $this->head() ?>
+        
+        $this->head();
+        
+        echo Html::csrfMetaTags();
+         ?>
     </head>
     <body>
         <?php $this->beginBody() ?>
